@@ -22,7 +22,7 @@ export default function HeroSection() {
                 {/* Imagem */}
                 <div className="lg:ml-auto lg:w-1/3 mt-12 md:mt-0">
                     <Image
-                        src="/home-img-1.svg"
+                        src="/svgs/home.svg"
                         alt="Micro-SaaS Illustration"
                         className="rounded-lg"
                         layout="intrinsic"

@@ -18,10 +18,11 @@
 
 | **Feature**                                        | **Status** |
 |----------------------------------------------------|------------|
-| Team Features                                      | ⬜         |
-| Integration with Transactional Emails              | ⬜         |
 | Multi-Currency Support in Stripe                   | ⬜         |
+| Integration with Transactional Emails              | ⬜         |
 | Custom Webhooks for Notifications                  | ⬜         |
+| Team Features                                      | ⬜         |
+
 
 ---
 
