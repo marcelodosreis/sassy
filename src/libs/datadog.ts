@@ -3,8 +3,8 @@ import { datadogRum } from '@datadog/browser-rum';
 export const initDatadogRum = () => {
     if (
         typeof window !== 'undefined' &&
-        process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID &&
-        process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN
+        !!process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID &&
+        !!process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN
     ) {
         datadogRum.init({
             applicationId: process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID!,

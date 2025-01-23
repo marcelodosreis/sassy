@@ -8,7 +8,7 @@
 |----------------------------------------------------|------------|
 | Trial Periods for Subscription Plans               | ✅         |
 | Detailed Logs and Monitoring                       | ✅         |
-| Translation and Multilingual Support (i18n)        | ⬜         |
+| Translation and Multilingual Support (i18n)        | ✅         |
 | Dark/Light Theme                                   | ⬜         |
 
 
