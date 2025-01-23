@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { supabase } from '@/libs/supabase/client';
 import SupabaseService from '@/services/supabase';
 
+import LanguageSelector from "./LanguageSelector";
 import Spinner from "./Spinner";
 
 
@@ -73,7 +74,7 @@ export default function Navbar() {
                                     Dashboard
                                 </a>
                     }
-
+                <LanguageSelector />
                 </div>
 
                 <button
