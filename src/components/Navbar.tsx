@@ -74,7 +74,7 @@ export default function Navbar() {
                                     Dashboard
                                 </a>
                     }
-                <LanguageSelector />
+                    <LanguageSelector />
                 </div>
 
                 <button
@@ -112,6 +112,8 @@ export default function Navbar() {
                         </a>
                     </nav>
                     <div className="flex flex-col space-y-4 p-4">
+                        <LanguageSelector />
+
                         {isLoading
                             ? <Spinner />
                             : !isLogged ? (
