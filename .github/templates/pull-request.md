@@ -25,4 +25,3 @@
 - [Any additional notes, context, or information]
 - [Link to related GitHub Issues, if applicable]
 
----
