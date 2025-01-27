@@ -41,7 +41,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '22.11.0'
-      - run: npm install
-      - run: npm run build
+      - run: |
+          echo "NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}" > .env
+          npm install
+          npm run build
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
