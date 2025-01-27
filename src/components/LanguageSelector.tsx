@@ -13,7 +13,7 @@ const LanguageSelector = () => {
     };
 
     return (
-        <select onChange={handleChange} value={locale}>
+        <select className="text-center text-sm text-gray-600" onChange={handleChange} value={locale}>
             <option value="en-US">English</option>
             <option value="pt-BR">Português</option>
         </select>
