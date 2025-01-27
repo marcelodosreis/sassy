@@ -21,19 +21,10 @@ export async function generateStaticParams() {
   return [{ locale: 'en-US' }, { locale: 'pt-BR' }, { locale: 'es' }];
 }
 
-const carregarTraducoes = async (locale: string): Promise<Record<string, string>> => {
-  const isProd = process.env.NODE_ENV === 'production';
-  if (isProd) {
-    const response = await fetch(`https://${process.env.VERCEL_URL}/locales/${locale}.json`);
-    if (!response.ok) {
-      throw new Error(`Error loading translations for language: ${locale}`);
-    }
-    return response.json();
-  } else {
-    const filePath = path.join(process.cwd(), 'public', 'locales', `${locale}.json`);
-    const file = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(file);
-  }
+const loadTranslations = async (locale: string): Promise<Record<string, string>> => {
+  const filePath = path.join(process.cwd(), 'src', 'locales', `${locale}.json`);
+  const file = fs.readFileSync(filePath, 'utf-8');
+  return JSON.parse(file);
 };
 
 type Props = {
@@ -43,13 +34,13 @@ type Props = {
 export default async function RootLayout({ children }: Props) {
   const cookieStore = await cookies();
   const locale = cookieStore.get('locale')?.value || 'en-US';
-  const traducoes = await carregarTraducoes(locale);
+  const translations = await loadTranslations(locale);
 
   return (
     <html lang={locale}>
       <title>Sassy - powerful micro-saas template</title>
       <body className={poppins.className}>
-        <I18nProvider locale={locale} translations={traducoes}>
+        <I18nProvider locale={locale} translations={translations}>
           <DatadogProvider>
             <ToastProvider>
               {children}
