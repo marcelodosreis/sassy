@@ -43,3 +43,5 @@ jobs:
           node-version: '22.11.0'
       - run: npm install
       - run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
