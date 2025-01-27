@@ -1,14 +1,14 @@
-import fs from 'fs';
-import path from 'path';
-
 import { cookies } from 'next/headers';
 
 import { Poppins } from 'next/font/google';
+
 
 import Toast from '@/components/Toast';
 import { DatadogProvider } from '@/contexts/DatadogContext';
 import { I18nProvider } from '@/contexts/i18nContext';
 import { ToastProvider } from '@/contexts/ToastContext';
+import enUSLocale from '@/locales/en-US.json';
+import ptBRLocale from '@/locales/pt-BR.json';
 
 import "@/styles/globals.css";
 
@@ -21,10 +21,14 @@ export async function generateStaticParams() {
   return [{ locale: 'en-US' }, { locale: 'pt-BR' }, { locale: 'es' }];
 }
 
-const loadTranslations = async (locale: string): Promise<Record<string, string>> => {
-  const filePath = path.join(process.cwd(), 'src', 'locales', `${locale}.json`);
-  const file = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(file);
+const loadTranslations = (locale: string): Record<string, string> => {
+  const translationsMap: Record<string, Record<string, string>> = {
+    'en-US': enUSLocale,
+    'pt-BR': ptBRLocale,
+  };
+
+  const translations = translationsMap[locale] || enUSLocale;
+  return translations;
 };
 
 type Props = {
