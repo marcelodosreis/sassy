@@ -8,7 +8,7 @@
 |----------------------------------------------------|------------|
 | Trial Periods for Subscription Plans               | ✅         |
 | Detailed Logs and Monitoring                       | ✅         |
-| Translation and Multilingual Support (i18n)        | ⬜         |
+| Translation and Multilingual Support (i18n)        | ✅         |
 | Dark/Light Theme                                   | ⬜         |
 
 
@@ -18,10 +18,11 @@
 
 | **Feature**                                        | **Status** |
 |----------------------------------------------------|------------|
-| Team Features                                      | ⬜         |
-| Integration with Transactional Emails              | ⬜         |
 | Multi-Currency Support in Stripe                   | ⬜         |
+| Integration with Transactional Emails              | ⬜         |
 | Custom Webhooks for Notifications                  | ⬜         |
+| Team Features                                      | ⬜         |
+
 
 ---
 

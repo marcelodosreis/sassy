@@ -83,7 +83,6 @@ export default function SignIn() {
           if (err instanceof Error && err.message !== "Validation Error") {
               dispatch({ type: "SET_ERRORS", payload: { general: "Something went wrong. Please try again." } });
           }
-      } finally {
           dispatch({ type: "SET_LOADING", payload: false });
       }
   }
