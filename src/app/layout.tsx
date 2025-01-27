@@ -2,7 +2,6 @@ import { cookies } from 'next/headers';
 
 import { Poppins } from 'next/font/google';
 
-
 import Toast from '@/components/Toast';
 import { DatadogProvider } from '@/contexts/DatadogContext';
 import { I18nProvider } from '@/contexts/i18nContext';
