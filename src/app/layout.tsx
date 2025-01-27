@@ -3,7 +3,7 @@ import path from 'path';
 
 import { cookies } from 'next/headers';
 
-import { Poppins } from 'next/font/google'
+import { Poppins } from 'next/font/google';
 
 import Toast from '@/components/Toast';
 import { DatadogProvider } from '@/contexts/DatadogContext';
@@ -12,35 +12,44 @@ import { ToastProvider } from '@/contexts/ToastContext';
 
 import "@/styles/globals.css";
 
-
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900',]
-})
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+});
 
 export async function generateStaticParams() {
   return [{ locale: 'en-US' }, { locale: 'pt-BR' }, { locale: 'es' }];
 }
 
-const loadTranslations = (locale: string): Record<string, string> => {
-  const filePath = path.join(process.cwd(), 'public', 'locales', `${locale}.json`);
-  const file = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(file);
+const carregarTraducoes = async (locale: string): Promise<Record<string, string>> => {
+  const isProd = process.env.NODE_ENV === 'production';
+  if (isProd) {
+    const response = await fetch(`https://${process.env.VERCEL_URL}/locales/${locale}.json`);
+    if (!response.ok) {
+      throw new Error(`Error loading translations for language: ${locale}`);
+    }
+    return response.json();
+  } else {
+    const filePath = path.join(process.cwd(), 'public', 'locales', `${locale}.json`);
+    const file = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(file);
+  }
 };
 
 type Props = {
   children: React.ReactNode;
-}
+};
+
 export default async function RootLayout({ children }: Props) {
   const cookieStore = await cookies();
   const locale = cookieStore.get('locale')?.value || 'en-US';
-  const translations = loadTranslations(locale);
+  const traducoes = await carregarTraducoes(locale);
 
   return (
     <html lang={locale}>
       <title>Sassy - powerful micro-saas template</title>
       <body className={poppins.className}>
-        <I18nProvider locale={locale} translations={translations}>
+        <I18nProvider locale={locale} translations={traducoes}>
           <DatadogProvider>
             <ToastProvider>
               {children}
