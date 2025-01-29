@@ -5,17 +5,21 @@ import ptBRLocale from '../../public/locales/pt-BR.json';
 
 type Translations = Record<string, string>;
 
-export const loadTranslationsSSR = async (): Promise<{ translate: (key: string) => string; translations: Translations; locale: string }> => {
-    const cookieStore = await cookies();
-    const locale = cookieStore.get('locale')?.value || 'en-US';
+export async function loadTranslationsSSR(locale?: string): Promise<{ translate: (key: string) => string; translations: Translations; locale: string }> {
+    let resolvedLocale: string = locale || 'en-US';
+
+    if (!locale) {
+        const cookieStore = await cookies();
+        resolvedLocale = cookieStore.get('locale')?.value || 'en-US';
+    }
 
     const translationsMap: Record<string, Translations> = {
         'en-US': enUSLocale,
         'pt-BR': ptBRLocale,
     };
 
-    const translations = translationsMap[locale] || enUSLocale;
+    const translations = translationsMap[resolvedLocale as keyof typeof translationsMap] || enUSLocale;
     const translate = (key: string) => translations[key] || key;
 
-    return { translate, translations, locale };
-};
+    return { translate, translations, locale: resolvedLocale };
+}

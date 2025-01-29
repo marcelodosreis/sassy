@@ -19,18 +19,18 @@ interface Plan {
     extraFeatures: string;
 }
 
-export function transformPurchasePlansDTO(data: InputData[]): Plan[] {
+export function transformPurchasePlansDTO(data: InputData[], translate: (key: string) => string): Plan[] {
     const planDetails: Record<string, Omit<Plan, 'priceMonthly' | 'priceAnnual' | 'idMonthly' | 'idAnnual'>> = {
         "Starter": {
             id: "starter",
-            name: "Starter",
-            description: "Ideal for individuals launching first Micro-SaaS.",
+            name: translate('component-pricing-plan-starter-title'),
+            description: translate('component-pricing-plan-starter-description'),
             features: [
-                "✔ Access to core features",
-                "✔ 1 project",
-                "✔ Community support"
+                translate('component-pricing-plan-starter-feature-first'),
+                translate('component-pricing-plan-starter-feature-second'),
+                translate('component-pricing-plan-starter-feature-third'),
             ],
-            extraFeatures: "Everything in Free, plus"
+            extraFeatures: translate('component-pricing-plan-starter-extra')
         },
         "Creator": {
             id: "creator",

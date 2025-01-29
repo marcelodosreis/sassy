@@ -19,6 +19,24 @@
     "home-section-how-second-title": "Integrate Stripe",
     "home-section-how-second-description": "Connect Stripe for seamless billing and manage monthly or annual subscriptions.",
     "home-section-how-third-title": "Manage Subscriptions",
-    "home-section-how-third-description": "Easily conetor and manage your subscriptions, with real-time updates."
+    "home-section-how-third-description": "Easily conetor and manage your subscriptions, with real-time updates.",
 
+    "component-pricing-title": "Pricing Plans",
+    "component-pricing-description": "Simple and transparent pricing to suit your needs.",
+    "component-pricing-trial-title": "You have a free trial for",
+    "component-pricing-trial-description": "Try our service with no commitment.",
+
+    "component-pricing-selected-tag": "Selected Plan",
+    "component-pricing-popular-tag": "Most Popular",
+    "component-pricing-button": "Subscribe",
+    "component-pricing-button-subscribed": "Current Plan",
+
+
+
+    "component-pricing-plan-starter-title": "Starter",
+    "component-pricing-plan-starter-descrption": "Ideal for individuals launching first Micro-SaaS.",
+    "component-pricing-plan-starter-feature-first": "✔ Access to core features",
+    "component-pricing-plan-starter-feature-second": "✔ 1 project",
+    "component-pricing-plan-starter-extra": "Everything in Free, plus"
+   
 }

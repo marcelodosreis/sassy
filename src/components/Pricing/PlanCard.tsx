@@ -1,3 +1,5 @@
+import { useI18n } from '@/hooks/useI18n';
+
 import ButtonComponent from '../Button';
 
 export type Plan = {
@@ -19,17 +21,19 @@ export default function PlanCard({ plan, isAnnual, isSelected, isMostPopular, ha
     isMostPopular: boolean;
     handle: (plan: Plan) => Promise<void>;
 }) {
+    const { translate } = useI18n();
+
     const bgColor = isSelected
         ? 'bg-gray-50'
         : isMostPopular
-        ? 'bg-indigo-50'
-        : 'bg-white';
+            ? 'bg-indigo-50'
+            : 'bg-white';
 
     const borderColor = isSelected
         ? 'border-gray-600'
         : isMostPopular
-        ? 'border-indigo-600'
-        : 'border-gray-200';
+            ? 'border-indigo-600'
+            : 'border-gray-200';
 
     return (
         <div
@@ -38,12 +42,12 @@ export default function PlanCard({ plan, isAnnual, isSelected, isMostPopular, ha
         >
             {isSelected && (
                 <span className="absolute top-0 right-0 bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
-                    Selected Plan
+                    {translate('component-pricing-selected-tag')}
                 </span>
             )}
             {isMostPopular && !isSelected && (
                 <span className="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
-                    Most Popular
+                    {translate('component-pricing-popular-tag')}
                 </span>
             )}
             <h3 className="text-2xl font-bold text-gray-900">{plan.name}</h3>
@@ -57,7 +61,10 @@ export default function PlanCard({ plan, isAnnual, isSelected, isMostPopular, ha
                 className="mt-6"
                 onClick={() => handle(plan)}
             >
-                {isSelected ? 'Current Plan' : 'Subscribe'}
+                {isSelected
+                    ? translate('component-pricing-button-subscribed')
+                    : translate('component-pricing-button')
+                }
             </ButtonComponent>
             <ul className="mt-6 space-y-4 text-gray-600 text-left">
                 {plan.extraFeatures && (
