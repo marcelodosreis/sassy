@@ -9,7 +9,7 @@
 | Trial Periods for Subscription Plans               | ✅         |
 | Detailed Logs and Monitoring                       | ✅         |
 | Translation and Multilingual Support (i18n)        | ✅         |
-| Multi-Currency Support in Stripe                   | ⬜         |
+| Multi-Currency Support in Stripe                   | ✅         |
 
 
 ---

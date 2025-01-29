@@ -8,17 +8,53 @@ export default class StripeService {
     this.stripe = stripe;
   }
 
-  async createCheckoutSession(priceId: string, plan: string, userId: string, origin: string, freeTrial?: number): Promise<Stripe.Checkout.Session> {
+  async createCheckoutSession(
+    priceId: string, 
+    plan: string, 
+    userId: string, 
+    origin: string, 
+    freeTrial?: number, 
+  ): Promise<Stripe.Checkout.Session> {
+    const currency: string = 'usd';
+    // const currency: string = 'brl';
+    const price = await this.stripe.prices.retrieve(priceId);
+    const recurringInterval = price.recurring?.interval;
+
+    if (!recurringInterval) {
+      throw new Error('Recurring interval not found for this price');
+    }
+
     const sessionData: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ['card'],
-      line_items: [{ price: priceId, quantity: 1 }],
+      line_items: [{
+        price: priceId,
+        quantity: 1,
+      }],
       mode: 'subscription',
       success_url: `${origin}/payments?status=success`,
       cancel_url: `${origin}/payments?status=cancel`,
       metadata: { userId, plan },
     };
   
-
+    if (currency !== 'usd') {
+      const unitAmount = price.unit_amount;
+      const newUnitAmount = unitAmount ? unitAmount * 6 : 0;
+      
+      sessionData.line_items = [{
+        price_data: {
+          currency: currency,
+          product_data: {
+            name: plan,
+          },
+          recurring: {
+            interval: recurringInterval,
+          },
+          unit_amount: newUnitAmount,
+        },
+        quantity: 1,
+      }];
+    }
+  
     if (freeTrial) {
       sessionData.subscription_data = {
         trial_period_days: freeTrial,
@@ -28,6 +64,7 @@ export default class StripeService {
     const session = await this.stripe.checkout.sessions.create(sessionData);
     return session;
   }
+  
 
   async listActivePrices(): Promise<Stripe.Price[]> {
     const prices = await this.stripe.prices.list({
