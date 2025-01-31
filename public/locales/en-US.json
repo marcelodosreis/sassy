@@ -93,5 +93,19 @@
     "home-footer-join": "Join Sassy Today",
     "home-footer-terms": "Terms & Privacy",
     "home-footer-github": "GitHub",
-    "home-footer-copyright": "© 2025 Sassy. All rights reserved."
+    "home-footer-copyright": "© 2025 Sassy. All rights reserved.",
+
+    "terms-privacy-title": "Terms and Privacy Policy",
+    "terms-privacy-terms-of-use": "Terms of Use",
+    "terms-privacy-terms-of-use-description": "Welcome to our service. By using our website, you agree to comply with the following terms and conditions.",
+    "terms-privacy-privacy-policy": "Privacy Policy",
+    "terms-privacy-privacy-policy-description": "We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data.",
+    "terms-privacy-data-collection": "Data Collection",
+    "terms-privacy-data-collection-description": "We may collect personal information such as your name, email address, and usage data to improve our service and provide a better user experience.",
+    "terms-privacy-data-security": "Data Security",
+    "terms-privacy-data-security-description": "We implement a variety of security measures to ensure the safety of your personal data. However, no method of transmission over the internet is completely secure, so we cannot guarantee absolute security.",
+    "terms-privacy-changes-policy": "Changes to this Policy",
+    "terms-privacy-changes-policy-description": "We may update this Terms and Privacy Policy from time to time. Any changes will be posted on this page with an updated date.",
+    "terms-privacy-contact-us": "Contact Us",
+    "terms-privacy-contact-us-description": "If you have any questions about these terms or our privacy policy, feel free to contact us."
 }
