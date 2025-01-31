@@ -34,25 +34,25 @@ export function transformPurchasePlansDTO(data: InputData[], translate: (key: st
         },
         "Creator": {
             id: "creator",
-            name: "Creator",
-            description: "Great for creators looking to expand their reach.",
+            name: translate('component-pricing-plan-creator-title'),
+            description: translate('component-pricing-plan-creator-description'),
             features: [
-                "✔ Access to core features",
-                "✔ 3 projects",
-                "✔ Email support"
+                translate('component-pricing-plan-creator-feature-first'),
+                translate('component-pricing-plan-creator-feature-second'),
+                translate('component-pricing-plan-creator-feature-third'),
             ],
-            extraFeatures: "Everything in Starter, plus"
+            extraFeatures: translate('component-pricing-plan-creator-extra')
         },
         "Pro": {
             id: "pro",
-            name: "Pro",
-            description: "Perfect for teams scaling their Micro-SaaS business.",
+            name: translate('component-pricing-plan-pro-title'),
+            description: translate('component-pricing-plan-pro-description'),
             features: [
-                "✔ Access to core features",
-                "✔ Unlimited projects",
-                "✔ Priority support"
+                translate('component-pricing-plan-pro-feature-first'),
+                translate('component-pricing-plan-pro-feature-second'),
+                translate('component-pricing-plan-pro-feature-third'),
             ],
-            extraFeatures: "Everything in Creator, plus"
+            extraFeatures: translate('component-pricing-plan-pro-extra')
         }
     };
 
