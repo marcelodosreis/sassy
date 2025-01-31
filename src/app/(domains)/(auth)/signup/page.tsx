@@ -8,10 +8,10 @@ import FooterAuthScreenComponent from "@/components/FooterAuthScreen";
 import InputComponent from "@/components/Input";
 import OAuth from "@/components/OAuth";
 import PasswordStrengthIndicator from "@/components/PasswordStrength";
+import { useI18n } from '@/hooks/useI18n';
 import { supabase } from "@/libs/supabase/client";
 import SupabaseService from "@/services/supabase";
 import { isValidEmail } from "@/utils/isValidEmail";
-
 
 const initialState = {
   isLoading: false,
@@ -59,7 +59,7 @@ function reducer(state: SignUpStateType, action: SignUpAction) {
 
 export default function SignUp() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const { translate } = useI18n();
 
   async function handleSignUp() {
     try {
@@ -74,9 +74,9 @@ export default function SignUp() {
         dispatch({
           type: "SET_ERRORS",
           payload: {
-            email: isValidEmailResponse ? "" : "Invalid email format.",
-            password: isPasswordValid ? "" : "Password must be at least 6 characters long.",
-            confirmPassword: isPasswordsMatch ? "" : "Passwords do not match.",
+            email: isValidEmailResponse ? "" : translate("signUp-invalid-email"),
+            password: isPasswordValid ? "" : translate("signUp-invalid-password"),
+            confirmPassword: isPasswordsMatch ? "" : translate("signUp-passwords-do-not-match"),
           },
         });
         throw new Error("Validation Error");
@@ -85,7 +85,7 @@ export default function SignUp() {
       if (!state.isTermsAccepted) {
         dispatch({
           type: "SET_ERRORS",
-          payload: { terms: "You must accept the terms and conditions." },
+          payload: { terms: translate("signUp-terms-not-accepted") },
         });
         throw new Error("Terms not accepted");
       }
@@ -96,43 +96,43 @@ export default function SignUp() {
       if (response?.id) {
         dispatch({ type: "SET_REGISTRATION_COMPLETE", payload: true });
       } else {
-        dispatch({ type: "SET_ERRORS", payload: { general: "Failed to create an account. Please try again." } });
+        dispatch({ type: "SET_ERRORS", payload: { general: translate("signUp-general-error") } });
       }
     } catch (err) {
       console.log("Error", err);
       if (err instanceof Error && err.message !== "Validation Error" && err.message !== "Terms not accepted") {
-        dispatch({ type: "SET_ERRORS", payload: { general: "Something went wrong. Please try again." } });
+        dispatch({ type: "SET_ERRORS", payload: { general: translate("signUp-general-error") } });
       }
     } finally {
       dispatch({ type: "SET_LOADING", payload: false });
     }
   }
 
-
   return (
     <>
       {state.isRegistrationComplete ? (
         <>
-          <BackLinkComponent href='/signin' label='Back To Login' />
+          <BackLinkComponent href='/signin' label={translate("signUp-back-to-login")} />
           <div className="text-center">
-            <p className="text-lg text-gray-700">Please check your email to confirm your account.</p>
+            <p className="text-lg text-gray-700">{translate("signUp-general-error")}</p>
           </div>
         </>
       ) : (
         <>
-          <h2 className="text-2xl font-semibold text-center text-gray-900">Sign Up</h2>
-          <p className="text-center text-sm text-gray-600">Create your account to get started</p>
+          <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("signUp-title")}</h2>
+          <p className="text-center text-sm text-gray-600">{translate("signUp-subtitle")}</p>
           <form
             className="mt-8 space-y-6"
             onSubmit={(e) => {
               e.preventDefault();
               handleSignUp();
             }}>
+
             <div>
               <InputComponent
                 type="email"
                 name="email"
-                label="Email"
+                label={translate("signUp-email")}
                 placeholder=""
                 value={state.inputValue.email}
                 onChange={(e) =>
@@ -148,7 +148,7 @@ export default function SignUp() {
               <InputComponent
                 type="password"
                 name="password"
-                label="Password"
+                label={translate("signUp-password")}
                 placeholder=""
                 value={state.inputValue.password}
                 onChange={(e) =>
@@ -165,7 +165,7 @@ export default function SignUp() {
               <InputComponent
                 type="password"
                 name="confirmPassword"
-                label="Confirm Password"
+                label={translate("signUp-confirm-password")}
                 placeholder=""
                 value={state.inputValue.confirmPassword}
                 onChange={(e) =>
@@ -192,10 +192,7 @@ export default function SignUp() {
                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />
               <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
-                I accept the{" "}
-                <a href="/terms-and-privacy" className="text-indigo-600 hover:text-indigo-800">
-                  Terms and Privacy Policy
-                </a>
+                {translate("signUp-terms-label")}
               </label>
             </div>
             {state.errors.terms && (
@@ -203,9 +200,8 @@ export default function SignUp() {
             )}
 
             <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-              Sign Up
+              {translate("signUp-button")}
             </ButtonComponent>
-
           </form>
         </>
       )}

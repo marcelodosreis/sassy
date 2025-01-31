@@ -10,6 +10,7 @@ import FooterAuthScreenComponent from "@/components/FooterAuthScreen";
 import InputComponent from "@/components/Input";
 import OAuth from "@/components/OAuth";
 import { ROUTES } from '@/constants/Routes';
+import { useI18n } from '@/hooks/useI18n'; 
 import { supabase } from '@/libs/supabase/client';
 import SupabaseService from '@/services/supabase';
 import { isValidEmail } from '@/utils/isValidEmail';
@@ -50,6 +51,7 @@ function reducer(state: SignInStateType, action: SignInAction) {
 export default function SignIn() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const router = useRouter();
+  const { translate } = useI18n();
 
   async function handleSignIn() {
       try {
@@ -63,8 +65,8 @@ export default function SignIn() {
               dispatch({
                   type: "SET_ERRORS",
                   payload: {
-                      email: isValidEmailResponse ? "" : "Invalid email format.",
-                      password: isPasswordValid ? "" : "Password must be at least 6 characters long.",
+                      email: isValidEmailResponse ? "" : translate("signIn-invalid-email"),
+                      password: isPasswordValid ? "" : translate("signIn-invalid-password"),
                   },
               });
               throw new Error("Validation Error");
@@ -76,12 +78,12 @@ export default function SignIn() {
           if (response?.id) {
               router.push(ROUTES.dashboard);
           } else {
-              dispatch({ type: "SET_ERRORS", payload: { general: "Invalid email or password." } });
+              dispatch({ type: "SET_ERRORS", payload: { general: translate("signIn-invalid-credentials") } });
           }
       } catch (err) {
           console.log("Error", err);
           if (err instanceof Error && err.message !== "Validation Error") {
-              dispatch({ type: "SET_ERRORS", payload: { general: "Something went wrong. Please try again." } });
+              dispatch({ type: "SET_ERRORS", payload: { general: translate("signIn-general-error") } });
           }
           dispatch({ type: "SET_LOADING", payload: false });
       }
@@ -89,9 +91,9 @@ export default function SignIn() {
 
   return (
     <>
-      <BackLinkComponent href={ROUTES.home} label='Back To Home' />
-      <h2 className="text-2xl font-semibold text-center text-gray-900">Sign In</h2>
-      <p className="text-center text-sm text-gray-600">Enter your details to use an account</p>
+      <BackLinkComponent href={ROUTES.home} label={translate('signIn-back-to-home')} />
+      <h2 className="text-2xl font-semibold text-center text-gray-900">{translate('signIn-title')}</h2>
+      <p className="text-center text-sm text-gray-600">{translate('signIn-subtitle')}</p>
       <form
         className="mt-8 space-y-6"
         onSubmit={(e) => {
@@ -102,7 +104,7 @@ export default function SignIn() {
           <InputComponent
             type="email"
             name="email"
-            label="Email"
+            label={translate('signIn-email')}
             placeholder=""
             value={state.inputValue.email}
             onChange={(e) =>
@@ -118,7 +120,7 @@ export default function SignIn() {
           <InputComponent
             type="password"
             name="password"
-            label="Password"
+            label={translate('signIn-password')}
             placeholder=""
             value={state.inputValue.password}
             onChange={(e) =>
@@ -132,7 +134,7 @@ export default function SignIn() {
 
         <div className="text-right mt-0">
           <a href={ROUTES.forgotPassword} className="text-sm text-blue-600 hover:text-blue-800">
-            Forgot your password?
+            {translate('signIn-forgot-password')}
           </a>
         </div>
 
@@ -141,7 +143,7 @@ export default function SignIn() {
         )}
 
         <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-          Sign In
+          {translate('signIn-button')}
         </ButtonComponent>
       </form>
       <OAuth />

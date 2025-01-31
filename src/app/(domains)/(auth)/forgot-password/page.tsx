@@ -5,6 +5,7 @@ import { useReducer } from "react";
 import BackLinkComponent from "@/components/BackLink";
 import ButtonComponent from "@/components/Button";
 import InputComponent from "@/components/Input";
+import { useI18n } from "@/hooks/useI18n";
 import { supabase } from "@/libs/supabase/client";
 import SupabaseService from "@/services/supabase";
 import { isValidEmail } from "@/utils/isValidEmail";
@@ -45,6 +46,7 @@ function reducer(state: ForgotPasswordStateType, action: ForgotPasswordAction) {
 }
 
 export default function ForgotPassword() {
+    const { translate } = useI18n();
     const [state, dispatch] = useReducer(reducer, initialState);
 
     async function handleForgotPassword() {
@@ -58,7 +60,7 @@ export default function ForgotPassword() {
                 dispatch({
                     type: "SET_ERRORS",
                     payload: {
-                        email: "Invalid email format.",
+                        email: translate("forgot-password-invalid-email"),
                     },
                 });
                 throw new Error("Validation Error");
@@ -70,11 +72,11 @@ export default function ForgotPassword() {
             if (response) {
                 dispatch({ type: "SET_SUCCESS", payload: true });
             } else {
-                dispatch({ type: "SET_ERRORS", payload: { general: "Something went wrong. Please try again." } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("forgot-password-general-error") } });
             }
         } catch (err) {
             if (err instanceof Error && err.message !== "Validation Error") {
-                dispatch({ type: "SET_ERRORS", payload: { general: "Something went wrong. Please try again." } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("forgot-password-general-error") } });
             }
         } finally {
             dispatch({ type: "SET_LOADING", payload: false });
@@ -84,18 +86,18 @@ export default function ForgotPassword() {
     if (state.isSuccess) {
         return (
             <>
-                <BackLinkComponent href='/signin' label='Back To Login' />
-                <h2 className="text-2xl font-semibold text-center text-gray-900">Check Your Inbox</h2>
-                <p className="text-center text-sm text-gray-600">A password reset link has been sent to your email. Please check your inbox.</p>
+                <BackLinkComponent href='/signin' label={translate("forgot-password-back-to-login")} />
+                <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("forgot-password-check-inbox-title")}</h2>
+                <p className="text-center text-sm text-gray-600">{translate("forgot-password-check-inbox-description")}</p>
             </>
         );
     }
 
     return (
         <>
-            <BackLinkComponent href='/signin' label='Back To Login' />
-            <h2 className="text-2xl font-semibold text-center text-gray-900">Forgot Password</h2>
-            <p className="text-center text-sm text-gray-600">Enter your email to receive a password reset link.</p>
+            <BackLinkComponent href='/signin' label={translate("forgot-password-back-to-login")} />
+            <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("forgot-password-title")}</h2>
+            <p className="text-center text-sm text-gray-600">{translate("forgot-password-description")}</p>
             <form
                 className="mt-8 space-y-6"
                 onSubmit={(e) => {
@@ -106,8 +108,8 @@ export default function ForgotPassword() {
                     <InputComponent
                         type="email"
                         name="email"
-                        label="Email"
-                        placeholder="Enter your email"
+                        label={translate("forgot-password-email-label")}
+                        placeholder={translate("forgot-password-email-placeholder")}
                         value={state.inputValue.email}
                         onChange={(e) =>
                             dispatch({ type: "SET_INPUT_VALUE", payload: { email: e.target.value } })
@@ -123,7 +125,7 @@ export default function ForgotPassword() {
                 )}
 
                 <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-                    Send Reset Link
+                    {translate("forgot-password-button-text")}
                 </ButtonComponent>
             </form>
         </>

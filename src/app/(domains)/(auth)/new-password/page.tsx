@@ -8,6 +8,7 @@ import BackLinkComponent from "@/components/BackLink";
 import ButtonComponent from "@/components/Button";
 import InputComponent from "@/components/Input";
 import PasswordStrengthIndicator from "@/components/PasswordStrength";
+import { useI18n } from '@/hooks/useI18n';
 import { supabase } from "@/libs/supabase/client";
 import SupabaseService from "@/services/supabase";
 
@@ -57,13 +58,14 @@ function reducer(state: NewPasswordStateType, action: NewPasswordAction) {
 }
 
 export default function NewPassword() {
+    const { translate } = useI18n();
     const [state, dispatch] = useReducer(reducer, initialState);
     const searchParams = useSearchParams();
 
     useEffect(() => {
         const token = searchParams?.get("code");
         if (!token) {
-            dispatch({ type: "SET_TOKEN_ERROR", payload: "Invalid or missing token." });
+            dispatch({ type: "SET_TOKEN_ERROR", payload: translate("new-password-error-token-missing") });
         } else {
             dispatch({ type: "SET_TOKEN_VALUE", payload: token });
         }
@@ -73,40 +75,39 @@ export default function NewPassword() {
         try {
             dispatch({ type: "SET_LOADING", payload: true });
             dispatch({ type: "SET_ERRORS", payload: { password: "", confirmPassword: "", general: "" } });
-    
+
             const isPasswordValid = state.inputValue.password.length >= 6;
             const isPasswordsMatch = state.inputValue.password === state.inputValue.confirmPassword;
-    
+
             if (!isPasswordValid || !isPasswordsMatch) {
                 dispatch({
                     type: "SET_ERRORS",
                     payload: {
-                        password: isPasswordValid ? "" : "Password must be at least 6 characters long.",
-                        confirmPassword: isPasswordsMatch ? "" : "Passwords do not match.",
+                        password: isPasswordValid ? "" : translate("new-password-error-password-valid"),
+                        confirmPassword: isPasswordsMatch ? "" : translate("new-password-error-password-match"),
                     },
                 });
                 throw new Error("Validation Error");
             }
-    
+
             const SupabaseServiceInstance = new SupabaseService(supabase);
-    
+
             const response = await SupabaseServiceInstance.newPassword(state.inputValue.password);
-    
+
             if (response) {
                 dispatch({ type: "SET_PASSWORD_CHANGED", payload: true });
             } else {
-                dispatch({ type: "SET_ERRORS", payload: { general: "Failed to change the password. Please try again." } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("new-password-error-general") } });
             }
         } catch (err) {
             console.log("Error", err);
             if (err instanceof Error && err.message !== "Validation Error") {
-                dispatch({ type: "SET_ERRORS", payload: { general: "Something went wrong. Please try again." } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("new-password-error-unexpected") } });
             }
         } finally {
             dispatch({ type: "SET_LOADING", payload: false });
         }
     }
-    
 
     return (
         <>
@@ -116,15 +117,15 @@ export default function NewPassword() {
                 </div>
             ) : state.isSuccess ? (
                 <>
-                    <BackLinkComponent href='/signin' label='Back To Login' />
+                    <BackLinkComponent href='/signin' label={translate("new-password-back-to-login")} />
                     <div className="text-center">
-                        <p className="text-lg text-gray-700">Your password has been changed successfully!</p>
+                        <p className="text-lg text-gray-700">{translate("new-password-success-message")}</p>
                     </div>
                 </>
             ) : (
                 <>
-                    <h2 className="text-2xl font-semibold text-center text-gray-900">Create a New Password</h2>
-                    <p className="text-center text-sm text-gray-600">Set your new password to continue</p>
+                    <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("new-password-create-title")}</h2>
+                    <p className="text-center text-sm text-gray-600">{translate("new-password-subtitle")}</p>
                     <form
                         className="mt-8 space-y-6"
                         onSubmit={(e) => {
@@ -135,7 +136,7 @@ export default function NewPassword() {
                             <InputComponent
                                 type="password"
                                 name="password"
-                                label="Password"
+                                label={translate("new-password-password-label")}
                                 placeholder=""
                                 value={state.inputValue.password}
                                 onChange={(e) =>
@@ -152,7 +153,7 @@ export default function NewPassword() {
                             <InputComponent
                                 type="password"
                                 name="confirmPassword"
-                                label="Confirm Password"
+                                label={translate("new-password-confirm-password-label")}
                                 placeholder=""
                                 value={state.inputValue.confirmPassword}
                                 onChange={(e) =>
@@ -169,7 +170,7 @@ export default function NewPassword() {
                         )}
 
                         <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-                            Change Password
+                            {translate("new-password-submit-button")}
                         </ButtonComponent>
                     </form>
                 </>
