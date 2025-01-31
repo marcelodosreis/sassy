@@ -152,5 +152,14 @@
     "new-password-subtitle": "Set your new password to continue",
     "new-password-password-label": "Password",
     "new-password-confirm-password-label": "Confirm Password",
-    "new-password-submit-button": "Change Password"
+    "new-password-submit-button": "Change Password",
+    "payment-status-back-to-billing": "Back To Billing",
+    "payment-status-success-title": "Purchase Confirmed",
+    "payment-status-success-message": "Your purchase has been successfully confirmed.",
+    "payment-status-back-to-settings": "Back To Settings",
+    "payment-status-cancel-title": "Purchase Cancelled",
+    "payment-status-cancel-message": "Your purchase has been cancelled.",
+    "payment-status-back-to-home": "Back To Home",
+    "payment-status-unknown-title": "Unknown Status",
+    "payment-status-unknown-message": "The status of your purchase is unknown."
 }
