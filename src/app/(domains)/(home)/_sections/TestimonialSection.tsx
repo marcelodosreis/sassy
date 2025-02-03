@@ -1,20 +1,34 @@
 "use client"
 
+import { useI18n } from '@/hooks/useI18n';
+
 const TestimonialSection = () => {
+  const { translate } = useI18n();
+
+  const testimonials = [
+    translate('home-section-testimonial-1'),
+    translate('home-section-testimonial-2'),
+    translate('home-section-testimonial-3'),
+    translate('home-section-testimonial-4'),
+    translate('home-section-testimonial-5'),
+    translate('home-section-testimonial-6'),
+    translate('home-section-testimonial-7'),
+    translate('home-section-testimonial-8'),
+  ];
+
   return (
     <section id="testimonials" className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-900">What Our Users Say</h2>
+        <h2 className="text-4xl font-bold text-center text-gray-900">
+          {translate('home-section-testimonials-title')}
+        </h2>
         <p className="mt-4 text-center text-lg text-gray-600">
-          Hear directly from our satisfied customers.
+          {translate('home-section-testimonials-description')}
         </p>
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {[...Array(8)].map((_, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md p-6"
-            >
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center">
                 <img
                   src={`https://i.pravatar.cc/150?img=${index + 1}`}
@@ -40,18 +54,7 @@ const TestimonialSection = () => {
                   </div>
                 </div>
               </div>
-              <p className="mt-4 text-gray-600">
-                {[
-                  "Sassy has been a game-changer for our Micro-SaaS project. The integration with Stripe and Supabase is seamless, and it helped us get started so much faster!",
-                  "I was looking for a simple and reliable way to manage subscriptions for my SaaS product. Sassy’s Stripe integration is fantastic and easy to use!",
-                  "The built-in authentication with Supabase and the payment gateway via Stripe saved us hours of development time. Highly recommend it!",
-                  "As a solo developer, I needed a solid foundation for my Micro-SaaS. Sassy provided that and more! The flexibility of the template is incredible.",
-                  "Sassy’s responsive design and clean architecture made it easy to deploy. I’ve been able to focus on building features rather than handling the basics.",
-                  "The ease of integrating OAuth authentication with Google and Facebook made the user login process a breeze. This platform is a must-have for any developer.",
-                  "With the subscription management system already in place, I could concentrate on my product’s core features. Sassy has been a huge time-saver.",
-                  "Stripe webhooks and subscription handling worked flawlessly with my project. I’m really impressed with how well everything is integrated."
-                ][index]}
-              </p>
+              <p className="mt-4 text-gray-600">{testimonial}</p>
             </div>
           ))}
         </div>

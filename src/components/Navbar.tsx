@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 
+import { useI18n } from "@/hooks/useI18n";
 import { supabase } from '@/libs/supabase/client';
 import SupabaseService from '@/services/supabase';
 
@@ -15,6 +16,7 @@ export default function Navbar() {
     const [isLoading, setIsLoading] = useState(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
+    const { translate } = useI18n();
 
     useEffect(() => {
         const getUserSession = async () => {
@@ -46,13 +48,13 @@ export default function Navbar() {
 
                 <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-6">
                     <a href="#pricing" className="text-gray-600 hover:text-indigo-600">
-                        Pricing
+                        {translate('home-navbar-pricing')}
                     </a>
                     <a href="#features" className="text-gray-600 hover:text-indigo-600">
-                        Features
+                        {translate('home-navbar-features')}
                     </a>
                     <a href="#faq" className="text-gray-600 hover:text-indigo-600">
-                        FAQ
+                        {translate('home-navbar-faq')}
                     </a>
                 </nav>
 
@@ -63,15 +65,15 @@ export default function Navbar() {
                             : !isLogged ? (
                                 <>
                                     <a href="/signin" className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-100" >
-                                        Sign In
+                                        {translate('home-navbar-signin')}
                                     </a>
                                     <a href="/signup" className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700">
-                                        Try For Free
+                                        {translate('home-navbar-try')}
                                     </a>
                                 </>
                             ) :
                                 <a href="/dashboard" className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700">
-                                    Dashboard
+                                    {translate('home-navbar-dashboard')}
                                 </a>
                     }
                     <LanguageSelector />
@@ -101,14 +103,14 @@ export default function Navbar() {
             {isMenuOpen && (
                 <div className="md:hidden bg-white shadow-lg">
                     <nav className="flex flex-col items-start space-y-4 p-4">
-                        <a href="#features" className="text-gray-600 hover:text-indigo-600">
-                            Features
-                        </a>
                         <a href="#pricing" className="text-gray-600 hover:text-indigo-600">
-                            Pricing
+                            {translate('home-navbar-pricing')}
+                        </a>
+                        <a href="#features" className="text-gray-600 hover:text-indigo-600">
+                            {translate('home-navbar-features')}
                         </a>
                         <a href="#faq" className="text-gray-600 hover:text-indigo-600">
-                            FAQ
+                            {translate('home-navbar-faq')}
                         </a>
                     </nav>
                     <div className="flex flex-col space-y-4 p-4">
@@ -122,13 +124,13 @@ export default function Navbar() {
                                         href="/signin"
                                         className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-100"
                                     >
-                                        Sign In
+                                        {translate('home-navbar-signin')}
                                     </a>
                                     <a
                                         href="/signup"
                                         className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
                                     >
-                                        Try For Free
+                                        {translate('home-navbar-try')}
                                     </a>
                                 </>
                             ) : (
@@ -136,7 +138,7 @@ export default function Navbar() {
                                     href="/dashboard"
                                     className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
                                 >
-                                    Dashboard
+                                    {translate('home-navbar-dashboard')}
                                 </a>
                             )}
                     </div>

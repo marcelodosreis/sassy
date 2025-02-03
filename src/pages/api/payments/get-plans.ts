@@ -3,10 +3,22 @@ import Stripe from 'stripe';
 
 import { stripe } from '@/libs/stripe';
 import StripeService from '@/services/stripe';
+import { loadTranslationsSSR } from '@/utils/loadTranslationsSSR';
 import { InputData, transformPurchasePlansDTO } from '@/utils/transformPurchasePlansDTO';
+
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
+    const locale = req.cookies?.['locale'];
+    const { translate } = await loadTranslationsSSR(locale);
+
+    const { currency } = req.query;
+
+    if (!currency) {
+      throw new Error('Missing Currency');
+    }
+
+
     try {
       const StripeServiceInstance = new StripeService(stripe);
       const prices = await StripeServiceInstance.listActivePrices();
@@ -23,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         };
       });
 
-      const tranform = await transformPurchasePlansDTO(response as Array<InputData>);
+      const tranform = await transformPurchasePlansDTO(response as Array<InputData>, translate, currency as string);
       res.status(200).json(tranform);
     } catch (error) {
       console.error(error);

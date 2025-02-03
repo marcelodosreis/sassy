@@ -19,44 +19,63 @@ interface Plan {
     extraFeatures: string;
 }
 
-export function transformPurchasePlansDTO(data: InputData[]): Plan[] {
-    const planDetails: Record<string, Omit<Plan, 'priceMonthly' | 'priceAnnual' | 'idMonthly' | 'idAnnual'>> = {
+type PlanDetails = Omit<Plan, 'priceMonthly' | 'priceAnnual' | 'idMonthly' | 'idAnnual'>;
+
+export function transformPurchasePlansDTO(data: InputData[], translate: (key: string) => string, currency?: string): Plan[] {
+    const planDetails: Record<string, PlanDetails> = {
         "Starter": {
             id: "starter",
-            name: "Starter",
-            description: "Ideal for individuals launching first Micro-SaaS.",
+            name: translate('component-pricing-plan-starter-title'),
+            description: translate('component-pricing-plan-starter-description'),
             features: [
-                "✔ Access to core features",
-                "✔ 1 project",
-                "✔ Community support"
+                translate('component-pricing-plan-starter-feature-first'),
+                translate('component-pricing-plan-starter-feature-second'),
+                translate('component-pricing-plan-starter-feature-third'),
             ],
-            extraFeatures: "Everything in Free, plus"
+            extraFeatures: translate('component-pricing-plan-starter-extra')
         },
         "Creator": {
             id: "creator",
-            name: "Creator",
-            description: "Great for creators looking to expand their reach.",
+            name: translate('component-pricing-plan-creator-title'),
+            description: translate('component-pricing-plan-creator-description'),
             features: [
-                "✔ Access to core features",
-                "✔ 3 projects",
-                "✔ Email support"
+                translate('component-pricing-plan-creator-feature-first'),
+                translate('component-pricing-plan-creator-feature-second'),
+                translate('component-pricing-plan-creator-feature-third'),
             ],
-            extraFeatures: "Everything in Starter, plus"
+            extraFeatures: translate('component-pricing-plan-creator-extra')
         },
         "Pro": {
             id: "pro",
-            name: "Pro",
-            description: "Perfect for teams scaling their Micro-SaaS business.",
+            name: translate('component-pricing-plan-pro-title'),
+            description: translate('component-pricing-plan-pro-description'),
             features: [
-                "✔ Access to core features",
-                "✔ Unlimited projects",
-                "✔ Priority support"
+                translate('component-pricing-plan-pro-feature-first'),
+                translate('component-pricing-plan-pro-feature-second'),
+                translate('component-pricing-plan-pro-feature-third'),
             ],
-            extraFeatures: "Everything in Creator, plus"
+            extraFeatures: translate('component-pricing-plan-pro-extra')
         }
     };
 
     const plansMap: Record<string, Plan> = {};
+
+    const setPlanPrice = (planName: string, interval: 'month' | 'year', amount: string, id: string, currency: string = 'usd'): void => {
+        const newUnitAmount = currency !== 'usd' ? Number(amount) * 6 : amount;
+
+
+        if (interval === 'month') {
+            plansMap[planName].priceMonthly = formatPrice('component-pricing-subscription-plans-free-price-monthly', String(newUnitAmount));
+            plansMap[planName].idMonthly = id;
+        } else if (interval === 'year') {
+            plansMap[planName].priceAnnual = formatPrice('component-pricing-subscription-plans-free-price-annual', String(newUnitAmount));
+            plansMap[planName].idAnnual = id;
+        }
+    };
+
+    const formatPrice = (key: string, amount: string): string => {
+        return `${translate(key).replace("{value}", amount)}`;
+    };
 
     if (Array.isArray(data)) {
         data.forEach(item => {
@@ -68,27 +87,15 @@ export function transformPurchasePlansDTO(data: InputData[]): Plan[] {
 
             if (!plansMap[planName]) {
                 plansMap[planName] = {
-                    id: planDetails[planName].id,
-                    name: planDetails[planName].name,
+                    ...planDetails[planName],
                     priceMonthly: "",
                     priceAnnual: "",
                     idMonthly: "",
-                    idAnnual: "",
-                    description: planDetails[planName].description,
-                    features: planDetails[planName].features,
-                    extraFeatures: planDetails[planName].extraFeatures
+                    idAnnual: ""
                 };
             }
 
-            if (plansMap[planName]) {
-                if (item.interval === "month") {
-                    plansMap[planName].priceMonthly = `$${item.amount}/month`;
-                    plansMap[planName].idMonthly = item.id;
-                } else if (item.interval === "year") {
-                    plansMap[planName].priceAnnual = `$${item.amount}/year`;
-                    plansMap[planName].idAnnual = item.id;
-                }
-            }
+            setPlanPrice(planName, item.interval, item.amount, item.id, currency);
         });
     }
 

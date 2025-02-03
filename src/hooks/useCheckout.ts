@@ -1,5 +1,6 @@
 import { Plan } from "@/components/Pricing/PlanCard";
-import { HAS_FREE_TRIAL } from "@/constants/FreeTrial";
+import { FIXED_CURRENCY } from "@/constants/FIXED_CURRENCY";
+import { HAS_FREE_TRIAL } from "@/constants/HAS_FREE_TRIAL";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from '@/libs/supabase/client';
 import StripeService from '@/services/stripe';
@@ -28,7 +29,7 @@ export const useCheckout = () => {
             const response = await fetch('/api/payments/create-checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ priceId, plan: plan.id, userId: user, hasFreeTrial: HAS_FREE_TRIAL }),
+                body: JSON.stringify({ priceId, plan: plan.id, userId: user, hasFreeTrial: HAS_FREE_TRIAL, currency: FIXED_CURRENCY }),
             });
 
             const jsonResponse = await response.json();

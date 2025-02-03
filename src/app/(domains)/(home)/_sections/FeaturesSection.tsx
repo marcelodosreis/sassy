@@ -1,21 +1,24 @@
+'use client';
+
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
+import { useI18n } from '@/hooks/useI18n';
+
 export default function FeaturesSection() {
+  const { translate } = useI18n();
+
   const features = [
     {
-      title: "OAuth Authentication",
-      description:
-        "Seamlessly integrate with Google, Facebook, and Twitter to provide a smooth login experience.",
+      title: translate('home-section-feature-oauth-title'),
+      description: translate('home-section-feature-oauth-description'),
     },
     {
-      title: "Subscription Management",
-      description:
-        "Effortlessly manage subscriptions with Stripe's robust tools and real-time updates.",
+      title: translate('home-section-feature-subscription-title'),
+      description: translate('home-section-feature-subscription-description'),
     },
     {
-      title: "Responsive Design",
-      description:
-        "Crafted with TailwindCSS for a seamless experience across all devices.",
+      title: translate('home-section-feature-responsive-title'),
+      description: translate('home-section-feature-responsive-description'),
     },
   ];
 
@@ -24,10 +27,10 @@ export default function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-            Modern Features for Your SaaS
+            {translate('home-section-features-title')}
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Everything you need to build powerful Micro-SaaS applications.
+            {translate('home-section-features-description')}
           </p>
         </div>
 
