@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { HAS_FREE_TRIAL } from '@/constants/FreeTrial';
+import { HAS_FREE_TRIAL } from '@/constants/HAS_FREE_TRIAL';
 import { useCheckout } from '@/hooks/useCheckout';
 import { useFetchPlans } from '@/hooks/useFetchPlans';
 import { useI18n } from '@/hooks/useI18n';

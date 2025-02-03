@@ -1,4 +1,4 @@
-import { PROVIDERS_IMAGE_URL } from "@/constants/Url";
+import { PROVIDERS_IMAGE_URL } from "@/constants/PROVIDERS_IMAGE_URL";
 import { supabase } from "@/libs/supabase/client";
 import SupabaseService from "@/services/supabase";
 
