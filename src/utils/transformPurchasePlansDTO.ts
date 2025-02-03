@@ -62,8 +62,13 @@ export function transformPurchasePlansDTO(data: InputData[], translate: (key: st
 
     const plansMap: Record<string, Plan> = {};
 
+<<<<<<< HEAD
     const setPlanPrice = (planName: string, interval: 'month' | 'year', amount: string, id: string, currency: string): void => {
         const newUnitAmount = calculateCurrencyAmount(amount, currency);
+=======
+    const setPlanPrice = (planName: string, interval: 'month' | 'year', amount: string, id: string, currency: string = 'usd'): void => {
+        const newUnitAmount = currency !== 'usd' ? Number(amount) * 6 : amount;
+>>>>>>> develop
 
 
         if (interval === 'month') {
