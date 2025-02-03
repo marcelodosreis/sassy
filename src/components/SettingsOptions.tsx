@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import ButtonComponent from "@/components/Button";
+import { useI18n } from "@/hooks/useI18n";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from "@/libs/supabase/client";
 import SupabaseService from "@/services/supabase";
@@ -13,6 +14,7 @@ type SettingsOptionsProps = {
 }
 
 function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
+    const { translate } = useI18n();
     const SupabaseServiceInstance = new SupabaseService(supabase);
     const { addToast } = useToast();
     const [isLoading, setIsLoading] = useState({
@@ -26,15 +28,15 @@ function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
         if (response) {
             await addToast({
                 id: Date.now().toString(),
-                message: 'Password Change Request Sent!',
-                description: 'Please check your inbox for an email to complete the process.',
+                message: translate('component-settings-options-password-change-request-sent'),
+                description: translate('component-settings-options-password-change-description'),
                 type: 'info',
             });
         } else {
             await addToast({
                 id: Date.now().toString(),
-                message: 'Password Change Failed',
-                description: 'An error occurred while processing your request. Please try again later.',
+                message: translate('component-settings-options-password-change-failed'),
+                description: translate('component-settings-options-password-change-error'),
                 type: 'error',
             });
         }
@@ -45,40 +47,22 @@ function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
         <div className="space-y-6">
             {userEmail && <div className="flex justify-between items-start">
                 <div className="max-w-md">
-                    <h2 className="text-lg font-medium text-gray-700">Change Password</h2>
+                    <h2 className="text-lg font-medium text-gray-700">{translate('component-settings-options-change-password')}</h2>
                 </div>
                 <a>
-                    <ButtonComponent isLoading={isLoading.forgotPassword} onClick={() => handleForgotPassword(userEmail)} type="button" variant="outlined">Change Password</ButtonComponent>
+                    <ButtonComponent isLoading={isLoading.forgotPassword} onClick={() => handleForgotPassword(userEmail)} type="button" variant="outlined">{translate('component-settings-options-change-password')}</ButtonComponent>
                 </a>
             </div>
             }
             <div className="flex justify-between items-start">
                 <div className="max-w-md">
-                    <h2 className="text-lg font-medium text-gray-700">Current Plan</h2>
+                    <h2 className="text-lg font-medium text-gray-700">{translate('component-settings-options-current-plan')}</h2>
                     <p className="text-gray-700">{currentPlan}</p>
                 </div>
                 <a href="/dashboard/subscription">
-                    <ButtonComponent type="button" variant="filled">Manage Subscription</ButtonComponent>
+                    <ButtonComponent type="button" variant="filled">{translate('component-settings-options-manage-subscription')}</ButtonComponent>
                 </a>
             </div>
-            {/* <div className="flex justify-between items-start">
-                <div className="max-w-md">
-                    <h2 className="text-lg font-medium text-gray-700">Two-Factor Authentication</h2>
-                    <p className="text-gray-700">Disabled</p>
-                </div>
-                <a href="/dashboard">
-                    <button className="text-indigo-600 hover:underline border border-indigo-600 rounded px-4 py-2">Add Two-Factor Authentication</button>
-                </a>
-            </div> */}
-            {/* <div className="flex justify-between items-start">
-                <div className="max-w-md">
-                    <h2 className="text-lg font-medium text-gray-700">Delete Account</h2>
-                    <p className="text-gray-700">Deleting your account is permanent. You will no longer be able to create an account with this email.</p>
-                </div>
-                <a href="/dashboard">
-                    <button className="text-red-600 hover:underline border border-red-600 rounded px-4 py-2">Delete Account</button>
-                </a>
-            </div> */}
         </div>
     );
 }

@@ -4,8 +4,10 @@ import SettingsOptions from "@/components/SettingsOptions";
 import { createClient } from "@/libs/supabase/server";
 import SupabaseService from "@/services/supabase";
 import { capitalize } from "@/utils/capitalize";
+import { loadTranslationsSSR } from '@/utils/loadTranslationsSSR';
 
 export default async function Settings() {
+    const { translate } = await loadTranslationsSSR();
     const supabase = await createClient();
     const SupabaseServiceInstance = new SupabaseService(supabase);
     const data = await SupabaseServiceInstance.getUser();
@@ -18,7 +20,7 @@ export default async function Settings() {
                     <div className="space-y-4">
                         {data?.user_metadata?.name && (
                             <div>
-                                <label className="block text-sm font-medium text-gray-700">Name</label>
+                                <label className="block text-sm font-medium text-gray-700">{translate("settings-name-label")}</label>
                                 <input
                                     type="text"
                                     value={data?.user_metadata?.name}
@@ -29,7 +31,7 @@ export default async function Settings() {
                         )}
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Email</label>
+                            <label className="block text-sm font-medium text-gray-700">{translate("settings-email-label")}</label>
                             <input
                                 type="email"
                                 value={data?.email}

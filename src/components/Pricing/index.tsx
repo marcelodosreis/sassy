@@ -36,7 +36,10 @@ export default function Pricing({ selectedOption, hasFreeplan = true }: PricingP
             )}
 
             <Toggle
-                labels={{ off: 'Monthly', on: 'Annual' }}
+                labels={{
+                    off: translate('component-pricing-toggle-monthly'),
+                    on: translate('component-pricing-toggle-annual')
+                }}
                 initialState={false}
                 onToggle={setIsAnnual}
             />

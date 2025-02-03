@@ -3,6 +3,7 @@
 import { LockClosedIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 
+import { useI18n } from "@/hooks/useI18n";
 import { useModal } from "@/hooks/useModal";
 
 type Tab = {
@@ -12,19 +13,20 @@ type Tab = {
 };
 
 const tabs: Tab[] = [
-    { name: "Free", href: "/feature1", requiredPlan: "free" },
-    { name: "Starter/Creator", href: "/feature2", requiredPlan: "starter" },
-    { name: "Pro", href: "/feature3", requiredPlan: "pro" },
+    { name: "component-feature-menu-tab-free", href: "/feature1", requiredPlan: "free" },
+    { name: "component-feature-menu-tab-starter", href: "/feature2", requiredPlan: "starter" },
+    { name: "component-feature-menu-tab-pro", href: "/feature3", requiredPlan: "pro" },
 ];
+
 type FeatureMenuProps = {
     activePlan: "free" | "starter" | "creator" | "pro";
     onTabChange: (activeTab: string) => void;
-}
+};
 
 export default function FeatureMenu({ activePlan, onTabChange }: FeatureMenuProps) {
     const [activeTab, setActiveTab] = useState("");
     const { openModal } = useModal();
-
+    const { translate } = useI18n();
 
     const isTabAvailable = (requiredPlan: string): boolean => {
         if (requiredPlan === "free") return true;
@@ -44,8 +46,6 @@ export default function FeatureMenu({ activePlan, onTabChange }: FeatureMenuProp
             setActiveTab(availableTabs[0].href);
         } else if (availableTabs.length === 0) {
             openModal();
-
-            console.log("No options available for the current plan.");
         }
     }, [availableTabs, activeTab, openModal]);
 
@@ -70,7 +70,7 @@ export default function FeatureMenu({ activePlan, onTabChange }: FeatureMenuProp
                                 <p
                                     className={`text-sm font-medium rounded-md transition ${activeTab === tab.href ? "text-indigo-600 font-extrabold" : "text-gray-700"} ${!available ? "cursor-not-allowed opacity-50" : ""}`}
                                 >
-                                    {tab.name}
+                                    {translate(tab.name)}
                                 </p>
 
                                 {!available && (
