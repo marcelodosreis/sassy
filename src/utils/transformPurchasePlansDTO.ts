@@ -82,10 +82,10 @@ export function transformPurchasePlansDTO(data: InputData[], translate: (key: st
 
             if (plansMap[planName]) {
                 if (item.interval === "month") {
-                    plansMap[planName].priceMonthly = `$${item.amount}/month`;
+                    plansMap[planName].priceMonthly = `${translate('component-pricing-subscription-plans-free-price-monthly').replace("{value}", item.amount)}`;
                     plansMap[planName].idMonthly = item.id;
                 } else if (item.interval === "year") {
-                    plansMap[planName].priceAnnual = `$${item.amount}/year`;
+                    plansMap[planName].priceAnnual = `${translate('component-pricing-subscription-plans-free-price-annual').replace("{value}", item.amount)}`;
                     plansMap[planName].idAnnual = item.id;
                 }
             }
