@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).setHeader('Allow', 'POST').end('Method Not Allowed');
   }
 
-  const { priceId, plan, userId, hasFreeTrial } = req.body;
+  const { priceId, plan, userId, hasFreeTrial, currency } = req.body;
 
   if (!priceId || !plan || !userId) {
     return res.status(400).json({ error: 'Missing required parameters' });
@@ -23,7 +23,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       plan,
       userId,
       req.headers.origin as string,
-      freeTrial
+      freeTrial,
+      currency
     );
 
     return res.status(200).json({ id: session.id });

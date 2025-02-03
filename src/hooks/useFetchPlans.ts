@@ -31,7 +31,7 @@ export const useFetchPlans = (hasFreeplan: boolean, setIsLoading: (isLoading: bo
     useEffect(() => {
         const fetchPlans = async () => {
             try {
-                const response = await fetch('/api/payments/get-plans');
+                const response = await fetch(`/api/payments/get-plans?currency=usd`);
                 const data: Plan[] = await response.json();
                 setPlans((prev: Plan[]) => {
                     if (!prev) return data;

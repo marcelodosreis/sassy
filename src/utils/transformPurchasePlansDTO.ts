@@ -19,8 +19,10 @@ interface Plan {
     extraFeatures: string;
 }
 
-export function transformPurchasePlansDTO(data: InputData[], translate: (key: string) => string): Plan[] {
-    const planDetails: Record<string, Omit<Plan, 'priceMonthly' | 'priceAnnual' | 'idMonthly' | 'idAnnual'>> = {
+type PlanDetails = Omit<Plan, 'priceMonthly' | 'priceAnnual' | 'idMonthly' | 'idAnnual'>;
+
+export function transformPurchasePlansDTO(data: InputData[], translate: (key: string) => string, currency?: string): Plan[] {
+    const planDetails: Record<string, PlanDetails> = {
         "Starter": {
             id: "starter",
             name: translate('component-pricing-plan-starter-title'),
@@ -58,6 +60,23 @@ export function transformPurchasePlansDTO(data: InputData[], translate: (key: st
 
     const plansMap: Record<string, Plan> = {};
 
+    const setPlanPrice = (planName: string, interval: 'month' | 'year', amount: string, id: string, currency: string = 'usd'): void => {
+        const newUnitAmount = currency !== 'usd' ? Number(amount) * 6 : amount;
+
+
+        if (interval === 'month') {
+            plansMap[planName].priceMonthly = formatPrice('component-pricing-subscription-plans-free-price-monthly', String(newUnitAmount));
+            plansMap[planName].idMonthly = id;
+        } else if (interval === 'year') {
+            plansMap[planName].priceAnnual = formatPrice('component-pricing-subscription-plans-free-price-annual', String(newUnitAmount));
+            plansMap[planName].idAnnual = id;
+        }
+    };
+
+    const formatPrice = (key: string, amount: string): string => {
+        return `${translate(key).replace("{value}", amount)}`;
+    };
+
     if (Array.isArray(data)) {
         data.forEach(item => {
             const planName = item.productName.split(" - ")[1];
@@ -68,27 +87,15 @@ export function transformPurchasePlansDTO(data: InputData[], translate: (key: st
 
             if (!plansMap[planName]) {
                 plansMap[planName] = {
-                    id: planDetails[planName].id,
-                    name: planDetails[planName].name,
+                    ...planDetails[planName],
                     priceMonthly: "",
                     priceAnnual: "",
                     idMonthly: "",
-                    idAnnual: "",
-                    description: planDetails[planName].description,
-                    features: planDetails[planName].features,
-                    extraFeatures: planDetails[planName].extraFeatures
+                    idAnnual: ""
                 };
             }
 
-            if (plansMap[planName]) {
-                if (item.interval === "month") {
-                    plansMap[planName].priceMonthly = `${translate('component-pricing-subscription-plans-free-price-monthly').replace("{value}", item.amount)}`;
-                    plansMap[planName].idMonthly = item.id;
-                } else if (item.interval === "year") {
-                    plansMap[planName].priceAnnual = `${translate('component-pricing-subscription-plans-free-price-annual').replace("{value}", item.amount)}`;
-                    plansMap[planName].idAnnual = item.id;
-                }
-            }
+            setPlanPrice(planName, item.interval, item.amount, item.id, currency);
         });
     }
 

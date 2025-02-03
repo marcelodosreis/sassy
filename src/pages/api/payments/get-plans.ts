@@ -12,6 +12,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const locale = req.cookies?.['locale'];
     const { translate } = await loadTranslationsSSR(locale);
 
+    const { currency } = req.query;
+
+    if (!currency) {
+      throw new Error('Missing Currency');
+    }
+
 
     try {
       const StripeServiceInstance = new StripeService(stripe);
@@ -29,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         };
       });
 
-      const tranform = await transformPurchasePlansDTO(response as Array<InputData>, translate);
+      const tranform = await transformPurchasePlansDTO(response as Array<InputData>, translate, currency as string);
       res.status(200).json(tranform);
     } catch (error) {
       console.error(error);
