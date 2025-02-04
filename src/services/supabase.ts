@@ -99,10 +99,11 @@ export default class SupabaseService {
             .from('subscriptions')
             .select('*')
             .eq('user_id', userId)
-            .single();
-
+            .order('created_at', { ascending: false })
+            .limit(1);
+            
         if (error) throw error;
-        return data;
+        return data[0];
     }
 
     async upsertSubscription(subscriptionData: SubscriptionData) {

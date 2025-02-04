@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { stripe } from '@/libs/stripe';
 import { supabaseServerClient } from '@/libs/supabase/server';
+import { sendEmail } from '@/services/mailgun';
 import StripeService from '@/services/stripe';
 import SupabaseService from '@/services/supabase';
 
@@ -58,6 +59,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             current_period_start: new Date(session.current_period_start * 1000),
             current_period_end: new Date(session.current_period_end * 1000),
           });
+          sendEmail(
+            "Mailgun Sandbox <postmaster@sandboxce44f0b8b1e742fa82ec7afee6493fa6.mailgun.org>",
+            ["MARCELO H R PAULO <marcelohrpaulo13@gmail.com>"],
+            "Hello MARCELO H R PAULO",
+            "Congratulations MARCELO H R PAULO, you just sent an email with Mailgun! You are truly awesome!"
+          );
           break;
         }
 

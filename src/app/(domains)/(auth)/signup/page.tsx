@@ -99,7 +99,7 @@ export default function SignUp() {
         dispatch({ type: "SET_ERRORS", payload: { general: translate("signUp-general-error") } });
       }
     } catch (err) {
-      console.log("Error", err);
+      console.error("Error", err);
       if (err instanceof Error && err.message !== "Validation Error" && err.message !== "Terms not accepted") {
         dispatch({ type: "SET_ERRORS", payload: { general: translate("signUp-general-error") } });
       }

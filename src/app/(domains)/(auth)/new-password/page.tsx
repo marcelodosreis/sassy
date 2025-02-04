@@ -100,7 +100,7 @@ export default function NewPassword() {
                 dispatch({ type: "SET_ERRORS", payload: { general: translate("new-password-error-general") } });
             }
         } catch (err) {
-            console.log("Error", err);
+            console.error("Error", err);
             if (err instanceof Error && err.message !== "Validation Error") {
                 dispatch({ type: "SET_ERRORS", payload: { general: translate("new-password-error-unexpected") } });
             }

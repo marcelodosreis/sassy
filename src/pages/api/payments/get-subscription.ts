@@ -16,6 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const SupabaseServiceInstance = new SupabaseService(supabaseServerClient);
       const subscription = await SupabaseServiceInstance.getSubscriptionByUserId(userId);
 
+      console.log(subscription);
       if (!subscription) {
         return res.status(404).json({ error: 'Subscription not found' });
       }
