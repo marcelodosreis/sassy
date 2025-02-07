@@ -62,7 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           const email = (await SupabaseServiceInstance.getUserById(userId))?.email;
           if (!email) throw new Error("Missing User Data in Completed Checkout");
           await sendEmail({
-            from: "Sassy - Powerful Micro-SaaS <postmaster@sandboxce44f0b8b1e742fa82ec7afee6493fa6.mailgun.org>",
+            from: 'Sassy - Powerful Micro-SaaS',
             to: [email],
             subject: "Welcome to Sassy!",
             text: "Welcome to Sassy! Your subscription has been activated.",

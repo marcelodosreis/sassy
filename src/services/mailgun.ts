@@ -25,12 +25,13 @@ export const sendEmail = async ({
     });
 
     const message = {
-        from,
+        from: `${from} <postmaster@${process.env.MAILGUN_SECRET_DOMAIN}>`,
         to,
         subject,
         text,
         html,
     };
+
 
     try {
         await mg.messages.create(
