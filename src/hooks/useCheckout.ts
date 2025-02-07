@@ -11,7 +11,6 @@ export const useCheckout = () => {
 
     const handleCheckout = async ({ plan, isAnnual, setIsLoading }: { plan: Plan, isAnnual: boolean, setIsLoading: (isLoading: boolean) => void }) => {
         if (plan.id === 'free') {
-            console.log('Free plan selected');
             return;
         }
 
