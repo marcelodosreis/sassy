@@ -28,6 +28,11 @@ export default class SupabaseService {
         return data?.user || null;
     }
 
+    async getUserById(id: string): Promise<User | null> {
+        const { data } = await this.supabase.auth.admin.getUserById(id);
+        return data?.user || null;
+    }
+
     async getSession(): Promise<Session | null> {
         const { data } = await this.supabase.auth.getSession();
         return data?.session || null;

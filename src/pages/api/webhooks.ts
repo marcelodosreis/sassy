@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { FINISH_CHECKOUT_EMAIL } from '@/constants/EMAILS';
 import { stripe } from '@/libs/stripe';
 import { supabaseServerClient } from '@/libs/supabase/server';
 import { sendEmail } from '@/services/mailgun';
@@ -50,7 +51,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const session = event.data.object as any;
           const { userId, plan } = session.metadata;
-
           await SupabaseServiceInstance.upsertSubscription({
             user_id: userId,
             stripe_subscription_id: session.subscription,
@@ -59,12 +59,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             current_period_start: new Date(session.current_period_start * 1000),
             current_period_end: new Date(session.current_period_end * 1000),
           });
-          sendEmail(
-            "Mailgun Sandbox <postmaster@sandboxce44f0b8b1e742fa82ec7afee6493fa6.mailgun.org>",
-            ["MARCELO H R PAULO <marcelohrpaulo13@gmail.com>"],
-            "Hello MARCELO H R PAULO",
-            "Congratulations MARCELO H R PAULO, you just sent an email with Mailgun! You are truly awesome!"
-          );
+          const email = (await SupabaseServiceInstance.getUserById(userId))?.email;
+          if (!email) throw new Error("Missing User Data in Completed Checkout");
+          await sendEmail({
+            from: "Sassy - Powerful Micro-SaaS <postmaster@sandboxce44f0b8b1e742fa82ec7afee6493fa6.mailgun.org>",
+            to: [email],
+            subject: "Welcome to Sassy!",
+            text: "Welcome to Sassy! Your subscription has been activated.",
+            html: FINISH_CHECKOUT_EMAIL.replace("{plan}", plan),
+          });
           break;
         }
 

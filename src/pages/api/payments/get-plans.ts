@@ -9,9 +9,9 @@ import { InputData, transformPurchasePlansDTO } from '@/utils/transformPurchaseP
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
-    const locale = req.cookies?.['locale'];
-    const { translate } = await loadTranslationsSSR(locale);
+    const locale = req.cookies?.['locale']|| 'en-US';
 
+    const { translate } = await loadTranslationsSSR(locale);
     const { currency } = req.query;
 
     if (!currency) {
