@@ -28,6 +28,11 @@ export default class SupabaseService {
         return data?.user || null;
     }
 
+    async getUserById(id: string): Promise<User | null> {
+        const { data } = await this.supabase.auth.admin.getUserById(id);
+        return data?.user || null;
+    }
+
     async getSession(): Promise<Session | null> {
         const { data } = await this.supabase.auth.getSession();
         return data?.session || null;
@@ -99,10 +104,11 @@ export default class SupabaseService {
             .from('subscriptions')
             .select('*')
             .eq('user_id', userId)
-            .single();
-
+            .order('created_at', { ascending: false })
+            .limit(1);
+            
         if (error) throw error;
-        return data;
+        return data[0];
     }
 
     async upsertSubscription(subscriptionData: SubscriptionData) {

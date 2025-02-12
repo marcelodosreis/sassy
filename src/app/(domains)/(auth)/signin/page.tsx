@@ -81,7 +81,7 @@ export default function SignIn() {
               dispatch({ type: "SET_ERRORS", payload: { general: translate("signIn-invalid-credentials") } });
           }
       } catch (err) {
-          console.log("Error", err);
+          console.error("Error", err);
           if (err instanceof Error && err.message !== "Validation Error") {
               dispatch({ type: "SET_ERRORS", payload: { general: translate("signIn-general-error") } });
           }
