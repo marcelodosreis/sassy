@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { useI18n } from "@/hooks/useI18n";
 import { supabase } from '@/libs/supabase/client';
-import SupabaseService from '@/services/supabase';
+import AuthService from '@/services/auth';
 
 import LanguageSelector from "./LanguageSelector";
 import Spinner from "./Spinner";
@@ -20,8 +20,8 @@ export default function Navbar() {
 
     useEffect(() => {
         const getUserSession = async () => {
-            const SupabaseServiceInstance = new SupabaseService(supabase);
-            const user = await SupabaseServiceInstance.getUserId();
+            const AuthServiceInstance = new AuthService(supabase);
+            const user = await AuthServiceInstance.getUserId();
             if (!!user) {
                 setIsLogged(true);
             } else {

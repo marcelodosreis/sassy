@@ -7,7 +7,7 @@ import ButtonComponent from "@/components/Button";
 import InputComponent from "@/components/Input";
 import { useI18n } from "@/hooks/useI18n";
 import { supabase } from "@/libs/supabase/client";
-import SupabaseService from "@/services/supabase";
+import AuthService from "@/services/auth";
 import { isValidEmail } from "@/utils/isValidEmail";
 
 const initialState = {
@@ -66,8 +66,8 @@ export default function ForgotPassword() {
                 throw new Error("Validation Error");
             }
 
-            const SupabaseServiceInstance = new SupabaseService(supabase);
-            const response = await SupabaseServiceInstance.forgotPassword(state.inputValue.email);
+            const AuthServiceInstance = new AuthService(supabase);
+            const response = await AuthServiceInstance.forgotPassword(state.inputValue.email);
 
             if (response) {
                 dispatch({ type: "SET_SUCCESS", payload: true });

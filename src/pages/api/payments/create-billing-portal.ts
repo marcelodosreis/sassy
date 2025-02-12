@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { stripe } from '@/libs/stripe';
 import { supabaseServerClient } from '@/libs/supabase/server';
+import AuthService from '@/services/auth';
 import StripeService from '@/services/stripe';
-import SupabaseService from '@/services/supabase';
+import SubscriptionService from '@/services/subscription';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
@@ -18,18 +19,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
 
 
-        const SupabaseServiceInstance = new SupabaseService(supabaseServerClient);
+        const AuthServiceInstance = new AuthService(supabaseServerClient);
+        const SubscriptionServiceInstance = new SubscriptionService(supabaseServerClient);
+
         const StripeServiceInstance = new StripeService(stripe);
 
 
-        const user = await SupabaseServiceInstance.getUser(token);
+        const user = await AuthServiceInstance.getUser(token);
 
 
         if (!user) {
             return res.status(401).json({ error: 'User not authenticated' });
         }
 
-        const subscription = await SupabaseServiceInstance.getSubscriptionByUserId(user.id)
+        const subscription = await SubscriptionServiceInstance.getSubscriptionByUserId(user.id)
 
         if (!subscription) {
             return res.status(404).json({ error: 'No subscription found for user' });

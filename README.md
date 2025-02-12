@@ -58,15 +58,23 @@ src/
 ### SQL Script for Creating the `subscriptions` Table in Supabase:
 
 ```sql
-create table subscriptions (
-  id uuid primary key default uuid_generate_v4(),
-  user_id uuid not null references auth.users(id) on delete cascade,
-  stripe_subscription_id text unique,
-  plan text check (plan in ('free', 'starter', 'creator', 'pro')) not null default 'free',
-  status text check (status in ('active', 'canceled', 'past_due', 'incomplete', 'trialing')) not null default 'active',
-  current_period_start timestamp with time zone,
-  current_period_end timestamp with time zone,
-  created_at timestamp with time zone default now()
+CREATE TABLE subscriptions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    stripe_subscription_id TEXT UNIQUE,
+    plan TEXT CHECK (plan IN ('free', 'starter', 'creator', 'pro')) NOT NULL DEFAULT 'free',
+    status TEXT CHECK (status IN ('active', 'canceled', 'past_due', 'incomplete', 'trialing')) NOT NULL DEFAULT 'active',
+    current_period_start TIMESTAMP WITH TIME ZONE,
+    current_period_end TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE notifications (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    message TEXT NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 ```
 

@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 import { createClient } from '@/libs/supabase/server';
-import SupabaseService from '@/services/supabase';
+import AuthService from '@/services/auth';
 
 type Props = {
     children: React.ReactNode;
@@ -9,9 +9,9 @@ type Props = {
 
 export default async function AuthLayout({ children }: Props) {
     const supabase = await createClient();
-    const SupabaseServiceInstance = new SupabaseService(supabase);
-
-    const userId = await SupabaseServiceInstance.getUserId();
+    const AuthServiceInstance = new AuthService(supabase);
+    const userId = await AuthServiceInstance.getUserId();
+    
     if (userId) {
         redirect('/dashboard');
     }

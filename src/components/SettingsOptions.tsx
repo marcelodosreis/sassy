@@ -6,7 +6,7 @@ import ButtonComponent from "@/components/Button";
 import { useI18n } from "@/hooks/useI18n";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from "@/libs/supabase/client";
-import SupabaseService from "@/services/supabase";
+import AuthService from "@/services/auth";
 
 type SettingsOptionsProps = {
     userEmail?: string;
@@ -15,7 +15,7 @@ type SettingsOptionsProps = {
 
 function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
     const { translate } = useI18n();
-    const SupabaseServiceInstance = new SupabaseService(supabase);
+    const AuthServiceInstance = new AuthService(supabase);
     const { addToast } = useToast();
     const [isLoading, setIsLoading] = useState({
         forgotPassword: false,
@@ -23,7 +23,7 @@ function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
 
     const handleForgotPassword = async (userEmail: string) => {
         setIsLoading((data) => ({ ...data, forgotPassword: true }));
-        const response = await SupabaseServiceInstance.forgotPassword(userEmail);
+        const response = await AuthServiceInstance.forgotPassword(userEmail);
 
         if (response) {
             await addToast({

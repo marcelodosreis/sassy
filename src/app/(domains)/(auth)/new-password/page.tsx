@@ -10,7 +10,7 @@ import InputComponent from "@/components/Input";
 import PasswordStrengthIndicator from "@/components/PasswordStrength";
 import { useI18n } from '@/hooks/useI18n';
 import { supabase } from "@/libs/supabase/client";
-import SupabaseService from "@/services/supabase";
+import AuthService from "@/services/auth";
 
 const initialState = {
     isLoading: false,
@@ -90,9 +90,9 @@ export default function NewPassword() {
                 throw new Error("Validation Error");
             }
 
-            const SupabaseServiceInstance = new SupabaseService(supabase);
+            const AuthServiceInstance = new AuthService(supabase);
 
-            const response = await SupabaseServiceInstance.newPassword(state.inputValue.password);
+            const response = await AuthServiceInstance.updatePassword(state.inputValue.password);
 
             if (response) {
                 dispatch({ type: "SET_PASSWORD_CHANGED", payload: true });

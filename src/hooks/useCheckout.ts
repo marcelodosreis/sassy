@@ -3,8 +3,8 @@ import { FIXED_CURRENCY } from "@/constants/FIXED_CURRENCY";
 import { HAS_FREE_TRIAL } from "@/constants/HAS_FREE_TRIAL";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from '@/libs/supabase/client';
+import AuthService from '@/services/auth';
 import StripeService from '@/services/stripe';
-import SupabaseService from '@/services/supabase';
 
 export const useCheckout = () => {
     const { addToast } = useToast();
@@ -15,8 +15,8 @@ export const useCheckout = () => {
         }
 
         setIsLoading(true);
-        const SupabaseServiceInstance = new SupabaseService(supabase);
-        const user = await SupabaseServiceInstance.getUserId();
+        const AuthServiceInstance = new AuthService(supabase);
+        const user = await AuthServiceInstance.getUserId();
 
         if (!user) {
             window.location.href = '/signin';

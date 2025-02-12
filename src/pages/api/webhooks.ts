@@ -3,9 +3,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { FINISH_CHECKOUT_EMAIL } from '@/constants/EMAILS';
 import { stripe } from '@/libs/stripe';
 import { supabaseServerClient } from '@/libs/supabase/server';
-import { sendEmail } from '@/services/mailgun';
+import AuthService from '@/services/auth';
+import EmailService from '@/services/email';
 import StripeService from '@/services/stripe';
-import SupabaseService from '@/services/supabase';
+import SubscriptionService from '@/services/subscription';
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -27,7 +28,11 @@ async function getRawBody(req: NextApiRequest): Promise<string> {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const StripeServiceInstance = new StripeService(stripe);
-    const SupabaseServiceInstance = new SupabaseService(supabaseServerClient);
+    const AuthServiceInstance = new AuthService(supabaseServerClient);
+    const SubscriptionServiceInstance = new SubscriptionService(supabaseServerClient);
+    const EmailServiceInstance = new EmailService();
+
+
 
     const sig = req.headers['stripe-signature'];
     const rawBody = await getRawBody(req);
@@ -51,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const session = event.data.object as any;
           const { userId, plan } = session.metadata;
-          await SupabaseServiceInstance.upsertSubscription({
+          await SubscriptionServiceInstance.upsertSubscription({
             user_id: userId,
             stripe_subscription_id: session.subscription,
             plan,
@@ -59,9 +64,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             current_period_start: new Date(session.current_period_start * 1000),
             current_period_end: new Date(session.current_period_end * 1000),
           });
-          const email = (await SupabaseServiceInstance.getUserById(userId))?.email;
+          const email = (await AuthServiceInstance.getUserById(userId))?.email;
           if (!email) throw new Error("Missing User Data in Completed Checkout");
-          await sendEmail({
+          await EmailServiceInstance.sendEmail({
             from: 'Sassy - Powerful Micro-SaaS',
             to: [email],
             subject: "Welcome to Sassy!",
@@ -75,13 +80,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const subscription = event.data.object as any;
 
-          await SupabaseServiceInstance.updateSubscriptionPeriod(
+          await SubscriptionServiceInstance.updateSubscriptionPeriod(
             subscription.id,
             new Date(subscription.current_period_start * 1000),
             new Date(subscription.current_period_end * 1000)
           );
 
-          await SupabaseServiceInstance.updateSubscriptionStatus(
+          await SubscriptionServiceInstance.updateSubscriptionStatus(
             subscription.id,
             subscription.status
           );
@@ -91,7 +96,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         case 'customer.subscription.deleted': {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const subscription = event.data.object as any;
-          await SupabaseServiceInstance.cancelSubscription(subscription.id);
+          await SubscriptionServiceInstance.cancelSubscription(subscription.id);
           break;
         }
 
