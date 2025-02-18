@@ -4,7 +4,7 @@ import { HAS_FREE_TRIAL } from "@/constants/HAS_FREE_TRIAL";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from '@/libs/supabase/client';
 import AuthService from '@/services/auth';
-import StripeService from '@/services/stripe';
+import PaymentService from '@/services/payment';
 
 export const useCheckout = () => {
     const { addToast } = useToast();
@@ -35,7 +35,7 @@ export const useCheckout = () => {
             const sessionId = jsonResponse.id;
 
             if (sessionId) {
-                await StripeService.redirectToCheckout(sessionId);
+                await PaymentService.redirectToCheckout(sessionId);
             } else {
                 addToast({
                     id: Date.now().toString(),

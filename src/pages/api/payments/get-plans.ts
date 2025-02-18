@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
 import { stripe } from '@/libs/stripe';
-import StripeService from '@/services/stripe';
+import PaymentService from '@/services/payment';
 import { loadTranslationsSSR } from '@/utils/loadTranslationsSSR';
 import { InputData, transformPurchasePlansDTO } from '@/utils/transformPurchasePlansDTO';
 
@@ -20,8 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 
     try {
-      const StripeServiceInstance = new StripeService(stripe);
-      const prices = await StripeServiceInstance.listActivePrices();
+      const PaymentServiceInstance = new PaymentService(stripe);
+      const prices = await PaymentServiceInstance.listActivePrices();
 
       const response = prices?.map((price) => {
         const product = price.product as Stripe.Product;

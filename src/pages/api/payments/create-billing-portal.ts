@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { stripe } from '@/libs/stripe';
 import { supabaseServerClient } from '@/libs/supabase/server';
 import AuthService from '@/services/auth';
-import StripeService from '@/services/stripe';
+import PaymentService from '@/services/payment';
 import SubscriptionService from '@/services/subscription';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const AuthServiceInstance = new AuthService(supabaseServerClient);
         const SubscriptionServiceInstance = new SubscriptionService(supabaseServerClient);
 
-        const StripeServiceInstance = new StripeService(stripe);
+        const PaymentServiceInstance = new PaymentService(stripe);
 
 
         const user = await AuthServiceInstance.getUser(token);
@@ -37,13 +37,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!subscription) {
             return res.status(404).json({ error: 'No subscription found for user' });
         }
-        const customerId = await StripeServiceInstance.getCustomerIdFromSubscription(subscription.stripe_subscription_id);
+        const customerId = await PaymentServiceInstance.getCustomerIdFromSubscription(subscription.stripe_subscription_id);
 
         if (!customerId) {
             return res.status(404).json({ error: 'No customerId found for subscription' });
         }
 
-        const portalSession = await StripeServiceInstance.createBillingPortalSession(customerId);
+        const portalSession = await PaymentServiceInstance.createBillingPortalSession(customerId);
 
         return res.status(200).json({ url: portalSession.url });
     } catch (error) {
