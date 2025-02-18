@@ -10,7 +10,7 @@ import OAuth from "@/components/OAuth";
 import PasswordStrengthIndicator from "@/components/PasswordStrength";
 import { useI18n } from '@/hooks/useI18n';
 import { supabase } from "@/libs/supabase/client";
-import SupabaseService from "@/services/supabase";
+import AuthService from "@/services/auth";
 import { isValidEmail } from "@/utils/isValidEmail";
 
 const initialState = {
@@ -90,8 +90,8 @@ export default function SignUp() {
         throw new Error("Terms not accepted");
       }
 
-      const SupabaseServiceInstance = new SupabaseService(supabase);
-      const response = await SupabaseServiceInstance.signUp(state.inputValue.email, state.inputValue.password);
+      const AuthServiceInstance = new AuthService(supabase);
+      const response = await AuthServiceInstance.signUp(state.inputValue.email, state.inputValue.password);
 
       if (response?.id) {
         dispatch({ type: "SET_REGISTRATION_COMPLETE", payload: true });

@@ -3,8 +3,7 @@ import type { NextRequest } from 'next/server';
 
 import { updateSession } from '@/libs/supabase/middleware';
 import { createClient } from '@/libs/supabase/server';
-import { fetchSubscription } from '@/services/api/subscription';
-import SupabaseService from '@/services/supabase';
+import AuthService from '@/services/auth';
 
 export async function middleware(request: NextRequest) {
   await updateSession(request);
@@ -12,16 +11,31 @@ export async function middleware(request: NextRequest) {
 
   if (url.pathname.startsWith('/dashboard')) {
     const supabase = await createClient();
-    const SupabaseServiceInstance = new SupabaseService(supabase);
+    const AuthServiceInstance = new AuthService(supabase);
 
-    const userId = await SupabaseServiceInstance.getUserId();
+    const userId = await AuthServiceInstance.getUserId();
 
     if (!userId) {
       const redirectUrl = new URL('/signin', request.url);
       return NextResponse.redirect(redirectUrl);
     }
 
-    const subscription = await fetchSubscription(userId);
+
+    const subscriptionRequest = await fetch(
+      `${process.env.NEXT_PUBLIC_PROJECT_URL}/api/payments/get-subscription?userId=${userId}`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+      }
+    );
+
+    if (!subscriptionRequest.ok) {
+      console.error('Failed to fetch subscription:', subscriptionRequest.statusText);
+      return null;
+    }
+
+    const data = await subscriptionRequest.json();
+    const subscription = data.subscription;
 
     const plan = subscription &&
       subscription?.status === 'active'

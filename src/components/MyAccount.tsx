@@ -5,9 +5,9 @@ import { useState, useEffect, useRef } from 'react';
 
 import { useI18n } from "@/hooks/useI18n";
 import { supabase } from '@/libs/supabase/client';
-import SupabaseService from '@/services/supabase';
+import AuthService from '@/services/auth';
 
-const SupabaseServiceInstance = new SupabaseService(supabase);
+const AuthServiceInstance = new AuthService(supabase);
 
 function MyAccount() {
     const { translate } = useI18n();
@@ -58,7 +58,7 @@ function MyAccount() {
                     <a
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer flex items-center justify-between"
                         onClick={async () => {
-                            await SupabaseServiceInstance.signOut();
+                            await AuthServiceInstance.signOut();
                             window.location.reload();
                         }}
                     >

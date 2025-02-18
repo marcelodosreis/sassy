@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { stripe } from '@/libs/stripe';
-import StripeService from '@/services/stripe';
+import PaymentService from '@/services/payment';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -17,8 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const freeTrial = hasFreeTrial ? Number(hasFreeTrial.split('d')?.[0]) : 0;
 
   try {
-    const stripeServiceInstance = new StripeService(stripe);
-    const session = await stripeServiceInstance.createCheckoutSession(
+    const PaymentServiceInstance = new PaymentService(stripe);
+    const session = await PaymentServiceInstance.createCheckoutSession(
       priceId,
       plan,
       userId,
