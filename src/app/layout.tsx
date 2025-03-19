@@ -22,11 +22,11 @@ type Props = {
 };
 
 export default async function RootLayout({ children }: Props) {
-  const { translations, locale } = await loadTranslationsSSR();
+  const { translate, translations, locale } = await loadTranslationsSSR();
 
   return (
     <html lang={locale}>
-      <title>{translations.title}</title>
+      <title>{translate('title')}</title>
       <body className={poppins.className}>
         <I18nProvider locale={locale} translations={translations}>
           <DatadogProvider>
