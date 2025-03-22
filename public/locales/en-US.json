@@ -1,16 +1,5 @@
 {
- 
-    "home-section-hero-title": "Welcome to Micro-SaaS Creator",
-    "home-section-hero-description": "Empower your vision with tools to build Micro-SaaS solutions effortlessly.",
-    "home-section-hero-button": "Get Started",
-    "home-section-how-title": "How Sassy Works",
-    "home-section-how-description": "Set up your subscription service in just three easy steps.",
-    "home-section-how-first-title": "Sign Up",
-    "home-section-how-first-description": "Create an account and set up your profile. Secure and fast with Supabase integration.",
-    "home-section-how-second-title": "Integrate Stripe",
-    "home-section-how-second-description": "Connect Stripe for seamless billing and manage monthly or annual subscriptions.",
-    "home-section-how-third-title": "Manage Subscriptions",
-    "home-section-how-third-description": "Easily conetor and manage your subscriptions, with real-time updates.",
+
     "component-pricing-title": "Pricing Plans",
     "component-pricing-description": "Simple and transparent pricing to suit your needs.",
     "component-pricing-trial-title": "You have a free trial for",

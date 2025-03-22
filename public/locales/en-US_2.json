@@ -1,16 +1,40 @@
 {
-    "title": "Sassy - powerful micro-saas template",
-    "pages": {
-    },
-    "components": {
-      "navbar": {
-        "pricing": "Pricing",
-        "features": "Features",
-        "faq": "FAQ",
-        "signin": "Sign In",
-        "try": "Try For Free",
-        "dashboard": "Dashboard"
+  "title": "Sassy - powerful micro-saas template",
+  "pages": {
+    "home": {
+      "sections": {
+        "hero": {
+          "title": "Welcome to Micro-SaaS Creator",
+          "description": "Empower your vision with tools to build Micro-SaaS solutions effortlessly.",
+          "button": "Get Started"
+        },
+        "how": {
+          "title": "How Sassy Works",
+          "description": "Set up your subscription service in just three easy steps.",
+          "first": {
+            "title": "Sign Up",
+            "description": "Create an account and set up your profile. Secure and fast with Supabase integration."
+          },
+          "second": {
+            "title": "Integrate Stripe",
+            "description": "Connect Stripe for seamless billing and manage monthly or annual subscriptions."
+          },
+          "third": {
+            "title": "Manage Subscriptions",
+            "description": "Easily conetor and manage your subscriptions, with real-time updates."
+          }
+        }
       }
     }
+  },
+  "components": {
+    "navbar": {
+      "pricing": "Pricing",
+      "features": "Features",
+      "faq": "FAQ",
+      "signin": "Sign In",
+      "try": "Try For Free",
+      "dashboard": "Dashboard"
+    }
   }
-  
+}

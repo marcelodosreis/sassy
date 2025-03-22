@@ -10,14 +10,14 @@ export default async function HeroSection() {
             <div className="flex flex-col md:flex-row items-center md:items-center">
                 <div className="text-center lg:text-left lg:w-2/3">
                     <h1 className="text-3xl md:text-5xl font-bold leading-tight text-gray-900">
-                        {translate("home-section-hero-title")}
+                        {translate("pages.home.sections.hero.title")}
                     </h1>
                     <p className="mt-4 text-lg md:text-xl text-gray-600">
-                        {translate("home-section-hero-description")}
+                        {translate("pages.home.sections.hero.description")}
                     </p>
                     <a href="/dashboard">
                         <button className="mt-6 bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 w-64">
-                            {translate("home-section-hero-button")}
+                            {translate("pages.home.sections.hero.button")}
                         </button>
                     </a>
                 </div>
