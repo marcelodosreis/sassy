@@ -98,80 +98,80 @@
         "github": "GitHub",
         "copyright": "© 2025 Sassy. All rights reserved."
       }
+    }
+  },
+  "components": {
+    "navbar": {
+      "pricing": "Pricing",
+      "features": "Features",
+      "faq": "FAQ",
+      "signin": "Sign In",
+      "try": "Try For Free",
+      "dashboard": "Dashboard"
     },
-    "components": {
-      "navbar": {
-        "pricing": "Pricing",
-        "features": "Features",
-        "faq": "FAQ",
-        "signin": "Sign In",
-        "try": "Try For Free",
-        "dashboard": "Dashboard"
+    "pricing": {
+      "title": "Pricing Plans",
+      "description": "Simple and transparent pricing to suit your needs.",
+      "toggle": {
+        "monthly": "Monthly",
+        "annual": "Annual"
       },
-      "pricing": {
-        "title": "Pricing Plans",
-        "description": "Simple and transparent pricing to suit your needs.",
-        "toggle": {
-          "monthly": "Monthly",
-          "annual": "Annual"
+      "trial": {
+        "title": "You have a free trial for",
+        "description": "Try our service with no commitment."
+      },
+      "tag": {
+        "selected": "Selected Plan",
+        "popular": "Most Popular"
+      },
+      "button": {
+        "default": "Subscribe",
+        "subscribed": "Current Plan"
+      },
+      "plans": {
+        "prices": {
+          "monthly": "${value}/month",
+          "annual": "${value}/year"
         },
-        "trial": {
-          "title": "You have a free trial for",
-          "description": "Try our service with no commitment."
+        "free": {
+          "title": "Free",
+          "description": "Ideal for individuals trying out our service.",
+          "features": {
+            "first": "✔ Access to basic features",
+            "second": "✔ 1 project",
+            "third": " "
+          },
+          "extra": ""
         },
-        "tag": {
-          "selected": "Selected Plan",
-          "popular": "Most Popular"
+        "starter": {
+          "title": "Starter",
+          "description": "Ideal for individuals launching first Micro-SaaS.",
+          "features": {
+            "first": "✔ Access to core features",
+            "second": "✔ 1 project",
+            "third": " "
+          },
+          "extra": "Everything in Free, plus"
         },
-        "button": {
-          "default": "Subscribe",
-          "subscribed": "Current Plan"
+        "creator": {
+          "title": "Creator",
+          "description": "Great for creators looking to expand their reach.",
+          "features": {
+            "first": "✔ Access to core features",
+            "second": "✔ 3 project",
+            "third": "✔ Email support"
+          },
+          "extra": "Everything in Starter, plus"
         },
-        "plans": {
-          "prices": {
-            "monthly": "${value}/month",
-            "annual": "${value}/year"
+        "pro": {
+          "title": "Pro",
+          "description": "Perfect for teams scaling their Micro-SaaS business.",
+          "features": {
+            "first": "✔ Access to core features",
+            "second": "✔ Unlimited projects",
+            "third": "✔ Priority support"
           },
-          "free": {
-            "title": "Free",
-            "description": "Ideal for individuals trying out our service.",
-            "features": {
-              "first": "✔ Access to basic features",
-              "second": "✔ 1 project",
-              "third": " "
-            },
-            "extra": ""
-          },
-          "starter": {
-            "title": "Starter",
-            "description": "Ideal for individuals launching first Micro-SaaS.",
-            "features": {
-              "first": "✔ Access to core features",
-              "second": "✔ 1 project",
-              "third": " "
-            },
-            "extra": "Everything in Free, plus"
-          },
-          "creator": {
-            "title": "Creator",
-            "description": "Great for creators looking to expand their reach.",
-            "features": {
-              "first": "✔ Access to core features",
-              "second": "✔ 3 project",
-              "third": "✔ Email support"
-            },
-            "extra": "Everything in Starter, plus"
-          },
-          "pro": {
-            "title": "Pro",
-            "description": "Perfect for teams scaling their Micro-SaaS business.",
-            "features": {
-              "first": "✔ Access to core features",
-              "second": "✔ Unlimited projects",
-              "third": "✔ Priority support"
-            },
-            "extra": "Everything in Creator, plus"
-          }
+          "extra": "Everything in Creator, plus"
         }
       }
     }
