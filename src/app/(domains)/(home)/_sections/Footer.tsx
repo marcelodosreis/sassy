@@ -16,14 +16,14 @@ export default function Footer({ isDashboard }: FooterProps) {
         <footer id="footer" className="py-20 px-4 bg-indigo-600 text-white">
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">
-              {translate("home-footer-title")}
+              {translate("pages.home.footer.title")}
             </h2>
             <div className="flex justify-center space-x-4">
               <a
                 href={ROUTES.dashboard}
                 className="py-3 px-8 bg-white text-indigo-600 rounded-lg hover:bg-gray-100 transition"
               >
-                {translate("home-footer-join")}
+                {translate("pages.home.footer.join")}
               </a>
             </div>
           </div>
@@ -33,7 +33,7 @@ export default function Footer({ isDashboard }: FooterProps) {
                 href="/terms-and-privacy"
                 className="text-sm hover:underline"
               >
-                {translate("home-footer-terms")}
+                {translate("pages.home.footer.terms")}
               </a>
               <a
                 href="https://github.com/marcelodosreis/sassy"
@@ -41,11 +41,11 @@ export default function Footer({ isDashboard }: FooterProps) {
                 rel="noopener noreferrer"
                 className="text-sm hover:underline"
               >
-                {translate("home-footer-github")}
+                {translate("pages.home.footer.github")}
               </a>
             </div>
             <p className="mt-6 text-sm text-gray-300">
-              {translate("home-footer-copyright")}
+              {translate("pages.home.footer.copyright")}
             </p>
           </div>
         </footer>

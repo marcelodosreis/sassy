@@ -55,82 +55,123 @@
             "7": "With the subscription management system already in place, I could concentrate on my product’s core features. Sassy has been a huge time-saver.",
             "8": "Stripe webhooks and subscription handling worked flawlessly with my project. I’m really impressed with how well everything is integrated."
           }
+        },
+        "faq": {
+          "title": "Frequently Asked Questions",
+          "description": "Answers to help you understand how to leverage this template to kickstart your Micro-SaaS development.",
+          "items": {
+            "1": {
+              "question": "What is this template for?",
+              "answer": "This is a powerful template designed to accelerate the development of Micro-SaaS applications. It provides an example setup for subscription management, but you can easily adapt it to suit any SaaS product."
+            },
+            "2": {
+              "question": "How do I get started with the template?",
+              "answer": "Start by cloning the repository, setting up your environment with Next.js 15, and configuring TypeScript. The template is ready for development with integrations like Stripe and Supabase to manage your user data and payments."
+            },
+            "3": {
+              "question": "Is this template focused on subscriptions?",
+              "answer": "Subscriptions are just one example of functionality provided in this template. You can customize it to fit your Micro-SaaS application's needs, whether it's for billing, authentication, or any other aspect of your service."
+            },
+            "4": {
+              "question": "What payment options are included?",
+              "answer": "The template comes with an example of monthly and annual subscription management using Stripe. You can modify the payment flow to fit your app’s business model."
+            },
+            "5": {
+              "question": "Can I integrate other services into this template?",
+              "answer": "Yes, the template is built to be flexible. It supports integrations with Supabase for user management, Stripe for payments, and OAuth for authentication with services like Google, Facebook, and Twitter."
+            },
+            "6": {
+              "question": "Is this template production-ready?",
+              "answer": "While this template provides a solid foundation, it’s intended for development and customization. You'll need to tweak it to fit your production environment and business requirements."
+            },
+            "7": {
+              "question": "How do I customize the template?",
+              "answer": "You can easily modify the code to fit your specific use case. The architecture is modular, with separate components for authentication, payments, and user management, allowing for easy customization."
+            }
+          }
         }
+      },
+      "footer": {
+        "title": "Ready to Get Started?",
+        "join": "Join Sassy Today",
+        "terms": "Terms & Privacy",
+        "github": "GitHub",
+        "copyright": "© 2025 Sassy. All rights reserved."
       }
-    }
-  },
-  "components": {
-    "navbar": {
-      "pricing": "Pricing",
-      "features": "Features",
-      "faq": "FAQ",
-      "signin": "Sign In",
-      "try": "Try For Free",
-      "dashboard": "Dashboard"
     },
-    "pricing": {
-      "title": "Pricing Plans",
-      "description": "Simple and transparent pricing to suit your needs.",
-      "toggle": {
-        "monthly": "Monthly",
-        "annual": "Annual"
+    "components": {
+      "navbar": {
+        "pricing": "Pricing",
+        "features": "Features",
+        "faq": "FAQ",
+        "signin": "Sign In",
+        "try": "Try For Free",
+        "dashboard": "Dashboard"
       },
-      "trial": {
-        "title": "You have a free trial for",
-        "description": "Try our service with no commitment."
-      },
-      "tag": {
-        "selected": "Selected Plan",
-        "popular": "Most Popular"
-      },
-      "button": {
-        "default": "Subscribe",
-        "subscribed": "Current Plan"
-      },
-      "plans": {
-        "prices": {
-          "monthly": "${value}/month",
-          "annual": "${value}/year"
+      "pricing": {
+        "title": "Pricing Plans",
+        "description": "Simple and transparent pricing to suit your needs.",
+        "toggle": {
+          "monthly": "Monthly",
+          "annual": "Annual"
         },
-        "free": {
-          "title": "Free",
-          "description": "Ideal for individuals trying out our service.",
-          "features": {
-            "first": "✔ Access to basic features",
-            "second": "✔ 1 project",
-            "third": " "
-          },
-          "extra": ""
+        "trial": {
+          "title": "You have a free trial for",
+          "description": "Try our service with no commitment."
         },
-        "starter": {
-          "title": "Starter",
-          "description": "Ideal for individuals launching first Micro-SaaS.",
-          "features": {
-            "first": "✔ Access to core features",
-            "second": "✔ 1 project",
-            "third": " "
-          },
-          "extra": "Everything in Free, plus"
+        "tag": {
+          "selected": "Selected Plan",
+          "popular": "Most Popular"
         },
-        "creator": {
-          "title": "Creator",
-          "description": "Great for creators looking to expand their reach.",
-          "features": {
-            "first": "✔ Access to core features",
-            "second": "✔ 3 project",
-            "third": "✔ Email support"
-          },
-          "extra": "Everything in Starter, plus"
+        "button": {
+          "default": "Subscribe",
+          "subscribed": "Current Plan"
         },
-        "pro": {
-          "title": "Pro",
-          "description": "Perfect for teams scaling their Micro-SaaS business.",
-          "features": {
-            "first": "✔ Access to core features",
-            "second": "✔ Unlimited projects",
-            "third": "✔ Priority support"
+        "plans": {
+          "prices": {
+            "monthly": "${value}/month",
+            "annual": "${value}/year"
           },
-          "extra": "Everything in Creator, plus"
+          "free": {
+            "title": "Free",
+            "description": "Ideal for individuals trying out our service.",
+            "features": {
+              "first": "✔ Access to basic features",
+              "second": "✔ 1 project",
+              "third": " "
+            },
+            "extra": ""
+          },
+          "starter": {
+            "title": "Starter",
+            "description": "Ideal for individuals launching first Micro-SaaS.",
+            "features": {
+              "first": "✔ Access to core features",
+              "second": "✔ 1 project",
+              "third": " "
+            },
+            "extra": "Everything in Free, plus"
+          },
+          "creator": {
+            "title": "Creator",
+            "description": "Great for creators looking to expand their reach.",
+            "features": {
+              "first": "✔ Access to core features",
+              "second": "✔ 3 project",
+              "third": "✔ Email support"
+            },
+            "extra": "Everything in Starter, plus"
+          },
+          "pro": {
+            "title": "Pro",
+            "description": "Perfect for teams scaling their Micro-SaaS business.",
+            "features": {
+              "first": "✔ Access to core features",
+              "second": "✔ Unlimited projects",
+              "third": "✔ Priority support"
+            },
+            "extra": "Everything in Creator, plus"
+          }
         }
       }
     }

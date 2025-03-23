@@ -7,32 +7,32 @@ const FaqSection = () => {
 
   const faqs = [
     {
-      question: translate('home-section-faq-question-1'),
-      answer: translate('home-section-faq-answer-1'),
+      question: translate('pages.home.sections.faq.items.1.question'),
+      answer: translate('pages.home.sections.faq.items.1.answer'),
     },
     {
-      question: translate('home-section-faq-question-2'),
-      answer: translate('home-section-faq-answer-2'),
+      question: translate('pages.home.sections.faq.items.2.question'),
+      answer: translate('pages.home.sections.faq.items.2.answer'),
     },
     {
-      question: translate('home-section-faq-question-3'),
-      answer: translate('home-section-faq-answer-3'),
+      question: translate('pages.home.sections.faq.items.3.question'),
+      answer: translate('pages.home.sections.faq.items.3.answer'),
     },
     {
-      question: translate('home-section-faq-question-4'),
-      answer: translate('home-section-faq-answer-4'),
+      question: translate('pages.home.sections.faq.items.4.question'),
+      answer: translate('pages.home.sections.faq.items.4.answer'),
     },
     {
-      question: translate('home-section-faq-question-5'),
-      answer: translate('home-section-faq-answer-5'),
+      question: translate('pages.home.sections.faq.items.5.question'),
+      answer: translate('pages.home.sections.faq.items.5.answer'),
     },
     {
-      question: translate('home-section-faq-question-6'),
-      answer: translate('home-section-faq-answer-6'),
+      question: translate('pages.home.sections.faq.items.6.question'),
+      answer: translate('pages.home.sections.faq.items.6.answer'),
     },
     {
-      question: translate('home-section-faq-question-7'),
-      answer: translate('home-section-faq-answer-7'),
+      question: translate('pages.home.sections.faq.items.7.question'),
+      answer: translate('pages.home.sections.faq.items.7.answer'),
     },
   ];
 
@@ -40,10 +40,10 @@ const FaqSection = () => {
     <section id="faq" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-gray-900">
-          {translate('home-section-faq-title')}
+          {translate('pages.home.sections.faq.title')}
         </h2>
         <p className="mt-4 text-center text-lg text-gray-600">
-          {translate('home-section-faq-description')}
+          {translate('pages.home.sections.faq.description')}
         </p>
 
         <div className="mt-10 space-y-4">
