@@ -12,15 +12,16 @@ export const useFetchPlans = (hasFreeplan: boolean, setIsLoading: (isLoading: bo
     const SUBSCRIPTION_PLANS_BASE: Plan[] = [
         {
             id: 'free',
-            name: translate('component-pricing-subscription-plans-free-name'),
-            priceMonthly: translate('component-pricing-subscription-plans-free-price-monthly').replace("{value}", "0"),
-            priceAnnual: translate('component-pricing-subscription-plans-free-price-annual').replace("{value}", "0"),
-            description: translate('component-pricing-subscription-plans-free-description'),
+            name: translate('components.pricing.plans.free.name'),
+            priceMonthly: translate('components.pricing.plans.prices.monthly').replace("{value}", "0"),
+            priceAnnual: translate('components.pricing.plans.prices.annual').replace("{value}", "0"),
+            description: translate('components.pricing.plans.free.description'),
             features: [
-                translate('component-pricing-subscription-plans-free-feature-1'),
-                translate('component-pricing-subscription-plans-free-feature-2'),
+                translate('components.pricing.plans.free.features.first'),
+                translate('components.pricing.plans.free.features.second'),
+                translate('components.pricing.plans.free.features.third'),
             ],
-            extraFeatures: translate('component-pricing-subscription-plans-free-extra-features'),
+            extraFeatures: translate('components.pricing.plans.free.extra'),
         },
     ];
 

@@ -6,8 +6,8 @@ export default async function HowItWorksSection() {
     return (
         <section id="how-it-works" className="py-12 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl font-bold text-center text-gray-900">{translate("pages.home.sections.how.options.title")}</h2>
-                <p className="mt-4 text-center text-lg text-gray-600">{translate("pages.home.sections.how.options.description")}</p>
+                <h2 className="text-4xl font-bold text-center text-gray-900">{translate("pages.home.sections.how.title")}</h2>
+                <p className="mt-4 text-center text-lg text-gray-600">{translate("pages.home.sections.how.description")}</p>
 
                 <div className="mt-10 flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
                     <div className="text-center">

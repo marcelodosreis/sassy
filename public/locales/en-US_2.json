@@ -37,6 +37,72 @@
       "signin": "Sign In",
       "try": "Try For Free",
       "dashboard": "Dashboard"
+    },
+    "pricing": {
+      "title": "Pricing Plans",
+      "description": "Simple and transparent pricing to suit your needs.",
+      "toggle": {
+        "monthly": "Monthly",
+        "annual": "Annual"
+      },
+      "trial": {
+        "title": "You have a free trial for",
+        "description": "Try our service with no commitment."
+      },
+      "tag": {
+        "selected": "Selected Plan",
+        "popular": "Most Popular"
+      },
+      "button": {
+        "default": "Subscribe",
+        "subscribed": "Current Plan"
+      },
+      "plans": {
+        "prices": {
+          "monthly": "${value}/month",
+          "annual": "${value}/year"
+        },
+        "free": {
+          "title": "Free",
+          "description": "Ideal for individuals trying out our service.",
+          "features": {
+            "first": "✔ Access to basic features",
+            "second": "✔ 1 project",
+            "third": " "
+          },
+          "extra": ""
+        },
+        "starter": {
+          "title": "Starter",
+          "description": "Ideal for individuals launching first Micro-SaaS.",
+          "features": {
+            "first": "✔ Access to core features",
+            "second": "✔ 1 project",
+            "third": " "
+          },
+          "extra": "Everything in Free, plus"
+        },
+        "creator": {
+          "title": "Creator",
+          "description": "Great for creators looking to expand their reach.",
+          "features": {
+            "first": "✔ Access to core features",
+            "second": "✔ 3 project",
+            "third": "✔ Email support"
+          },
+          "extra": "Everything in Starter, plus"
+        },
+        "pro": {
+          "title": "Pro",
+          "description": "Perfect for teams scaling their Micro-SaaS business.",
+          "features": {
+            "first": "✔ Access to core features",
+            "second": "✔ Unlimited projects",
+            "third": "✔ Priority support"
+          },
+          "extra": "Everything in Creator, plus"
+        }
+      }
     }
   }
 }

@@ -42,12 +42,12 @@ export default function PlanCard({ plan, isAnnual, isSelected, isMostPopular, ha
         >
             {isSelected && (
                 <span className="absolute top-0 right-0 bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
-                    {translate('component-pricing-selected-tag')}
+                    {translate('components.pricing.tag.selected')}
                 </span>
             )}
             {isMostPopular && !isSelected && (
                 <span className="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
-                    {translate('component-pricing-popular-tag')}
+                    {translate('components.pricing.tag.popular')}
                 </span>
             )}
             <h3 className="text-2xl font-bold text-gray-900">{plan.name}</h3>
@@ -62,8 +62,8 @@ export default function PlanCard({ plan, isAnnual, isSelected, isMostPopular, ha
                 onClick={() => handle(plan)}
             >
                 {isSelected
-                    ? translate('component-pricing-button-subscribed')
-                    : translate('component-pricing-button')
+                    ? translate('components.pricing.button.subscribed')
+                    : translate('components.pricing.button.default')
                 }
             </ButtonComponent>
             <ul className="mt-6 space-y-4 text-gray-600 text-left">
