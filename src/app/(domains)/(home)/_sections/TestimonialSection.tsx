@@ -6,24 +6,24 @@ const TestimonialSection = () => {
   const { translate } = useI18n();
 
   const testimonials = [
-    translate('home-section-testimonial-1'),
-    translate('home-section-testimonial-2'),
-    translate('home-section-testimonial-3'),
-    translate('home-section-testimonial-4'),
-    translate('home-section-testimonial-5'),
-    translate('home-section-testimonial-6'),
-    translate('home-section-testimonial-7'),
-    translate('home-section-testimonial-8'),
+    translate('pages.home.sections.testimonials.list.1'),
+    translate('pages.home.sections.testimonials.list.2'),
+    translate('pages.home.sections.testimonials.list.3'),
+    translate('pages.home.sections.testimonials.list.4'),
+    translate('pages.home.sections.testimonials.list.5'),
+    translate('pages.home.sections.testimonials.list.6'),
+    translate('pages.home.sections.testimonials.list.7'),
+    translate('pages.home.sections.testimonials.list.8'),
   ];
 
   return (
     <section id="testimonials" className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-gray-900">
-          {translate('home-section-testimonials-title')}
+          {translate('pages.home.sections.testimonials.title')}
         </h2>
         <p className="mt-4 text-center text-lg text-gray-600">
-          {translate('home-section-testimonials-description')}
+          {translate('pages.home.sections.testimonials.description')}
         </p>
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

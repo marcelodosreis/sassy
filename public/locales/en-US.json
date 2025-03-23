@@ -1,22 +1,8 @@
 {
-    "home-section-features-title": "Modern Features for Your SaaS",
-    "home-section-features-description": "Everything you need to build powerful Micro-SaaS applications.",
-    "home-section-feature-oauth-title": "OAuth Authentication",
-    "home-section-feature-oauth-description": "Seamlessly integrate with Google, Facebook, and Twitter to provide a smooth login experience.",
-    "home-section-feature-subscription-title": "Subscription Management",
-    "home-section-feature-subscription-description": "Effortlessly manage subscriptions with Stripe's robust tools and real-time updates.",
-    "home-section-feature-responsive-title": "Responsive Design",
-    "home-section-feature-responsive-description": "Crafted with TailwindCSS for a seamless experience across all devices.",
-    "home-section-testimonials-title": "What Our Users Say",
-    "home-section-testimonials-description": "Hear directly from our satisfied customers.",
-    "home-section-testimonial-1": "Sassy has been a game-changer for our Micro-SaaS project. The integration with Stripe and Supabase is seamless, and it helped us get started so much faster!",
-    "home-section-testimonial-2": "I was looking for a simple and reliable way to manage subscriptions for my SaaS product. Sassy’s Stripe integration is fantastic and easy to use!",
-    "home-section-testimonial-3": "The built-in authentication with Supabase and the payment gateway via Stripe saved us hours of development time. Highly recommend it!",
-    "home-section-testimonial-4": "As a solo developer, I needed a solid foundation for my Micro-SaaS. Sassy provided that and more! The flexibility of the template is incredible.",
-    "home-section-testimonial-5": "Sassy’s responsive design and clean architecture made it easy to deploy. I’ve been able to focus on building features rather than handling the basics.",
-    "home-section-testimonial-6": "The ease of integrating OAuth authentication with Google and Facebook made the user login process a breeze. This platform is a must-have for any developer.",
-    "home-section-testimonial-7": "With the subscription management system already in place, I could concentrate on my product’s core features. Sassy has been a huge time-saver.",
-    "home-section-testimonial-8": "Stripe webhooks and subscription handling worked flawlessly with my project. I’m really impressed with how well everything is integrated.",
+
+
+
+    
     "home-section-faq-title": "Frequently Asked Questions",
     "home-section-faq-description": "Answers to help you understand how to leverage this template to kickstart your Micro-SaaS development.",
     "home-section-faq-question-1": "What is this template for?",

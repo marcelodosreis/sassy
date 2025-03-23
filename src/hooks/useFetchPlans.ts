@@ -12,10 +12,10 @@ export const useFetchPlans = (hasFreeplan: boolean, setIsLoading: (isLoading: bo
     const SUBSCRIPTION_PLANS_BASE: Plan[] = [
         {
             id: 'free',
-            name: translate('components.pricing.plans.free.name'),
+            name: translate('components.pricing.plans.free.title'),
+            description: translate('components.pricing.plans.free.description'),
             priceMonthly: translate('components.pricing.plans.prices.monthly').replace("{value}", "0"),
             priceAnnual: translate('components.pricing.plans.prices.annual').replace("{value}", "0"),
-            description: translate('components.pricing.plans.free.description'),
             features: [
                 translate('components.pricing.plans.free.features.first'),
                 translate('components.pricing.plans.free.features.second'),
@@ -26,9 +26,6 @@ export const useFetchPlans = (hasFreeplan: boolean, setIsLoading: (isLoading: bo
     ];
 
     const [plans, setPlans] = useState<Plan[]>(hasFreeplan && !HAS_FREE_TRIAL ? SUBSCRIPTION_PLANS_BASE : []);
-
-
-
 
     useEffect(() => {
         const fetchPlans = async () => {

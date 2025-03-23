@@ -25,6 +25,36 @@
               "description": "Easily conetor and manage your subscriptions, with real-time updates."
             }
           }
+        },
+        "features": {
+          "title": "Modern Features for Your SaaS",
+          "description": "Everything you need to build powerful Micro-SaaS applications.",
+          "oauth": {
+            "title": "OAuth Authentication",
+            "description": "Seamlessly integrate with Google, Facebook, and Twitter to provide a smooth login experience."
+          },
+          "subscription": {
+            "title": "Subscription Management",
+            "description": "Effortlessly manage subscriptions with Stripe's robust tools and real-time updates."
+          },
+          "responsive": {
+            "title": "Responsive Design",
+            "description": "Crafted with TailwindCSS for a seamless experience across all devices."
+          }
+        },
+        "testimonials": {
+          "title": "What Our Users Say",
+          "description": "Hear directly from our satisfied customers.",
+          "list": {
+            "1": "Sassy has been a game-changer for our Micro-SaaS project. The integration with Stripe and Supabase is seamless, and it helped us get started so much faster!",
+            "2": "I was looking for a simple and reliable way to manage subscriptions for my SaaS product. Sassy’s Stripe integration is fantastic and easy to use!",
+            "3": "The built-in authentication with Supabase and the payment gateway via Stripe saved us hours of development time. Highly recommend it!",
+            "4": "As a solo developer, I needed a solid foundation for my Micro-SaaS. Sassy provided that and more! The flexibility of the template is incredible.",
+            "5": "Sassy’s responsive design and clean architecture made it easy to deploy. I’ve been able to focus on building features rather than handling the basics.",
+            "6": "The ease of integrating OAuth authentication with Google and Facebook made the user login process a breeze. This platform is a must-have for any developer.",
+            "7": "With the subscription management system already in place, I could concentrate on my product’s core features. Sassy has been a huge time-saver.",
+            "8": "Stripe webhooks and subscription handling worked flawlessly with my project. I’m really impressed with how well everything is integrated."
+          }
         }
       }
     }
