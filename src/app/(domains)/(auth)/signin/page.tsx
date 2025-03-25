@@ -65,8 +65,8 @@ export default function SignIn() {
               dispatch({
                   type: "SET_ERRORS",
                   payload: {
-                      email: isValidEmailResponse ? "" : translate("signIn-invalid-email"),
-                      password: isPasswordValid ? "" : translate("signIn-invalid-password"),
+                      email: isValidEmailResponse ? "" : translate("pages.sign-in.inputs.email.error"),
+                      password: isPasswordValid ? "" : translate("pages.sign-in.inputs.password.error"),
                   },
               });
               throw new Error("Validation Error");
@@ -78,12 +78,12 @@ export default function SignIn() {
           if (response?.id) {
               router.push(ROUTES.dashboard);
           } else {
-              dispatch({ type: "SET_ERRORS", payload: { general: translate("signIn-invalid-credentials") } });
+              dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-in.invalid-credentials") } });
           }
       } catch (err) {
           console.error("Error", err);
           if (err instanceof Error && err.message !== "Validation Error") {
-              dispatch({ type: "SET_ERRORS", payload: { general: translate("signIn-general-error") } });
+              dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-in.general-error") } });
           }
           dispatch({ type: "SET_LOADING", payload: false });
       }
@@ -91,9 +91,9 @@ export default function SignIn() {
 
   return (
     <>
-      <BackLinkComponent href={ROUTES.home} label={translate('signIn-back-to-home')} />
-      <h2 className="text-2xl font-semibold text-center text-gray-900">{translate('signIn-title')}</h2>
-      <p className="text-center text-sm text-gray-600">{translate('signIn-subtitle')}</p>
+      <BackLinkComponent href={ROUTES.home} label={translate('pages.sign-in.actions.back')} />
+      <h2 className="text-2xl font-semibold text-center text-gray-900">{translate('pages.sign-in.title')}</h2>
+      <p className="text-center text-sm text-gray-600">{translate('pages.sign-in.description')}</p>
       <form
         className="mt-8 space-y-6"
         onSubmit={(e) => {
@@ -104,7 +104,7 @@ export default function SignIn() {
           <InputComponent
             type="email"
             name="email"
-            label={translate('signIn-email')}
+            label={translate('pages.sign-in.inputs.email.text')}
             placeholder=""
             value={state.inputValue.email}
             onChange={(e) =>
@@ -120,7 +120,7 @@ export default function SignIn() {
           <InputComponent
             type="password"
             name="password"
-            label={translate('signIn-password')}
+            label={translate('pages.sign-in.inputs.password.text')}
             placeholder=""
             value={state.inputValue.password}
             onChange={(e) =>
@@ -134,7 +134,7 @@ export default function SignIn() {
 
         <div className="text-right mt-0">
           <a href={ROUTES.forgotPassword} className="text-sm text-blue-600 hover:text-blue-800">
-            {translate('signIn-forgot-password')}
+            {translate('pages.sign-in.actions.forgot-password')}
           </a>
         </div>
 
@@ -143,7 +143,7 @@ export default function SignIn() {
         )}
 
         <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-          {translate('signIn-button')}
+          {translate('pages.sign-in.actions.submit')}
         </ButtonComponent>
       </form>
       <OAuth />

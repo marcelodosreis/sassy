@@ -125,6 +125,27 @@
         "title": "Contact Us",
         "description": "If you have any questions about these terms or our privacy policy, feel free to contact us."
       }
+    },
+    "sign-in": {
+      "title": "Sign In",
+      "description": "Enter your details to use an account",
+      "inputs": {
+        "email": {
+          "text": "Email",
+          "error": "Invalid email format."
+        },
+        "password": {
+          "text": "Password",
+          "error": "Password must be at least 6 characters long."
+        }
+      },
+      "actions": {
+        "back": "Back To Home",
+        "forgot-password": "Forgot your password?",
+        "submit": "Sign In"
+      },
+      "invalid-credentials": "Invalid email or password.",
+      "general-error": "Something went wrong. Please try again."
     }
   },
   "components": {
@@ -201,6 +222,12 @@
           "extra": "Everything in Creator, plus"
         }
       }
+    },
+    "footer-auth": {
+      "dont-have-account": "Don't have an account?",
+      "create-account": "Create an account",
+      "already-have-account": "Already have an account?",
+      "go-back-to-login": "Go back to login"
     }
   }
 }

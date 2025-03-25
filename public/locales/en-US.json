@@ -1,17 +1,4 @@
 {
-
-
-    "signIn-back-to-home": "Back To Home",
-    "signIn-title": "Sign In",
-    "signIn-subtitle": "Enter your details to use an account",
-    "signIn-invalid-email": "Invalid email format.",
-    "signIn-invalid-password": "Password must be at least 6 characters long.",
-    "signIn-invalid-credentials": "Invalid email or password.",
-    "signIn-general-error": "Something went wrong. Please try again.",
-    "signIn-email": "Email",
-    "signIn-password": "Password",
-    "signIn-forgot-password": "Forgot your password?",
-    "signIn-button": "Sign In",
     "signUp-back-to-login": "Back To Login",
     "signUp-title": "Sign Up",
     "signUp-subtitle": "Create your account to get started",
@@ -25,10 +12,7 @@
     "signUp-confirm-password": "Confirm Password",
     "signUp-terms-label": "I accept the Terms and Privacy Policy",
     "signUp-button": "Sign Up",
-    "component-footer-auth-dont-have-account": "Don't have an account?",
-    "component-footer-auth-create-account": "Create an account",
-    "component-footer-auth-already-have-account": "Already have an account?",
-    "component-footer-auth-go-back-to-login": "Go back to login",
+    
     "forgot-password-title": "Forgot Password",
     "forgot-password-description": "Enter your email to receive a password reset link.",
     "forgot-password-email-label": "Email",
