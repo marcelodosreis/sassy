@@ -13,54 +13,54 @@ async function TermsAndPrivacy() {
       <Navbar />
       <div className="mt-12 max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-6 text-center">
-          {translate("terms-privacy-title")}
+          {translate("pages.terms-and-privacy.title")}
         </h1>
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {translate("terms-privacy-terms-of-use")}
+            {translate("pages.terms-and-privacy.terms.title")}
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            {translate("terms-privacy-terms-of-use-description")}
+            {translate("pages.terms-and-privacy.terms.description")}
           </p>
         </section>
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {translate("terms-privacy-privacy-policy")}
+            {translate("pages.terms-and-privacy.policy.title")}
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            {translate("terms-privacy-privacy-policy-description")}
+            {translate("pages.terms-and-privacy.policy.description")}
           </p>
         </section>
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {translate("terms-privacy-data-collection")}
+            {translate("pages.terms-and-privacy.collection.title")}
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            {translate("terms-privacy-data-collection-description")}
+            {translate("pages.terms-and-privacy.collection.description")}
           </p>
         </section>
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {translate("terms-privacy-data-security")}
+            {translate("pages.terms-and-privacy.security.title")}
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            {translate("terms-privacy-data-security-description")}
+            {translate("pages.terms-and-privacy.security.description")}
           </p>
         </section>
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {translate("terms-privacy-changes-policy")}
+            {translate("pages.terms-and-privacy.changes.title")}
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            {translate("terms-privacy-changes-policy-description")}
+            {translate("pages.terms-and-privacy.changes.description")}
           </p>
         </section>
         <section>
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {translate("terms-privacy-contact-us")}
+            {translate("pages.terms-and-privacy.contact.title")}
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            {translate("terms-privacy-contact-us-description")}
+            {translate("pages.terms-and-privacy.contact.description")}
           </p>
         </section>
       </div>

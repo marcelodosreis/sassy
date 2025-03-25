@@ -98,6 +98,33 @@
         "github": "GitHub",
         "copyright": "© 2025 Sassy. All rights reserved."
       }
+    },
+    "terms-and-privacy": {
+      "title": "Terms and Privacy Policy",
+      "terms": {
+        "title": "Terms of Use",
+        "description": "Welcome to our service. By using our website, you agree to comply with the following terms and conditions."
+      },
+      "policy": {
+        "title": "Privacy Policy",
+        "description": "We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data."
+      },
+      "collection": {
+        "title": "Data Collection",
+        "description": "We may collect personal information such as your name, email address, and usage data to improve our service and provide a better user experience."
+      },
+      "security": {
+        "title": "Data Security",
+        "description": "We implement a variety of security measures to ensure the safety of your personal data. However, no method of transmission over the internet is completely secure, so we cannot guarantee absolute security."
+      },
+      "changes": {
+        "title": "Changes to this Policy",
+        "description": "We may update this Terms and Privacy Policy from time to time. Any changes will be posted on this page with an updated date."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "If you have any questions about these terms or our privacy policy, feel free to contact us."
+      }
     }
   },
   "components": {
