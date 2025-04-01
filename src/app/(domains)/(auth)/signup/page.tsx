@@ -74,18 +74,18 @@ export default function SignUp() {
         dispatch({
           type: "SET_ERRORS",
           payload: {
-            email: isValidEmailResponse ? "" : translate("signUp-invalid-email"),
-            password: isPasswordValid ? "" : translate("signUp-invalid-password"),
-            confirmPassword: isPasswordsMatch ? "" : translate("signUp-passwords-do-not-match"),
+            email: isValidEmailResponse ? "" : translate("pages.sign-up.errors.email"),
+            password: isPasswordValid ? "" : translate("pages.sign-up.errors.password"),
+            confirmPassword: isPasswordsMatch ? "" : translate("pages.sign-up.errors.confirm-password"),
           },
         });
-        throw new Error("Validation Error");
+        // throw new Error("Validation Error");
       }
 
       if (!state.isTermsAccepted) {
         dispatch({
           type: "SET_ERRORS",
-          payload: { terms: translate("signUp-terms-not-accepted") },
+          payload: { terms: translate("pages.sign-up.errors.terms") },
         });
         throw new Error("Terms not accepted");
       }
@@ -96,12 +96,12 @@ export default function SignUp() {
       if (response?.id) {
         dispatch({ type: "SET_REGISTRATION_COMPLETE", payload: true });
       } else {
-        dispatch({ type: "SET_ERRORS", payload: { general: translate("signUp-general-error") } });
+        dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-up.general-error") } });
       }
     } catch (err) {
       console.error("Error", err);
       if (err instanceof Error && err.message !== "Validation Error" && err.message !== "Terms not accepted") {
-        dispatch({ type: "SET_ERRORS", payload: { general: translate("signUp-general-error") } });
+        dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-up.errors.error") } });
       }
     } finally {
       dispatch({ type: "SET_LOADING", payload: false });
@@ -112,15 +112,15 @@ export default function SignUp() {
     <>
       {state.isRegistrationComplete ? (
         <>
-          <BackLinkComponent href='/signin' label={translate("signUp-back-to-login")} />
+          <BackLinkComponent href='/signin' label={translate("pages.sign-up.back-to-login")} />
           <div className="text-center">
-            <p className="text-lg text-gray-700">{translate("signUp-general-error")}</p>
+            <p className="text-lg text-gray-700">{translate("pages.sign-up.general-error")}</p>
           </div>
         </>
       ) : (
         <>
-          <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("signUp-title")}</h2>
-          <p className="text-center text-sm text-gray-600">{translate("signUp-subtitle")}</p>
+          <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("pages.sign-up.title")}</h2>
+          <p className="text-center text-sm text-gray-600">{translate("pages.sign-up.description")}</p>
           <form
             className="mt-8 space-y-6"
             onSubmit={(e) => {
@@ -132,7 +132,7 @@ export default function SignUp() {
               <InputComponent
                 type="email"
                 name="email"
-                label={translate("signUp-email")}
+                label={translate("pages.sign-up.inputs.email")}
                 placeholder=""
                 value={state.inputValue.email}
                 onChange={(e) =>
@@ -148,7 +148,7 @@ export default function SignUp() {
               <InputComponent
                 type="password"
                 name="password"
-                label={translate("signUp-password")}
+                label={translate("pages.sign-up.inputs.password")}
                 placeholder=""
                 value={state.inputValue.password}
                 onChange={(e) =>
@@ -165,7 +165,7 @@ export default function SignUp() {
               <InputComponent
                 type="password"
                 name="confirmPassword"
-                label={translate("signUp-confirm-password")}
+                label={translate("pages.sign-up.inputs.confirm-password")}
                 placeholder=""
                 value={state.inputValue.confirmPassword}
                 onChange={(e) =>
@@ -192,7 +192,7 @@ export default function SignUp() {
                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />
               <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
-                {translate("signUp-terms-label")}
+                {translate("pages.sign-up.inputs.terms")}
               </label>
             </div>
             {state.errors.terms && (
@@ -200,7 +200,7 @@ export default function SignUp() {
             )}
 
             <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-              {translate("signUp-button")}
+              {translate("pages.sign-up.actions.submit")}
             </ButtonComponent>
           </form>
         </>

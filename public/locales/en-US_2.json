@@ -130,22 +130,41 @@
       "title": "Sign In",
       "description": "Enter your details to use an account",
       "inputs": {
-        "email": {
-          "text": "Email",
-          "error": "Invalid email format."
-        },
-        "password": {
-          "text": "Password",
-          "error": "Password must be at least 6 characters long."
-        }
+        "email": "Email",
+        "password": "Password"
       },
       "actions": {
         "back": "Back To Home",
         "forgot-password": "Forgot your password?",
         "submit": "Sign In"
       },
-      "invalid-credentials": "Invalid email or password.",
-      "general-error": "Something went wrong. Please try again."
+      "errors": {
+        "email": "Invalid email format.",
+        "password": "Password must be at least 6 characters long.",
+        "credentials": "Invalid email or password.",
+        "error": "Something went wrong. Please try again."
+      }
+    },
+    "sign-up": {
+      "back-to-login": "Back To Login",
+      "title": "Sign Up",
+      "description": "Create your account to get started",
+      "inputs": {
+        "email": "Email",
+        "password": "Password",
+        "confirm-password": "Confirm Password",
+        "terms": "I accept the Terms and Privacy Policy"
+      },
+      "actions": {
+        "submit": "Sign Up"
+      },
+      "errors": {
+        "email": "Invalid email format.",
+        "password": "Password must be at least 6 characters long.",
+        "confirm-password": "Passwords do not match.",
+        "terms": "You must accept the terms and conditions.",
+        "error": "Something went wrong. Please try again."
+      }
     }
   },
   "components": {

@@ -65,8 +65,8 @@ export default function SignIn() {
               dispatch({
                   type: "SET_ERRORS",
                   payload: {
-                      email: isValidEmailResponse ? "" : translate("pages.sign-in.inputs.email.error"),
-                      password: isPasswordValid ? "" : translate("pages.sign-in.inputs.password.error"),
+                      email: isValidEmailResponse ? "" : translate("pages.sign-in.errors.email"),
+                      password: isPasswordValid ? "" : translate("pages.sign-in.errors.password"),
                   },
               });
               throw new Error("Validation Error");
@@ -78,12 +78,12 @@ export default function SignIn() {
           if (response?.id) {
               router.push(ROUTES.dashboard);
           } else {
-              dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-in.invalid-credentials") } });
+              dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-in.errors.credentials") } });
           }
       } catch (err) {
           console.error("Error", err);
           if (err instanceof Error && err.message !== "Validation Error") {
-              dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-in.general-error") } });
+              dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.sign-in.errors.error") } });
           }
           dispatch({ type: "SET_LOADING", payload: false });
       }
@@ -104,7 +104,7 @@ export default function SignIn() {
           <InputComponent
             type="email"
             name="email"
-            label={translate('pages.sign-in.inputs.email.text')}
+            label={translate('pages.sign-in.inputs.email')}
             placeholder=""
             value={state.inputValue.email}
             onChange={(e) =>
@@ -120,7 +120,7 @@ export default function SignIn() {
           <InputComponent
             type="password"
             name="password"
-            label={translate('pages.sign-in.inputs.password.text')}
+            label={translate('pages.sign-in.inputs.password')}
             placeholder=""
             value={state.inputValue.password}
             onChange={(e) =>

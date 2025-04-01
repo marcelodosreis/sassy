@@ -1,17 +1,5 @@
 {
-    "signUp-back-to-login": "Back To Login",
-    "signUp-title": "Sign Up",
-    "signUp-subtitle": "Create your account to get started",
-    "signUp-invalid-email": "Invalid email format.",
-    "signUp-invalid-password": "Password must be at least 6 characters long.",
-    "signUp-passwords-do-not-match": "Passwords do not match.",
-    "signUp-terms-not-accepted": "You must accept the terms and conditions.",
-    "signUp-general-error": "Something went wrong. Please try again.",
-    "signUp-email": "Email",
-    "signUp-password": "Password",
-    "signUp-confirm-password": "Confirm Password",
-    "signUp-terms-label": "I accept the Terms and Privacy Policy",
-    "signUp-button": "Sign Up",
+
     
     "forgot-password-title": "Forgot Password",
     "forgot-password-description": "Enter your email to receive a password reset link.",
