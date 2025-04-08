@@ -60,7 +60,7 @@ export default function ForgotPassword() {
                 dispatch({
                     type: "SET_ERRORS",
                     payload: {
-                        email: translate("forgot-password-invalid-email"),
+                        email: translate("pages.forgot-password.errors.email"),
                     },
                 });
                 throw new Error("Validation Error");
@@ -72,11 +72,11 @@ export default function ForgotPassword() {
             if (response) {
                 dispatch({ type: "SET_SUCCESS", payload: true });
             } else {
-                dispatch({ type: "SET_ERRORS", payload: { general: translate("forgot-password-general-error") } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.forgot-password.errors.error") } });
             }
         } catch (err) {
             if (err instanceof Error && err.message !== "Validation Error") {
-                dispatch({ type: "SET_ERRORS", payload: { general: translate("forgot-password-general-error") } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.forgot-password.errors.error") } });
             }
         } finally {
             dispatch({ type: "SET_LOADING", payload: false });
@@ -86,18 +86,18 @@ export default function ForgotPassword() {
     if (state.isSuccess) {
         return (
             <>
-                <BackLinkComponent href='/signin' label={translate("forgot-password-back-to-login")} />
-                <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("forgot-password-check-inbox-title")}</h2>
-                <p className="text-center text-sm text-gray-600">{translate("forgot-password-check-inbox-description")}</p>
+                <BackLinkComponent href='/signin' label={translate("pages.forgot-password.actions.back")} />
+                <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("pages.forgot-password.actions.inbox.title")}</h2>
+                <p className="text-center text-sm text-gray-600">{translate("pages.forgot-password.actions.inbox.description")}</p>
             </>
         );
     }
 
     return (
         <>
-            <BackLinkComponent href='/signin' label={translate("forgot-password-back-to-login")} />
-            <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("forgot-password-title")}</h2>
-            <p className="text-center text-sm text-gray-600">{translate("forgot-password-description")}</p>
+            <BackLinkComponent href='/signin' label={translate("pages.forgot-password.actions.back")} />
+            <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("pages.forgot-password.title")}</h2>
+            <p className="text-center text-sm text-gray-600">{translate("pages.forgot-password.description")}</p>
             <form
                 className="mt-8 space-y-6"
                 onSubmit={(e) => {
@@ -108,8 +108,8 @@ export default function ForgotPassword() {
                     <InputComponent
                         type="email"
                         name="email"
-                        label={translate("forgot-password-email-label")}
-                        placeholder={translate("forgot-password-email-placeholder")}
+                        label={translate("pages.forgot-password.inputs.email.label")}
+                        placeholder={translate("pages.forgot-password.inputs.email.placeholder")}
                         value={state.inputValue.email}
                         onChange={(e) =>
                             dispatch({ type: "SET_INPUT_VALUE", payload: { email: e.target.value } })
@@ -125,7 +125,7 @@ export default function ForgotPassword() {
                 )}
 
                 <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-                    {translate("forgot-password-button-text")}
+                    {translate("pages.forgot-password.actions.submit")}
                 </ButtonComponent>
             </form>
         </>

@@ -1,16 +1,4 @@
-{
-
-    
-    "forgot-password-title": "Forgot Password",
-    "forgot-password-description": "Enter your email to receive a password reset link.",
-    "forgot-password-email-label": "Email",
-    "forgot-password-email-placeholder": "Enter your email",
-    "forgot-password-button-text": "Send Reset Link",
-    "forgot-password-invalid-email": "Invalid email format.",
-    "forgot-password-general-error": "Something went wrong. Please try again.",
-    "forgot-password-check-inbox-title": "Check Your Inbox",
-    "forgot-password-check-inbox-description": "A password reset link has been sent to your email. Please check your inbox.",
-    "forgot-password-back-to-login": "Back To Login",
+{   
     "confirm-signup-error-token-missing": "Invalid or missing token.",
     "confirm-signup-error-failed": "Email confirmation failed. Please try again.",
     "confirm-signup-error-unexpected": "An unexpected error occurred.",
@@ -19,6 +7,7 @@
     "confirm-signup-success-message": "Your email has been successfully confirmed.",
     "confirm-signup-go-to-dashboard": "Go To Dashboard",
     "confirm-signup-oauth-success": "OAuth Successfully",
+
     "confirm-signup-oauth-success-message": "Your provider has been confirmed register.",
     "new-password-error-token-missing": "Invalid or missing token.",
     "new-password-error-password-valid": "Password must be at least 6 characters long.",
@@ -41,6 +30,11 @@
     "payment-status-back-to-home": "Back To Home",
     "payment-status-unknown-title": "Unknown Status",
     "payment-status-unknown-message": "The status of your purchase is unknown.",
+
+
+
+
+    
     "component-client-dashboard-modal-title": "Important Notice",
     "component-client-dashboard-modal-text": "To test our app, you need to start a free trial. No features are available after the trial period.",
     "component-client-dashboard-modal-button": "Start Free Trial",
