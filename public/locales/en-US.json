@@ -1,14 +1,6 @@
 {   
-    "confirm-signup-error-token-missing": "Invalid or missing token.",
-    "confirm-signup-error-failed": "Email confirmation failed. Please try again.",
-    "confirm-signup-error-unexpected": "An unexpected error occurred.",
-    "confirm-signup-back-to-login": "Back To Login",
-    "confirm-signup-email-confirmed": "Email Confirmed",
-    "confirm-signup-success-message": "Your email has been successfully confirmed.",
-    "confirm-signup-go-to-dashboard": "Go To Dashboard",
-    "confirm-signup-oauth-success": "OAuth Successfully",
 
-    "confirm-signup-oauth-success-message": "Your provider has been confirmed register.",
+
     "new-password-error-token-missing": "Invalid or missing token.",
     "new-password-error-password-valid": "Password must be at least 6 characters long.",
     "new-password-error-password-match": "Passwords do not match.",
@@ -21,6 +13,8 @@
     "new-password-password-label": "Password",
     "new-password-confirm-password-label": "Confirm Password",
     "new-password-submit-button": "Change Password",
+
+    
     "payment-status-back-to-billing": "Back To Billing",
     "payment-status-success-title": "Purchase Confirmed",
     "payment-status-success-message": "Your purchase has been successfully confirmed.",

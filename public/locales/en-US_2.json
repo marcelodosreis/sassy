@@ -156,7 +156,8 @@
         "terms": "I accept the Terms and Privacy Policy"
       },
       "actions": {
-        "submit": "Sign Up"
+        "submit": "Sign Up",
+        "success": "Please check your inbox for an email to complete the process."
       },
       "errors": {
         "email": "Invalid email format.",
@@ -186,6 +187,26 @@
       "errors": {
         "email": "Invalid email format.",
         "error": "Something went wrong. Please try again."
+      }
+    },
+    "confirm-signup": {
+      "messages": {
+        "email": {
+          "title": "Email Confirmed",
+          "description": "Your email has been successfully confirmed."
+        },
+        "oauth": {
+          "title": "OAuth Successfully",
+          "description": "Your provider has been confirmed register."
+        }
+      },
+      "actions": {
+        "dashboard": "Go To Dashboard"
+      },
+      "errors": {
+        "missing-token": "Invalid or missing token.",
+        "failed": "Email confirmation failed. Please try again.",
+        "unexpected": "An unexpected error occurred."
       }
     }
   },

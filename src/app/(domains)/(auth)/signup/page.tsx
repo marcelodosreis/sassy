@@ -114,7 +114,7 @@ export default function SignUp() {
         <>
           <BackLinkComponent href='/signin' label={translate("pages.sign-up.back-to-login")} />
           <div className="text-center">
-            <p className="text-lg text-gray-700">{translate("pages.sign-up.general-error")}</p>
+            <p className="text-lg text-gray-700">{translate("pages.sign-up.actions.success")}</p>
           </div>
         </>
       ) : (
