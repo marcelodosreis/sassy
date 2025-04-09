@@ -65,7 +65,7 @@ export default function NewPassword() {
     useEffect(() => {
         const token = searchParams?.get("code");
         if (!token) {
-            dispatch({ type: "SET_TOKEN_ERROR", payload: translate("new-password-error-token-missing") });
+            dispatch({ type: "SET_TOKEN_ERROR", payload: translate("pages.new-password.errors.token-missing") });
         } else {
             dispatch({ type: "SET_TOKEN_VALUE", payload: token });
         }
@@ -83,8 +83,8 @@ export default function NewPassword() {
                 dispatch({
                     type: "SET_ERRORS",
                     payload: {
-                        password: isPasswordValid ? "" : translate("new-password-error-password-valid"),
-                        confirmPassword: isPasswordsMatch ? "" : translate("new-password-error-password-match"),
+                        password: isPasswordValid ? "" : translate("pages.new-password.errors.password-valid"),
+                        confirmPassword: isPasswordsMatch ? "" : translate("pages.new-password.errors.password-match"),
                     },
                 });
                 throw new Error("Validation Error");
@@ -97,12 +97,12 @@ export default function NewPassword() {
             if (response) {
                 dispatch({ type: "SET_PASSWORD_CHANGED", payload: true });
             } else {
-                dispatch({ type: "SET_ERRORS", payload: { general: translate("new-password-error-general") } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.new-password.errors.general") } });
             }
         } catch (err) {
             console.error("Error", err);
             if (err instanceof Error && err.message !== "Validation Error") {
-                dispatch({ type: "SET_ERRORS", payload: { general: translate("new-password-error-unexpected") } });
+                dispatch({ type: "SET_ERRORS", payload: { general: translate("pages.new-password.errors.unexpected") } });
             }
         } finally {
             dispatch({ type: "SET_LOADING", payload: false });
@@ -117,15 +117,15 @@ export default function NewPassword() {
                 </div>
             ) : state.isSuccess ? (
                 <>
-                    <BackLinkComponent href='/signin' label={translate("new-password-back-to-login")} />
+                    <BackLinkComponent href='/signin' label={translate("pages.new-password.actions.dashboard")} />
                     <div className="text-center">
-                        <p className="text-lg text-gray-700">{translate("new-password-success-message")}</p>
+                        <p className="text-lg text-gray-700">{translate("pages.new-password.actions.success")}</p>
                     </div>
                 </>
             ) : (
                 <>
-                    <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("new-password-create-title")}</h2>
-                    <p className="text-center text-sm text-gray-600">{translate("new-password-subtitle")}</p>
+                    <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("pages.new-password.title")}</h2>
+                    <p className="text-center text-sm text-gray-600">{translate("pages.new-password.description")}</p>
                     <form
                         className="mt-8 space-y-6"
                         onSubmit={(e) => {
@@ -136,7 +136,7 @@ export default function NewPassword() {
                             <InputComponent
                                 type="password"
                                 name="password"
-                                label={translate("new-password-password-label")}
+                                label={translate("pages.new-password.inputs.password")}
                                 placeholder=""
                                 value={state.inputValue.password}
                                 onChange={(e) =>
@@ -153,7 +153,7 @@ export default function NewPassword() {
                             <InputComponent
                                 type="password"
                                 name="confirmPassword"
-                                label={translate("new-password-confirm-password-label")}
+                                label={translate("pages.new-password.inputs.confirm-password")}
                                 placeholder=""
                                 value={state.inputValue.confirmPassword}
                                 onChange={(e) =>
@@ -170,7 +170,7 @@ export default function NewPassword() {
                         )}
 
                         <ButtonComponent isLoading={state.isLoading} type="submit" className="w-full">
-                            {translate("new-password-submit-button")}
+                            {translate("pages.new-password.actions.submit")}
                         </ButtonComponent>
                     </form>
                 </>

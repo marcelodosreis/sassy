@@ -208,6 +208,26 @@
         "failed": "Email confirmation failed. Please try again.",
         "unexpected": "An unexpected error occurred."
       }
+    },
+    "new-password": {
+      "title": "Create a New Password",
+      "description": "Set your new password to continue",
+      "inputs": {
+        "password": "Password",
+        "confirm-password": "Confirm Password"
+      },
+      "actions": {
+        "submit": "Change Password",
+        "dashboard": "Back To dashboard",
+        "success": "Your password has been changed successfully!"
+      },
+      "errors": {
+        "token-missing": "Invalid or missing token.",
+        "password-valid": "Password must be at least 6 characters long.",
+        "password-match": "Passwords do not match.",
+        "general": "Failed to change the password. Please try again.",
+        "unexpected": "Something went wrong. Please try again."
+      }
     }
   },
   "components": {

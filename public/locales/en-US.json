@@ -1,20 +1,5 @@
 {   
 
-
-    "new-password-error-token-missing": "Invalid or missing token.",
-    "new-password-error-password-valid": "Password must be at least 6 characters long.",
-    "new-password-error-password-match": "Passwords do not match.",
-    "new-password-error-general": "Failed to change the password. Please try again.",
-    "new-password-error-unexpected": "Something went wrong. Please try again.",
-    "new-password-back-to-login": "Back To Login",
-    "new-password-success-message": "Your password has been changed successfully!",
-    "new-password-create-title": "Create a New Password",
-    "new-password-subtitle": "Set your new password to continue",
-    "new-password-password-label": "Password",
-    "new-password-confirm-password-label": "Confirm Password",
-    "new-password-submit-button": "Change Password",
-
-    
     "payment-status-back-to-billing": "Back To Billing",
     "payment-status-success-title": "Purchase Confirmed",
     "payment-status-success-message": "Your purchase has been successfully confirmed.",
