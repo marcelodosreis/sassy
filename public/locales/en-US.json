@@ -1,19 +1,4 @@
 {   
-
-    "payment-status-back-to-billing": "Back To Billing",
-    "payment-status-success-title": "Purchase Confirmed",
-    "payment-status-success-message": "Your purchase has been successfully confirmed.",
-    "payment-status-back-to-settings": "Back To Settings",
-    "payment-status-cancel-title": "Purchase Cancelled",
-    "payment-status-cancel-message": "Your purchase has been cancelled.",
-    "payment-status-back-to-home": "Back To Home",
-    "payment-status-unknown-title": "Unknown Status",
-    "payment-status-unknown-message": "The status of your purchase is unknown.",
-
-
-
-
-    
     "component-client-dashboard-modal-title": "Important Notice",
     "component-client-dashboard-modal-text": "To test our app, you need to start a free trial. No features are available after the trial period.",
     "component-client-dashboard-modal-button": "Start Free Trial",
