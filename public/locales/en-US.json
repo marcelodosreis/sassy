@@ -1,11 +1,4 @@
 {   
-    "component-client-dashboard-modal-title": "Important Notice",
-    "component-client-dashboard-modal-text": "To test our app, you need to start a free trial. No features are available after the trial period.",
-    "component-client-dashboard-modal-button": "Start Free Trial",
-    "component-feature-menu-tab-free": "Free",
-    "component-feature-menu-tab-starter": "Starter/Creator",
-    "component-feature-menu-tab-pro": "Pro",
-    "component-dashboard-navbar-title": "Dashboard",
     "component-my-account-button": "My Account",
     "component-my-account-profile": "Profile",
     "component-my-account-subscription": "Subscription",

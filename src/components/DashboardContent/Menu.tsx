@@ -13,17 +13,17 @@ type Tab = {
 };
 
 const tabs: Tab[] = [
-    { name: "component-feature-menu-tab-free", href: "/feature1", requiredPlan: "free" },
-    { name: "component-feature-menu-tab-starter", href: "/feature2", requiredPlan: "starter" },
-    { name: "component-feature-menu-tab-pro", href: "/feature3", requiredPlan: "pro" },
+    { name: "components.dashboard-content.menu.options.free", href: "/feature1", requiredPlan: "free" },
+    { name: "components.dashboard-content.menu.options.starter", href: "/feature2", requiredPlan: "starter" },
+    { name: "components.dashboard-content.menu.options.pro", href: "/feature3", requiredPlan: "pro" },
 ];
 
-type FeatureMenuProps = {
+type MenuProps = {
     activePlan: "free" | "starter" | "creator" | "pro";
     onTabChange: (activeTab: string) => void;
 };
 
-export default function FeatureMenu({ activePlan, onTabChange }: FeatureMenuProps) {
+export function Menu({ activePlan, onTabChange }: MenuProps) {
     const [activeTab, setActiveTab] = useState("");
     const { openModal } = useModal();
     const { translate } = useI18n();

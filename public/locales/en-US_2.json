@@ -331,6 +331,25 @@
       "create-account": "Create an account",
       "already-have-account": "Already have an account?",
       "go-back-to-login": "Go back to login"
+    },
+    "dashboard-content": {
+      "modal": {
+        "title": "Important Notice",
+        "description": "To test our app, you need to start a free trial. No features are available after the trial period.",
+        "actions": {
+          "proceed": "Start Free Trial"
+        }
+      },
+      "navbar": {
+        "title": "Dashboard"
+      },
+      "menu": {
+        "options": {
+          "free": "Free",
+          "starter": "Starter/Creator",
+          "pro": "Pro"
+        }
+      }
     }
   }
 }

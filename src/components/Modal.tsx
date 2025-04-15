@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-import { useModal } from '@/hooks/useModal';
+import { useModal } from "@/hooks/useModal";
 
 interface ModalProps {
   title: string;
@@ -13,15 +13,18 @@ const Modal: React.FC<ModalProps> = ({ title, children }) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
         closeModal();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [closeModal]);
 
@@ -42,4 +45,4 @@ const Modal: React.FC<ModalProps> = ({ title, children }) => {
   );
 };
 
-export default Modal;
+export { Modal };
