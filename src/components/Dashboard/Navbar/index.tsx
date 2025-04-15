@@ -2,11 +2,9 @@
 
 import { useI18n } from "@/hooks/useI18n";
 
-import LanguageSelector from "../LanguageSelector";
-import MyAccount from "../MyAccount";
-
-
+import MyAccount from "./MyAccount";
 // import Notification from "./Notification";
+import LanguageSelector from "../../LanguageSelector";
 
 export function Navbar() {
     const { translate } = useI18n();
@@ -17,7 +15,7 @@ export function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <a href="/dashboard" className="cursor-pointer">
-                            <h1 className="text-xl font-bold text-gray-900">{translate("components.dashboard-content.navbar.title")}</h1>
+                            <h1 className="text-xl font-bold text-gray-900">{translate("components.dashboard.navbar.title")}</h1>
                         </a>
                     </div>
                     <div className="flex items-center space-x-4">

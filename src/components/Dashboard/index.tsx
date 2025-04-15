@@ -4,11 +4,11 @@ import { Menu } from "./Menu";
 import { Modal } from "./Modal";
 import { Navbar } from "./Navbar";
 
-type ComponentDashboardContentProps = {
+type ComponentDashboardProps = {
   plan: "free" | "starter" | "creator" | "pro";
 };
 
-export const DashboardContent = ({ plan }: ComponentDashboardContentProps) => {
+export const Dashboard = ({ plan }: ComponentDashboardProps) => {
   const handleTabChange = (tab: string) => {
     console.log(tab);
   };

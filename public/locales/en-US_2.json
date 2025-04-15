@@ -126,7 +126,7 @@
         "description": "If you have any questions about these terms or our privacy policy, feel free to contact us."
       }
     },
-    "sign-in": {
+    "signin": {
       "title": "Sign In",
       "description": "Enter your details to use an account",
       "inputs": {
@@ -145,7 +145,7 @@
         "error": "Something went wrong. Please try again."
       }
     },
-    "sign-up": {
+    "signup": {
       "back-to-login": "Back To Login",
       "title": "Sign Up",
       "description": "Create your account to get started",
@@ -332,7 +332,7 @@
       "already-have-account": "Already have an account?",
       "go-back-to-login": "Go back to login"
     },
-    "dashboard-content": {
+    "dashboard": {
       "modal": {
         "title": "Important Notice",
         "description": "To test our app, you need to start a free trial. No features are available after the trial period.",
@@ -341,7 +341,16 @@
         }
       },
       "navbar": {
-        "title": "Dashboard"
+        "title": "Dashboard",
+        "my-account": {
+          "options": {
+            "button": "My Account",
+            "profile": "Profile",
+            "subscription": "Subscription",
+            "terms-privacy": "Terms and Privacy",
+            "sign-out": "Sign Out"
+          }
+        }
       },
       "menu": {
         "options": {

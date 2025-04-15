@@ -1,22 +1,18 @@
 {   
-    "component-my-account-button": "My Account",
-    "component-my-account-profile": "Profile",
-    "component-my-account-subscription": "Subscription",
-    "component-my-account-terms-privacy": "Terms and Privacy",
-    "component-my-account-sign-out": "Sign Out",
-    "settings-name-label": "Name",
-    "settings-email-label": "Email",
-    "subscription-current-plan": "Current Plan",
-    "subscription-current-plan-description": "You are currently on the {plan} plan.",
     "component-manage-billing-title": "Subscription Details",
     "component-manage-billing-button": "Manage billing info",
     "component-manage-billing-error": "Could not redirect to the billing portal.",
-    "failed-to-create-billing-portal": "Failed to create billing portal session.",
     "component-settings-options-change-password": "Change Password",
     "component-settings-options-current-plan": "Current Plan",
     "component-settings-options-manage-subscription": "Manage Subscription",
     "component-settings-options-password-change-request-sent": "Password Change Request Sent!",
     "component-settings-options-password-change-description": "Please check your inbox for an email to complete the process.",
     "component-settings-options-password-change-failed": "Password Change Failed",
-    "component-settings-options-password-change-error": "An error occurred while processing your request. Please try again later."
+    "component-settings-options-password-change-error": "An error occurred while processing your request. Please try again later.",
+
+    "settings-name-label": "Name",
+    "settings-email-label": "Email",
+    "subscription-current-plan": "Current Plan",
+    "subscription-current-plan-description": "You are currently on the {plan} plan.",
+    "failed-to-create-billing-portal": "Failed to create billing portal session."
 }

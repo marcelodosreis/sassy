@@ -13,9 +13,9 @@ type Tab = {
 };
 
 const tabs: Tab[] = [
-    { name: "components.dashboard-content.menu.options.free", href: "/feature1", requiredPlan: "free" },
-    { name: "components.dashboard-content.menu.options.starter", href: "/feature2", requiredPlan: "starter" },
-    { name: "components.dashboard-content.menu.options.pro", href: "/feature3", requiredPlan: "pro" },
+    { name: "components.dashboard.menu.options.free", href: "/feature1", requiredPlan: "free" },
+    { name: "components.dashboard.menu.options.starter", href: "/feature2", requiredPlan: "starter" },
+    { name: "components.dashboard.menu.options.pro", href: "/feature3", requiredPlan: "pro" },
 ];
 
 type MenuProps = {
