@@ -20,7 +20,7 @@ export default async function Settings() {
                     <div className="space-y-4">
                         {data?.user_metadata?.name && (
                             <div>
-                                <label className="block text-sm font-medium text-gray-700">{translate("settings-name-label")}</label>
+                                <label className="block text-sm font-medium text-gray-700">{translate("pages.settings.name")}</label>
                                 <input
                                     type="text"
                                     value={data?.user_metadata?.name}
@@ -31,7 +31,7 @@ export default async function Settings() {
                         )}
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">{translate("settings-email-label")}</label>
+                            <label className="block text-sm font-medium text-gray-700">{translate("pages.settings.email")}</label>
                             <input
                                 type="email"
                                 value={data?.email}

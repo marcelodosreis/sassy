@@ -9,16 +9,16 @@ export default function FeaturesSection() {
 
   const features = [
     {
-      title: translate('home-section-feature-oauth-title'),
-      description: translate('home-section-feature-oauth-description'),
+      title: translate('pages.home.sections.features.oauth.title'),
+      description: translate('pages.home.sections.features.oauth.description'),
     },
     {
-      title: translate('home-section-feature-subscription-title'),
-      description: translate('home-section-feature-subscription-description'),
+      title: translate('pages.home.sections.features.subscription.title'),
+      description: translate('pages.home.sections.features.subscription.description'),
     },
     {
-      title: translate('home-section-feature-responsive-title'),
-      description: translate('home-section-feature-responsive-description'),
+      title: translate('pages.home.sections.features.responsive.title'),
+      description: translate('pages.home.sections.features.responsive.description'),
     },
   ];
 
@@ -27,10 +27,10 @@ export default function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-            {translate('home-section-features-title')}
+            {translate('pages.home.sections.features.title')}
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            {translate('home-section-features-description')}
+            {translate('pages.home.sections.features.description')}
           </p>
         </div>
 

@@ -66,6 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           });
           const email = (await AuthServiceInstance.getUserById(userId))?.email;
           if (!email) throw new Error("Missing User Data in Completed Checkout");
+          
           await EmailServiceInstance.sendEmail({
             from: 'Sassy - Powerful Micro-SaaS',
             to: [email],

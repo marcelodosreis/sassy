@@ -48,13 +48,13 @@ export default function Navbar() {
 
                 <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-6">
                     <a href="#pricing" className="text-gray-600 hover:text-indigo-600">
-                        {translate('home-navbar-pricing')}
+                        {translate('components.navbar.pricing')}
                     </a>
                     <a href="#features" className="text-gray-600 hover:text-indigo-600">
-                        {translate('home-navbar-features')}
+                        {translate('components.navbar.features')}
                     </a>
                     <a href="#faq" className="text-gray-600 hover:text-indigo-600">
-                        {translate('home-navbar-faq')}
+                        {translate('components.navbar.faq')}
                     </a>
                 </nav>
 
@@ -65,15 +65,15 @@ export default function Navbar() {
                             : !isLogged ? (
                                 <>
                                     <a href="/signin" className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-100" >
-                                        {translate('home-navbar-signin')}
+                                        {translate('components.navbar.signin')}
                                     </a>
                                     <a href="/signup" className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700">
-                                        {translate('home-navbar-try')}
+                                        {translate('components.navbar.try')}
                                     </a>
                                 </>
                             ) :
                                 <a href="/dashboard" className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700">
-                                    {translate('home-navbar-dashboard')}
+                                    {translate('components.navbar.dashboard')}
                                 </a>
                     }
                     <LanguageSelector />
@@ -104,13 +104,13 @@ export default function Navbar() {
                 <div className="md:hidden bg-white shadow-lg">
                     <nav className="flex flex-col items-start space-y-4 p-4">
                         <a href="#pricing" className="text-gray-600 hover:text-indigo-600">
-                            {translate('home-navbar-pricing')}
+                            {translate('components.navbar.pricing')}
                         </a>
                         <a href="#features" className="text-gray-600 hover:text-indigo-600">
-                            {translate('home-navbar-features')}
+                            {translate('components.navbar.features')}
                         </a>
                         <a href="#faq" className="text-gray-600 hover:text-indigo-600">
-                            {translate('home-navbar-faq')}
+                            {translate('components.navbar.faq')}
                         </a>
                     </nav>
                     <div className="flex flex-col space-y-4 p-4">
@@ -124,13 +124,13 @@ export default function Navbar() {
                                         href="/signin"
                                         className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-100"
                                     >
-                                        {translate('home-navbar-signin')}
+                                        {translate('components.navbar.signin')}
                                     </a>
                                     <a
                                         href="/signup"
                                         className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
                                     >
-                                        {translate('home-navbar-try')}
+                                        {translate('components.navbar.try')}
                                     </a>
                                 </>
                             ) : (
@@ -138,7 +138,7 @@ export default function Navbar() {
                                     href="/dashboard"
                                     className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
                                 >
-                                    {translate('home-navbar-dashboard')}
+                                    {translate('components.navbar.dashboard')}
                                 </a>
                             )}
                     </div>

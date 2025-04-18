@@ -1,6 +1,6 @@
 import { headers } from 'next/headers';
 
-import { ClientDashboard } from "@/components/ClientDashboard";
+import { Dashboard as DashboardComponent } from "@/components/Dashboard";
 import { ModalProvider } from "@/contexts/ModalContext";
 
 
@@ -10,7 +10,7 @@ export default async function Dashboard() {
   return (
     <ModalProvider>
       <div className="bg-white border-b border-gray-200">
-        <ClientDashboard plan={sharedData?.plan} />
+        <DashboardComponent plan={sharedData?.plan} />
       </div>
     </ModalProvider>
   );

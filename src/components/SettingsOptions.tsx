@@ -14,7 +14,7 @@ type SettingsOptionsProps = {
 }
 
 function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
-    const { translate } = useI18n();
+    const { translate } = useI18n("components.settings-options");
     const AuthServiceInstance = new AuthService(supabase);
     const { addToast } = useToast();
     const [isLoading, setIsLoading] = useState({
@@ -28,15 +28,15 @@ function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
         if (response) {
             await addToast({
                 id: Date.now().toString(),
-                message: translate('component-settings-options-password-change-request-sent'),
-                description: translate('component-settings-options-password-change-description'),
+                message: translate('toast.success.title'),
+                description: translate('toast.success.description'),
                 type: 'info',
             });
         } else {
             await addToast({
                 id: Date.now().toString(),
-                message: translate('component-settings-options-password-change-failed'),
-                description: translate('component-settings-options-password-change-error'),
+                message: translate('toast.error.title'),
+                description: translate('toast.error.description'),
                 type: 'error',
             });
         }
@@ -47,20 +47,20 @@ function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
         <div className="space-y-6">
             {userEmail && <div className="flex justify-between items-start">
                 <div className="max-w-md">
-                    <h2 className="text-lg font-medium text-gray-700">{translate('component-settings-options-change-password')}</h2>
+                    <h2 className="text-lg font-medium text-gray-700">{translate('actions.change-password')}</h2>
                 </div>
                 <a>
-                    <ButtonComponent isLoading={isLoading.forgotPassword} onClick={() => handleForgotPassword(userEmail)} type="button" variant="outlined">{translate('component-settings-options-change-password')}</ButtonComponent>
+                    <ButtonComponent isLoading={isLoading.forgotPassword} onClick={() => handleForgotPassword(userEmail)} type="button" variant="outlined">{translate('actions.change-password')}</ButtonComponent>
                 </a>
             </div>
             }
             <div className="flex justify-between items-start">
                 <div className="max-w-md">
-                    <h2 className="text-lg font-medium text-gray-700">{translate('component-settings-options-current-plan')}</h2>
+                    <h2 className="text-lg font-medium text-gray-700">{translate('plan')}</h2>
                     <p className="text-gray-700">{currentPlan}</p>
                 </div>
                 <a href="/dashboard/subscription">
-                    <ButtonComponent type="button" variant="filled">{translate('component-settings-options-manage-subscription')}</ButtonComponent>
+                    <ButtonComponent type="button" variant="filled">{translate('subscription')}</ButtonComponent>
                 </a>
             </div>
         </div>

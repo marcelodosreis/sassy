@@ -37,7 +37,7 @@ function confirmationReducer(state: State, action: ConfirmSignupAction): State {
 }
 
 export default function ConfirmSignUp() {
-    const { translate } = useI18n();
+    const { translate } = useI18n("pages.confirm-signup");
     const [state, dispatch] = useReducer(confirmationReducer, {
         isLoading: true,
         error: null,
@@ -55,7 +55,7 @@ export default function ConfirmSignUp() {
         } else if (!token && oauth) {
             dispatch({ type: "CONFIRMATION_OAUTH" });
         } else {
-            dispatch({ type: "CONFIRMATION_FAILURE", error: translate("confirm-signup-error-token-missing") });
+            dispatch({ type: "CONFIRMATION_FAILURE", error: translate("errors.missing-token") });
         }
     }, []);
 
@@ -68,13 +68,13 @@ export default function ConfirmSignUp() {
             if (response?.id) {
                 dispatch({ type: "CONFIRMATION_SUCCESS" });
             } else {
-                throw new Error(translate("confirm-signup-error-failed"));
+                throw new Error(translate("errors.failed"));
             }
         } catch (error: unknown) {
             if (error instanceof Error) {
                 dispatch({ type: "CONFIRMATION_FAILURE", error: error.message });
             } else {
-                dispatch({ type: "CONFIRMATION_FAILURE", error: translate("confirm-signup-error-unexpected") });
+                dispatch({ type: "CONFIRMATION_FAILURE", error: translate("errors.unexpected") });
             }
         }
     };
@@ -106,9 +106,9 @@ const ConfirmationMessage = () => {
     const { translate } = useI18n();
     return (
         <>
-            <BackLink href='/signin' label={translate("confirm-signup-back-to-login")} />
-            <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("confirm-signup-email-confirmed")}</h2>
-            <p className="text-center text-sm text-gray-600">{translate("confirm-signup-success-message")}</p>
+            <BackLink href='/dashboard' label={translate("actions.dashboard")} />
+            <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("messages.email.title")}</h2>
+            <p className="text-center text-sm text-gray-600">{translate("messages.email.description")}</p>
         </>
     );
 };
@@ -117,9 +117,9 @@ const ConfirmationOAuthMessage = () => {
     const { translate } = useI18n();
     return (
         <>
-            <BackLink href='/dashboard' label={translate("confirm-signup-go-to-dashboard")} />
-            <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("confirm-signup-oauth-success")}</h2>
-            <p className="text-center text-sm text-gray-600">{translate("confirm-signup-oauth-success-message")}</p>
+            <BackLink href='/dashboard' label={translate("go-to-dashboard")} />
+            <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("messages.oauth.title")}</h2>
+            <p className="text-center text-sm text-gray-600">{translate("messages.oauth.description")}</p>
         </>
     );
 };
