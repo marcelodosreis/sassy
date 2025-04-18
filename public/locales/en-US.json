@@ -1,7 +1,5 @@
 {   
-    "component-manage-billing-title": "Subscription Details",
-    "component-manage-billing-button": "Manage billing info",
-    "component-manage-billing-error": "Could not redirect to the billing portal.",
+
     "component-settings-options-change-password": "Change Password",
     "component-settings-options-current-plan": "Current Plan",
     "component-settings-options-manage-subscription": "Manage Subscription",
@@ -12,7 +10,7 @@
 
     "settings-name-label": "Name",
     "settings-email-label": "Email",
-    "subscription-current-plan": "Current Plan",
-    "subscription-current-plan-description": "You are currently on the {plan} plan.",
+
+    
     "failed-to-create-billing-portal": "Failed to create billing portal session."
 }

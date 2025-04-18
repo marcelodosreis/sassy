@@ -249,6 +249,12 @@
         "settings": "Back To Settings",
         "home": "Back To Home"
       }
+    },
+    "subscription": {
+      "plan": {
+        "title": "Current Plan",
+        "description": "You are currently on the {plan} plan."
+      }
     }
   },
   "components": {
@@ -358,6 +364,12 @@
           "starter": "Starter/Creator",
           "pro": "Pro"
         }
+      }
+    },
+    "manage-billing": {
+      "title": "Subscription Details",
+      "actions": {
+        "proceed": "Manage billing info"
       }
     }
   }

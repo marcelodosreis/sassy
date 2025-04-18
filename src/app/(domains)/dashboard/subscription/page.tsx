@@ -14,7 +14,7 @@ export default async function Subscription() {
   const SupabaseServiceInstance = new SupabaseService(supabase);
   const session = await SupabaseServiceInstance.getSession();
 
-  const currentPlanText = translate("subscription-current-plan-description");
+  const currentPlanText = translate("pages.subscription.plan.description");
   const currentPlan = capitalize(sharedData?.plan);
 
   return (
@@ -24,7 +24,7 @@ export default async function Subscription() {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="text-2xl font-semibold text-gray-800">{translate("subscription-current-plan")}</h2>
+                <h2 className="text-2xl font-semibold text-gray-800">{translate("pages.subscription.plan.title")}</h2>
                 <p className="text-lg text-gray-600">
                   {currentPlanText.replace("{plan}", currentPlan)}
                 </p>

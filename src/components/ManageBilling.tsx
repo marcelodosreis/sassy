@@ -25,7 +25,7 @@ export async function handleManageBilling(redirect: (url: string) => void, acces
         redirect(url);
     } catch (error) {
         console.error('Error redirecting to billing portal:', error);
-        throw new Error(translate('component-manage-billing-error'));
+        throw new Error(translate('components.manage-billing-error'));
     }
 }
 
@@ -41,7 +41,7 @@ export default function ManageBilling({ accessToken }: Props) {
     return (
         <div className="flex justify-between items-center">
             <div>
-                <h2 className="text-2xl font-semibold text-gray-800">{translate("component-manage-billing-title")}</h2>
+                <h2 className="text-2xl font-semibold text-gray-800">{translate("components.manage-billing.title")}</h2>
             </div>
             <ButtonComponent
                 onClick={async () => {
@@ -59,7 +59,7 @@ export default function ManageBilling({ accessToken }: Props) {
                 isLoading={isLoading}
                 size="small"
                 className="text-indigo-600 hover:underline border border-indigo-600 rounded px-4 py-2 md:w-1/6 w-2/4">
-                {translate("component-manage-billing-button")}
+                {translate("components.manage-billing.actions.proceed")}
             </ButtonComponent>
         </div>
     );
