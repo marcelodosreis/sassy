@@ -1,4 +1,4 @@
-import { ROUTES } from "@/constants/ROUTES";
+import { ROUTES } from "@/constants/routes-constants";
 import { useI18n } from '@/hooks/useI18n'; 
 
 type FooterAuthScreenProps = {

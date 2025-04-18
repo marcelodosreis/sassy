@@ -1,6 +1,6 @@
 import { Plan } from "@/components/Pricing/PlanCard";
-import { FIXED_CURRENCY } from "@/constants/FIXED_CURRENCY";
-import { HAS_FREE_TRIAL } from "@/constants/HAS_FREE_TRIAL";
+import { FIXED_CURRENCY } from "@/constants/fixed-currency";
+import { HAS_FREE_TRIAL } from "@/constants/has-free-trial";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from '@/libs/supabase/client';
 import AuthService from '@/services/auth';

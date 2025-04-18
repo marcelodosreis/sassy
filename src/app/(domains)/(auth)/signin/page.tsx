@@ -9,7 +9,7 @@ import ButtonComponent from "@/components/Button";
 import FooterAuthScreenComponent from "@/components/FooterAuthScreen";
 import InputComponent from "@/components/Input";
 import OAuth from "@/components/OAuth";
-import { ROUTES } from '@/constants/ROUTES';
+import { ROUTES } from '@/constants/routes-constants';
 import { useI18n } from '@/hooks/useI18n'; 
 import { supabase } from '@/libs/supabase/client';
 import AuthService from '@/services/auth';

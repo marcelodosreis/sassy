@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 import { Plan } from "@/components/Pricing/PlanCard";
-import { FIXED_CURRENCY } from "@/constants/FIXED_CURRENCY";
-import { HAS_FREE_TRIAL } from "@/constants/HAS_FREE_TRIAL";
+import { FIXED_CURRENCY } from "@/constants/fixed-currency";
+import { HAS_FREE_TRIAL } from "@/constants/has-free-trial";
 
 import { useI18n } from "./useI18n";
 
