@@ -1,8 +1,8 @@
-import FaqSection from "@/app/(domains)/(home)/_sections/FaqSection";
-import FeaturesSection from "@/app/(domains)/(home)/_sections/FeaturesSection";
-import HeroSection from "@/app/(domains)/(home)/_sections/HeroSection";
-import HowItWorksSection from "@/app/(domains)/(home)/_sections/HowItWorksSection";
-import TestimonialSection from "@/app/(domains)/(home)/_sections/TestimonialSection";
+import FaqSection from "@/app/(frontend)/(home)/_sections/FaqSection";
+import FeaturesSection from "@/app/(frontend)/(home)/_sections/FeaturesSection";
+import HeroSection from "@/app/(frontend)/(home)/_sections/HeroSection";
+import HowItWorksSection from "@/app/(frontend)/(home)/_sections/HowItWorksSection";
+import TestimonialSection from "@/app/(frontend)/(home)/_sections/TestimonialSection";
 import Navbar from "@/components/Navbar";
 import PricingSection from "@/components/Pricing";
 
