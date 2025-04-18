@@ -27,36 +27,36 @@ export function transformPurchasePlansDTO(data: InputData[], translate: (key: st
     const planDetails: Record<string, PlanDetails> = {
         "Starter": {
             id: "starter",
-            name: translate('component-pricing-plan-starter-title'),
-            description: translate('component-pricing-plan-starter-description'),
+            name: translate('components.pricing.plans.starter.title'),
+            description: translate('components.pricing.plans.starter.description'),
             features: [
-                translate('component-pricing-plan-starter-feature-first'),
-                translate('component-pricing-plan-starter-feature-second'),
-                translate('component-pricing-plan-starter-feature-third'),
+                translate('components.pricing.plans.starter.features.first'),
+                translate('components.pricing.plans.starter.features.second'),
+                translate('components.pricing.plans.starter.features.third'),
             ],
-            extraFeatures: translate('component-pricing-plan-starter-extra')
+            extraFeatures: translate('components.pricing.plans.starter.extra')
         },
         "Creator": {
             id: "creator",
-            name: translate('component-pricing-plan-creator-title'),
-            description: translate('component-pricing-plan-creator-description'),
+            name: translate('components.pricing.plans.creator.title'),
+            description: translate('components.pricing.plans.creator.description'),
             features: [
-                translate('component-pricing-plan-creator-feature-first'),
-                translate('component-pricing-plan-creator-feature-second'),
-                translate('component-pricing-plan-creator-feature-third'),
+                translate('components.pricing.plans.creator.features.first'),
+                translate('components.pricing.plans.creator.features.second'),
+                translate('components.pricing.plans.creator.features.third'),
             ],
-            extraFeatures: translate('component-pricing-plan-creator-extra')
+            extraFeatures: translate('components.pricing.plans.creator.extra')
         },
         "Pro": {
             id: "pro",
-            name: translate('component-pricing-plan-pro-title'),
-            description: translate('component-pricing-plan-pro-description'),
+            name: translate('components.pricing.plans.pro.title'),
+            description: translate('components.pricing.plans.pro.description'),
             features: [
-                translate('component-pricing-plan-pro-feature-first'),
-                translate('component-pricing-plan-pro-feature-second'),
-                translate('component-pricing-plan-pro-feature-third'),
+                translate('components.pricing.plans.pro.features.first'),
+                translate('components.pricing.plans.pro.features.second'),
+                translate('components.pricing.plans.pro.features.third'),
             ],
-            extraFeatures: translate('component-pricing-plan-pro-extra')
+            extraFeatures: translate('components.pricing.plans.pro.extra')
         }
     };
 
@@ -67,10 +67,10 @@ export function transformPurchasePlansDTO(data: InputData[], translate: (key: st
 
 
         if (interval === 'month') {
-            plansMap[planName].priceMonthly = formatPrice('component-pricing-subscription-plans-free-price-monthly', String(newUnitAmount));
+            plansMap[planName].priceMonthly = formatPrice('components.pricing.plans.prices.monthly', String(newUnitAmount));
             plansMap[planName].idMonthly = id;
         } else if (interval === 'year') {
-            plansMap[planName].priceAnnual = formatPrice('component-pricing-subscription-plans-free-price-annual', String(newUnitAmount));
+            plansMap[planName].priceAnnual = formatPrice('components.pricing.plans.prices.annual', String(newUnitAmount));
             plansMap[planName].idAnnual = id;
         }
     };

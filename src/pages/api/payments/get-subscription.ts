@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { supabaseServerClient } from '@/libs/supabase/server';
-import SupabaseService from '@/services/supabase';
+import SubscriptionServiceInstance from '@/services/subscription';
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -13,8 +13,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const SupabaseServiceInstance = new SupabaseService(supabaseServerClient);
-      const subscription = await SupabaseServiceInstance.getSubscriptionByUserId(userId);
+      const SubscriptionServiceInstanceInstance = new SubscriptionServiceInstance(supabaseServerClient);
+      const subscription = await SubscriptionServiceInstanceInstance.getSubscriptionByUserId(userId);
 
       if (!subscription) {
         return res.status(404).json({ error: 'Subscription not found' });
