@@ -1,40 +1,64 @@
 import { cookies } from 'next/headers';
 
-import enUSLocale from '../../public/locales/en-US_2.json';
-import ptBRLocale from '../../public/locales/pt-BR.json';
-
 import { Translations } from '@/contexts/i18nContext';
 
-export async function loadTranslationsSSR(locale?: string): Promise<{ translate: (key: string) => string; translations: Translations; locale: string }> {
-    let resolvedLocale: string = locale || 'en-US';
+import enUSLocale from '../../public/locales/en-US.json';
+import ptBRLocale from '../../public/locales/pt-BR.json';
 
-    if (!locale) {
-        const cookieStore = await cookies();
-        resolvedLocale = cookieStore.get('locale')?.value || 'en-US';
-    }
+type SupportedLocale = 'en-US' | 'pt-BR';
+type TranslationsMap = Record<SupportedLocale, Translations>;
 
-    const translationsMap: Record<string, Translations> = {
-        'en-US': enUSLocale,
-        'pt-BR': ptBRLocale,
-    };
+const DEFAULT_LOCALE: SupportedLocale = 'en-US';
 
-    const translations = translationsMap[resolvedLocale as keyof typeof translationsMap] || enUSLocale;
+const translationsMap: TranslationsMap = {
+  'en-US': enUSLocale,
+  'pt-BR': ptBRLocale,
+};
 
-    const translate = (key: string): string => {
-        const keys = key.split('.');
-        let currentTranslation: any = translations;
-
-        for (const k of keys) {
-            if (currentTranslation && typeof currentTranslation === 'object' && k in currentTranslation) {
-                currentTranslation = currentTranslation[k];
-            } else {
-                return key; // retorna a chave se não encontrar a tradução
-            }
-        }
-
-        return currentTranslation || key;
-    };
-
-    return { translate, translations, locale: resolvedLocale };
+function isValidLocale(locale: string): locale is SupportedLocale {
+  return Object.keys(translationsMap).includes(locale);
 }
 
+function resolveTranslationValue(obj: unknown, key: string): string {
+  if (typeof obj === 'string') return obj;
+  if (obj === undefined || obj === null) return key;
+  if (typeof obj !== 'object') return key;
+  return key;
+}
+
+export async function loadTranslationsSSR(locale?: string) {
+  let resolvedLocale: SupportedLocale;
+
+  if (locale && isValidLocale(locale)) {
+    resolvedLocale = locale;
+  } else {
+    const cookieStore = await cookies();
+    const cookieLocale = cookieStore.get('locale')?.value;
+    resolvedLocale = cookieLocale && isValidLocale(cookieLocale) 
+      ? cookieLocale 
+      : DEFAULT_LOCALE;
+  }
+
+  const translations = translationsMap[resolvedLocale];
+
+  const translate = (key: string): string => {
+    const keys = key.split('.');
+    let value: unknown = translations;
+
+    for (const k of keys) {
+      if (typeof value === 'object' && value !== null && k in value) {
+        value = (value as Record<string, unknown>)[k];
+      } else {
+        return key;
+      }
+    }
+
+    return resolveTranslationValue(value, key);
+  };
+
+  return { 
+    translate, 
+    translations, 
+    locale: resolvedLocale 
+  };
+}

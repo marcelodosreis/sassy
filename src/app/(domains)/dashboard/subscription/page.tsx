@@ -5,11 +5,11 @@ import PricingSection from "@/components/Pricing";
 import { createClient } from "@/libs/supabase/server";
 import SupabaseService from "@/services/supabase";
 import { capitalize } from "@/utils/capitalize";
-import { loadTranslationsSSR } from '@/utils/loadTranslationsSSR';
+import { loadTranslationsSSR } from "@/utils/loadTranslationsSSR";
 
 export default async function Subscription() {
   const { translate } = await loadTranslationsSSR();
-  const sharedData = JSON.parse((await headers()).get('x-shared-data') || '{}');
+  const sharedData = JSON.parse((await headers()).get("x-shared-data") || "{}");
   const supabase = await createClient();
   const SupabaseServiceInstance = new SupabaseService(supabase);
   const session = await SupabaseServiceInstance.getSession();
@@ -24,13 +24,15 @@ export default async function Subscription() {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="text-2xl font-semibold text-gray-800">{translate("pages.subscription.plan.title")}</h2>
+                <h2 className="text-2xl font-semibold text-gray-800">
+                  {translate("pages.subscription.plan.title")}
+                </h2>
                 <p className="text-lg text-gray-600">
                   {currentPlanText.replace("{plan}", currentPlan)}
                 </p>
               </div>
             </div>
-            {sharedData?.plan !== 'free' && session?.access_token && (
+            {sharedData?.plan !== "free" && session?.access_token && (
               <ManageBilling accessToken={session?.access_token} />
             )}
           </div>
