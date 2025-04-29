@@ -1,9 +1,10 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 
-type Notification = {
-  id?: string;
+export type Notification = {
+  id: string;
   user_id: string;
-  message: string;
+  title: string;
+  description: string;
   is_read?: boolean;
   created_at?: Date;
 };

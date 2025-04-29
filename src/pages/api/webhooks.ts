@@ -5,6 +5,7 @@ import { stripe } from "@/libs/stripe";
 import { supabaseServerClient } from "@/libs/supabase/server";
 import AuthService from "@/services/auth";
 import EmailService from "@/services/email";
+import NotificationService from "@/services/notification";
 import PaymentService from "@/services/payment";
 import SubscriptionService from "@/services/subscription";
 
@@ -35,6 +36,9 @@ export default async function handler(
       supabaseServerClient
     );
     const EmailServiceInstance = new EmailService();
+    const NotificationServiceInstance = new NotificationService(
+      supabaseServerClient
+    );
 
     const sig = req.headers["stripe-signature"];
     const rawBody = await getRawBody(req);
@@ -81,6 +85,12 @@ export default async function handler(
             subject: "Welcome to Sassy!",
             text: "Welcome to Sassy! Your subscription has been activated.",
             html: FINISH_CHECKOUT_EMAIL.replace("{plan}", plan),
+          });
+
+          await NotificationServiceInstance.createNotification({
+            title: "Welcome to Sassy!",
+            description: "Your subscription has been activated",
+            user_id: userId,
           });
           break;
         }

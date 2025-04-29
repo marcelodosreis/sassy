@@ -19,7 +19,7 @@
 | **Feature**                                        | **Status** |
 |----------------------------------------------------|------------|
 | Integration with Transactional Emails              | ✅         |
-| Notification Integration                           | ⬜         |
+| Notification Integration                           | ✅         |
 | Team Features                                      | ⬜         |
 
 

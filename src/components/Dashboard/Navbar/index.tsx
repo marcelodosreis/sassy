@@ -3,7 +3,7 @@
 import { useI18n } from "@/hooks/useI18n";
 
 import MyAccount from "./MyAccount";
-// import Notification from "./Notification";
+import Notification from "./Notification";
 import LanguageSelector from "../../LanguageSelector";
 
 export function Navbar() {
@@ -20,7 +20,7 @@ export function Navbar() {
                     </div>
                     <div className="flex items-center space-x-4">
                         <MyAccount />
-                        {/* <Notification /> */}
+                        <Notification />
                         <LanguageSelector />
                     </div>
                 </div>

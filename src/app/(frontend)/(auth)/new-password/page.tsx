@@ -77,6 +77,7 @@ export default function NewPassword() {
 
   useEffect(() => {
     const token = searchParams?.get("code");
+    console.log(token);
     if (!token) {
       dispatch({
         type: "SET_TOKEN_ERROR",
@@ -85,7 +86,7 @@ export default function NewPassword() {
     } else {
       dispatch({ type: "SET_TOKEN_VALUE", payload: token });
     }
-  }, [searchParams, translate]);
+  }, []);
 
   async function handleNewPassword() {
     try {

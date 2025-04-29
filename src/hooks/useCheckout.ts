@@ -16,9 +16,9 @@ export const useCheckout = () => {
 
         setIsLoading(true);
         const AuthServiceInstance = new AuthService(supabase);
-        const user = await AuthServiceInstance.getUserId();
+        const userId = await AuthServiceInstance.getUserId();
 
-        if (!user) {
+        if (!userId) {
             window.location.href = '/signin';
             return;
         }
@@ -28,7 +28,7 @@ export const useCheckout = () => {
             const response = await fetch('/api/payments/create-checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ priceId, plan: plan.id, userId: user, hasFreeTrial: HAS_FREE_TRIAL, currency: FIXED_CURRENCY }),
+                body: JSON.stringify({ priceId, plan: plan.id, userId: userId, hasFreeTrial: HAS_FREE_TRIAL, currency: FIXED_CURRENCY }),
             });
 
             const jsonResponse = await response.json();
