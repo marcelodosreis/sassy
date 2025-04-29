@@ -103,7 +103,7 @@ const ErrorMessage = ({ message }: { message: string }) => (
 );
 
 const ConfirmationMessage = () => {
-    const { translate } = useI18n();
+    const { translate } = useI18n("pages.confirm-signup");
     return (
         <>
             <BackLink href='/dashboard' label={translate("actions.dashboard")} />
@@ -114,10 +114,10 @@ const ConfirmationMessage = () => {
 };
 
 const ConfirmationOAuthMessage = () => {
-    const { translate } = useI18n();
+    const { translate } = useI18n("pages.confirm-signup");
     return (
         <>
-            <BackLink href='/dashboard' label={translate("go-to-dashboard")} />
+            <BackLink href='/dashboard' label={translate("actions.dashboard")} />
             <h2 className="text-2xl font-semibold text-center text-gray-900">{translate("messages.oauth.title")}</h2>
             <p className="text-center text-sm text-gray-600">{translate("messages.oauth.description")}</p>
         </>
