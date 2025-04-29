@@ -1,6 +1,6 @@
 import FormData from "form-data";
+// eslint-disable-next-line import/no-unresolved
 import Mailgun from "mailgun.js";
-import { IMailgunClient } from "mailgun.js/Interfaces";
 
 type EmailParams = {
   from: string;
@@ -11,7 +11,7 @@ type EmailParams = {
 };
 
 export default class EmailService {
-  private mailgunClient: IMailgunClient;
+  private mailgunClient;
 
   constructor() {
     this.mailgunClient = new Mailgun(FormData).client({
