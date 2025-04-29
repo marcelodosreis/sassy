@@ -20,7 +20,7 @@
 |----------------------------------------------------|------------|
 | Integration with Transactional Emails              | ✅         |
 | Notification Integration                           | ✅         |
-| Team Features                                      | ⬜         |
+| Admin Dashboard                                    | ⬜         |
 
 
 ---
@@ -28,9 +28,9 @@
 ### **🚀 Low Priority (Future Improvements and Differentiation)**
 
 | **Feature**                                        | **Status** |
-|----------------------------------------------------|------------|
-| Offline Support                                    | ⬜         |
-| Admin Dashboard                                    | ⬜         |
+|----------------------------------------------------|------------
+| Dark/Light Theme                                   | ⬜         ||
+| Team Features                                      | ⬜         |
 | Plan Customization                                 | ⬜         |
 | Charts and Metrics in Admin Dashboard              | ⬜         |
-| Dark/Light Theme                                   | ⬜         |
+| Offline Support                                    | ⬜         |
