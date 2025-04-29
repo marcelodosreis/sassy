@@ -206,3 +206,4 @@ For more information on integrating **Stripe**, **Supabase**, and **OAuth**, ref
 - [Stripe Documentation](https://stripe.com/docs)
 - [Supabase Documentation](https://supabase.com/docs)
 - [OAuth Integration Guide](https://supabase.com/docs/guides/auth/auth-helpers/oauth)
+- [Sassy Integration with Datadog](https://github.com/marcelodosreis/sassy/blob/main/docs/datadog.md)
