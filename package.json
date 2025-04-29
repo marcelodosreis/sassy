@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --coverage",
+    "test:coverage": "jest --passWithNoTests --coverage --collectCoverageFrom='src/**/*.{js,ts,tsx}'",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix ",
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks"
@@ -27,7 +28,11 @@
     "stripe": "^18.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.27.0",
     "@eslint/eslintrc": "^3.2.0",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
