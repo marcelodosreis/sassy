@@ -19,6 +19,7 @@ Welcome to **Sassy**, a powerful template generator designed to accelerate the d
 | Webhooks for Stripe Events              | ✅         |
 | Subscriptions & Payments API Routes     | ✅         |
 | User Authentication (Supabase)          | ✅         |
+| E-Mail (Mailgun) + Custom Notification  | ✅         |
 | Personalized Dashboard                  | ✅         |
 | Responsive Design + Landing Page        | ✅         |
 | Logs & Monitoring (Datadog)             | ✅         |
