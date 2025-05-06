@@ -2,9 +2,9 @@
 
 import { useReducer } from "react";
 
-import BackLinkComponent from "@/components/BackLink";
-import ButtonComponent from "@/components/Button";
-import InputComponent from "@/components/Input";
+import BackLinkComponent from "@/components/v1/BackLink";
+import ButtonComponent from "@/components/v1/Button";
+import InputComponent from "@/components/v1/Input";
 import { useI18n } from "@/hooks/useI18n";
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";

@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 
-import ManageBilling from "@/components/ManageBilling";
-import PricingSection from "@/components/Pricing";
+import ManageBilling from "@/components/v1/ManageBilling";
+import PricingSection from "@/components/v1/Pricing";
 import { createClient } from "@/libs/supabase/server";
 import AuthService from "@/services/auth";
 import { capitalize } from "@/utils/capitalize";

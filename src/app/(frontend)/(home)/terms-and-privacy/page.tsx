@@ -2,7 +2,7 @@ import React from "react";
 
 import { loadTranslationsSSR } from "@/utils/loadTranslationsSSR";
 
-import Navbar from "../../../../components/Navbar";
+import Navbar from "../../../../components/v1/Navbar";
 import Footer from "../_sections/Footer";
 
 interface TranslationFunction {

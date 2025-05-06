@@ -3,8 +3,8 @@ import FeaturesSection from "@/app/(frontend)/(home)/_sections/FeaturesSection";
 import HeroSection from "@/app/(frontend)/(home)/_sections/HeroSection";
 import HowItWorksSection from "@/app/(frontend)/(home)/_sections/HowItWorksSection";
 import TestimonialSection from "@/app/(frontend)/(home)/_sections/TestimonialSection";
-import Navbar from "@/components/Navbar";
-import PricingSection from "@/components/Pricing";
+import Navbar from "@/components/v1/Navbar";
+import PricingSection from "@/components/v1/Pricing";
 
 import Footer from "./_sections/Footer";
 

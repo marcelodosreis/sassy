@@ -4,11 +4,11 @@ import { useRouter } from 'next/navigation';
 
 import { useReducer } from "react";
 
-import BackLinkComponent from "@/components/BackLink";
-import ButtonComponent from "@/components/Button";
-import FooterAuthScreenComponent from "@/components/FooterAuthScreen";
-import InputComponent from "@/components/Input";
-import OAuth from "@/components/OAuth";
+import BackLinkComponent from "@/components/v1/BackLink";
+import ButtonComponent from "@/components/v1/Button";
+import FooterAuthScreenComponent from "@/components/v1/FooterAuthScreen";
+import InputComponent from "@/components/v1/Input";
+import OAuth from "@/components/v1/OAuth";
 import { ROUTES } from '@/constants/routes-constants';
 import { useI18n } from '@/hooks/useI18n'; 
 import { supabase } from '@/libs/supabase/client';

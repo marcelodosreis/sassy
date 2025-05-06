@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Plan } from "@/components/Pricing/PlanCard";
+import { Plan } from "@/components/v1/Pricing/PlanCard";
 import { FIXED_CURRENCY } from "@/constants/fixed-currency";
 import { HAS_FREE_TRIAL } from "@/constants/has-free-trial";
 
