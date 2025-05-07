@@ -48,7 +48,7 @@ type ProviderButtonProps = {
 function ProviderButton({ provider, logo, onClick }: ProviderButtonProps) {
     return (
         <button
-            className="p-2 border border-gray-300 rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="p-2 border border-gray-300 rounded-md bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             onClick={onClick}
         >
             <img
