@@ -32,7 +32,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="bg-white shadow">
+    <header className="bg-white shadow-sm">
       <div className="container mx-auto relative flex items-center justify-between py-4 px-6">
         <a href="./" className="flex items-center space-x-4 cursor-pointer">
           <Image
@@ -57,7 +57,7 @@ export default function Navbar() {
           </a>
         </nav>
 
-        <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
+        <div className="hidden md:flex items-center space-x-4 shrink-0">
           {isLoading ? (
             <div className="mr-12">
               <Spinner />
@@ -66,13 +66,13 @@ export default function Navbar() {
             <>
               <a
                 href="/signin"
-                className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-100"
+                className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded-sm hover:bg-indigo-100"
               >
                 {translate("components.navbar.signin")}
               </a>
               <a
                 href="/signup"
-                className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                className="py-2 px-4 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700"
               >
                 {translate("components.navbar.try")}
               </a>
@@ -80,7 +80,7 @@ export default function Navbar() {
           ) : (
             <a
               href="/dashboard"
-              className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+              className="py-2 px-4 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700"
             >
               {translate("components.navbar.dashboard")}
             </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none"
+          className="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-hidden"
         >
           <svg
             className="w-6 h-6"
@@ -129,13 +129,13 @@ export default function Navbar() {
               <>
                 <a
                   href="/signin"
-                  className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-100"
+                  className="py-2 px-4 border border-indigo-600 text-indigo-600 rounded-sm hover:bg-indigo-100"
                 >
                   {translate("components.navbar.signin")}
                 </a>
                 <a
                   href="/signup"
-                  className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                  className="py-2 px-4 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700"
                 >
                   {translate("components.navbar.try")}
                 </a>
@@ -143,7 +143,7 @@ export default function Navbar() {
             ) : (
               <a
                 href="/dashboard"
-                className="py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                className="py-2 px-4 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700"
               >
                 {translate("components.navbar.dashboard")}
               </a>

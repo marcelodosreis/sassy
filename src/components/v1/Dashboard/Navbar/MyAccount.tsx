@@ -37,7 +37,7 @@ function MyAccount() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={toggleMenu}
-        className="text-gray-700 hover:text-indigo-600 font-medium focus:outline-none"
+        className="text-gray-700 hover:text-indigo-600 font-medium focus:outline-hidden"
       >
         {translate("options.button")}
       </button>

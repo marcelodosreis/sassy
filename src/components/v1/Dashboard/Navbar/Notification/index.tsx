@@ -87,7 +87,7 @@ export default function Notification() {
     <div className="relative" ref={notificationsRef}>
       <button
         onClick={() => setNotificationsOpen((prev) => !prev)}
-        className="relative p-2 text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-full"
+        className="relative p-2 text-gray-700 hover:text-indigo-600 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-full"
       >
         <BellIcon className="h-6 w-6" />
         {unreadCount > 0 && (
@@ -135,7 +135,7 @@ export default function Notification() {
                       </p>
                     </div>
                     {!notification.is_read && (
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <div className="h-2 w-2 bg-blue-600 rounded-full" />
                       </div>
                     )}

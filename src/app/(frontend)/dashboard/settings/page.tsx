@@ -25,7 +25,7 @@ export default async function Settings() {
                                     type="text"
                                     value={data?.user_metadata?.name}
                                     readOnly
-                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 text-gray-700 focus:outline-none sm:text-sm"
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs bg-gray-100 text-gray-700 focus:outline-hidden sm:text-sm"
                                 />
                             </div>
                         )}
@@ -36,7 +36,7 @@ export default async function Settings() {
                                 type="email"
                                 value={data?.email}
                                 readOnly
-                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 text-gray-700 focus:outline-none sm:text-sm"
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs bg-gray-100 text-gray-700 focus:outline-hidden sm:text-sm"
                             />
                         </div>
                     </div>

@@ -18,7 +18,7 @@ const Toast: React.FC = () => {
               : 'bg-blue-500'
           } text-white`}
         >
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             {toast.type === 'success' && (
               <svg
                 className="h-6 w-6 text-white"

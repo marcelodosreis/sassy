@@ -188,7 +188,7 @@ export default function SignUp() {
                 onChange={(e) =>
                   dispatch({ type: "SET_TERMS_ACCEPTED", payload: e.target.checked })
                 }
-                className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                className="h-4 w-4 text-indigo-600 border-gray-300 rounded-sm"
               />
               <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
                 {translate("inputs.terms")}

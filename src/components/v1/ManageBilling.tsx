@@ -62,7 +62,7 @@ export default function ManageBilling({ accessToken }: Props) {
         variant="outlined"
         isLoading={isLoading}
         size="small"
-        className="text-indigo-600 hover:underline border border-indigo-600 rounded px-4 py-2 md:w-1/6 w-2/4"
+        className="text-indigo-600 hover:underline border border-indigo-600 rounded-sm px-4 py-2 md:w-1/6 w-2/4"
       >
         {translate("actions.proceed")}
       </ButtonComponent>
