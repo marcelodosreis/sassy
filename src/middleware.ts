@@ -12,18 +12,14 @@ async function getUserPlan(
   if (!baseUrl) throw new Error("Missing NEXT_PUBLIC_PROJECT_URL env variable");
 
   const response = await fetch(
-    `${baseUrl}/api/payments/get-subscription?userId=${userId}`,
+    `${baseUrl}/api/v1/payments/subscription?userId=${userId}`,
     {
       method: "GET",
       cache: "no-store",
     }
   );
 
-  if (!response.ok) {
-    return "free";
-  }
-
-  const { subscription } = await response.json();
+  const subscription = await response.json();
 
   if (subscription?.status === "active") {
     return subscription.plan as "starter" | "creator" | "pro";

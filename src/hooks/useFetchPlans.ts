@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Plan } from "@/components/Pricing/PlanCard";
+import { Plan } from "@/components/v1/Pricing/PlanCard";
 import { FIXED_CURRENCY } from "@/constants/fixed-currency";
 import { HAS_FREE_TRIAL } from "@/constants/has-free-trial";
 
@@ -35,8 +35,9 @@ export const useFetchPlans = (
     const fetchPlans = async () => {
       try {
         const response = await fetch(
-          `/api/payments/get-plans?currency=${FIXED_CURRENCY}`
+          `/api/v1/payments/plans?currency=${FIXED_CURRENCY}`
         );
+
         const data: Plan[] = await response.json();
         setPlans((prev: Plan[]) => {
           if (!prev) return data;

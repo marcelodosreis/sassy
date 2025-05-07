@@ -4,10 +4,10 @@ import { useSearchParams } from "next/navigation";
 
 import { useReducer, useEffect } from "react";
 
-import BackLinkComponent from "@/components/BackLink";
-import ButtonComponent from "@/components/Button";
-import InputComponent from "@/components/Input";
-import PasswordStrengthIndicator from "@/components/PasswordStrength";
+import BackLinkComponent from "@/components/v1/BackLink";
+import ButtonComponent from "@/components/v1/Button";
+import InputComponent from "@/components/v1/Input";
+import PasswordStrengthIndicator from "@/components/v1/PasswordStrength";
 import { useI18n } from "@/hooks/useI18n";
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";

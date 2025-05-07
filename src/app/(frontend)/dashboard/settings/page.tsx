@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 
-import SettingsOptions from "@/components/SettingsOptions";
+import SettingsOptions from "@/components/v1/SettingsOptions";
 import { createClient } from "@/libs/supabase/server";
 import AuthService from "@/services/auth";
 import { capitalize } from "@/utils/capitalize";

@@ -1,6 +1,6 @@
 import { Poppins } from "next/font/google";
 
-import Toast from "@/components/Toast";
+import Toast from "@/components/v1/Toast";
 import { DatadogProvider } from "@/contexts/DatadogContext";
 import { I18nProvider } from "@/contexts/i18nContext";
 import { ToastProvider } from "@/contexts/ToastContext";

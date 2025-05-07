@@ -10,7 +10,7 @@
     "test:coverage": "jest --passWithNoTests --coverage --collectCoverageFrom='src/**/*.{js,ts,tsx}'",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix ",
-    "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks"
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/v1/payments/webhooks"
   },
   "dependencies": {
     "@datadog/browser-logs": "^6.6.3",

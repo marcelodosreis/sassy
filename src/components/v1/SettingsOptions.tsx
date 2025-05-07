@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import ButtonComponent from "@/components/Button";
+import ButtonComponent from "@/components/v1/Button";
 import { useI18n } from "@/hooks/useI18n";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from "@/libs/supabase/client";

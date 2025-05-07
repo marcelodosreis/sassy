@@ -2,12 +2,12 @@
 
 import { useReducer } from "react";
 
-import BackLinkComponent from "@/components/BackLink";
-import ButtonComponent from "@/components/Button";
-import FooterAuthScreenComponent from "@/components/FooterAuthScreen";
-import InputComponent from "@/components/Input";
-import OAuth from "@/components/OAuth";
-import PasswordStrengthIndicator from "@/components/PasswordStrength";
+import BackLinkComponent from "@/components/v1/BackLink";
+import ButtonComponent from "@/components/v1/Button";
+import FooterAuthScreenComponent from "@/components/v1/FooterAuthScreen";
+import InputComponent from "@/components/v1/Input";
+import OAuth from "@/components/v1/OAuth";
+import PasswordStrengthIndicator from "@/components/v1/PasswordStrength";
 import { useI18n } from '@/hooks/useI18n';
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";

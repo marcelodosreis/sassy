@@ -1,6 +1,6 @@
 import { headers } from 'next/headers';
 
-import { Dashboard as DashboardContainer } from "@/components/Dashboard";
+import { Dashboard as DashboardContainer } from "@/components/v1/Dashboard";
 import { ModalProvider } from "@/contexts/ModalContext";
 
 
