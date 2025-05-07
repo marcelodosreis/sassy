@@ -18,8 +18,8 @@ async function getUserPlan(
       cache: "no-store",
     }
   );
-  
-  const { subscription } = await response.json();
+
+  const subscription = await response.json();
 
   if (subscription?.status === "active") {
     return subscription.plan as "starter" | "creator" | "pro";

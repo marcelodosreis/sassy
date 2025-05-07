@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { supabaseServerClient } from "@/libs/supabase/server";
+import { supabaseServerClient as supabase } from "@/libs/supabase/server";
 import SubscriptionService from "@/services/subscription";
 
 export async function GET(request: NextRequest) {
@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
       throw new Error("Invalid or missing userId");
     }
 
-    const subscriptionService = new SubscriptionService(supabaseServerClient);
+    const subscriptionService = new SubscriptionService(supabase);
     const subscription = await subscriptionService.getSubscriptionByUserId(
       userId
     );
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     if (!subscription) {
       return NextResponse.json({ status: 204 });
     }
-    
+
     return NextResponse.json(subscription, { status: 200 });
   } catch (error) {
     console.error(error);

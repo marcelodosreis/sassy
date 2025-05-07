@@ -13,7 +13,7 @@ export async function handleManageBilling(
   accessToken: string
 ): Promise<void> {
   try {
-    const response = await fetch("/api/payments/create-billing-portal", {
+    const response = await fetch("/api/v1/payments/portal", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
