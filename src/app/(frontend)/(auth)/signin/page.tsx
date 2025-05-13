@@ -72,8 +72,8 @@ export default function SignIn() {
               throw new Error("Validation Error");
           }
   
-          const AuthServiceInstance = new AuthService(supabase);
-          const response = await AuthServiceInstance.signIn(state.inputValue.email, state.inputValue.password);
+          const authService = new AuthService(supabase);
+          const response = await authService.signIn(state.inputValue.email, state.inputValue.password);
   
           if (response?.id) {
               router.push(ROUTES.dashboard);

@@ -19,8 +19,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const getUserSession = async () => {
-      const AuthServiceInstance = new AuthService(supabase);
-      const user = await AuthServiceInstance.getUserId();
+      const authService = new AuthService(supabase);
+      const user = await authService.getUserId();
       if (!!user) {
         setIsLogged(true);
       } else {

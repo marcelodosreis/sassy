@@ -11,8 +11,8 @@ export default async function Subscription() {
   const { translate } = await loadTranslationsSSR();
   const sharedData = JSON.parse((await headers()).get("x-shared-data") || "{}");
   const supabase = await createClient();
-  const AuthServiceInstance = new AuthService(supabase);
-  const session = await AuthServiceInstance.getSession();
+  const authService = new AuthService(supabase);
+  const session = await authService.getSession();
 
   const currentPlanText = translate("pages.subscription.plan.description");
   const currentPlan = capitalize(sharedData?.plan);

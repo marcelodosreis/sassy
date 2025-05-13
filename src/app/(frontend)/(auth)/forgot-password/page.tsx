@@ -66,8 +66,8 @@ export default function ForgotPassword() {
                 throw new Error("Validation Error");
             }
 
-            const AuthServiceInstance = new AuthService(supabase);
-            const response = await AuthServiceInstance.forgotPassword(state.inputValue.email);
+            const authService = new AuthService(supabase);
+            const response = await authService.forgotPassword(state.inputValue.email);
 
             if (response) {
                 dispatch({ type: "SET_SUCCESS", payload: true });

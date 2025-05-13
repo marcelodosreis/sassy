@@ -9,8 +9,8 @@ import { loadTranslationsSSR } from '@/utils/loadTranslationsSSR';
 export default async function Settings() {
     const { translate } = await loadTranslationsSSR();
     const supabase = await createClient();
-    const AuthServiceInstance = new AuthService(supabase);
-    const data = await AuthServiceInstance.getUser();
+    const authService = new AuthService(supabase);
+    const data = await authService.getUser();
     const sharedData = JSON.parse((await headers()).get('x-shared-data') || '{}');
 
     return (

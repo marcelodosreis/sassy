@@ -61,10 +61,10 @@ export default function ConfirmSignUp() {
 
     async function handleConfirmSignup(token: string) {
         dispatch({ type: "SET_LOADING", isLoading: true });
-        const AuthServiceInstance = new AuthService(supabase);
+        const authService = new AuthService(supabase);
 
         try {
-            const response = await AuthServiceInstance.confirmEmail(token, 'signup');
+            const response = await authService.confirmEmail(token, 'signup');
             if (response?.id) {
                 dispatch({ type: "CONFIRMATION_SUCCESS" });
             } else {

@@ -9,8 +9,8 @@ type Props = {
 
 export default async function AuthLayout({ children }: Props) {
     const supabase = await createClient();
-    const AuthServiceInstance = new AuthService(supabase);
-    const userId = await AuthServiceInstance.getUserId();
+    const authService = new AuthService(supabase);
+    const userId = await authService.getUserId();
     
     if (userId) {
         redirect('/dashboard');

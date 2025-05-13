@@ -7,7 +7,7 @@ import { useI18n } from "@/hooks/useI18n";
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";
 
-const AuthServiceInstance = new AuthService(supabase);
+const authService = new AuthService(supabase);
 
 function MyAccount() {
   const { translate } = useI18n("components.dashboard.navbar.my-account");
@@ -67,7 +67,7 @@ function MyAccount() {
           <a
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer flex items-center justify-between"
             onClick={async () => {
-              await AuthServiceInstance.signOut();
+              await authService.signOut();
               window.location.reload();
             }}
           >

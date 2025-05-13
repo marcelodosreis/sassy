@@ -3,23 +3,23 @@ import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";
 
 export default function OAuth() {
-    const AuthServiceInstance = new AuthService(supabase);
+    const authService = new AuthService(supabase);
 
     const PROVIDERS_MAP = [
         {
             provider: 'Google',
             logo: PROVIDERS_IMAGE_URL.Google,
-            onClick: () => AuthServiceInstance.signInWithProvider('google')
+            onClick: () => authService.signInWithProvider('google')
         },
         {
             provider: 'Facebook',
             logo: PROVIDERS_IMAGE_URL.Facebook,
-            onClick: () => AuthServiceInstance.signInWithProvider('facebook')
+            onClick: () => authService.signInWithProvider('facebook')
         },
         {
             provider: 'Twitter',
             logo: PROVIDERS_IMAGE_URL.Twitter,
-            onClick: () => AuthServiceInstance.signInWithProvider('twitter')
+            onClick: () => authService.signInWithProvider('twitter')
         }
     ]
     return (

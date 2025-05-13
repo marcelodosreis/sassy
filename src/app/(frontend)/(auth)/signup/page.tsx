@@ -89,8 +89,8 @@ export default function SignUp() {
         throw new Error("Terms not accepted");
       }
 
-      const AuthServiceInstance = new AuthService(supabase);
-      const response = await AuthServiceInstance.signUp(state.inputValue.email, state.inputValue.password);
+      const authService = new AuthService(supabase);
+      const response = await authService.signUp(state.inputValue.email, state.inputValue.password);
 
       if (response?.id) {
         dispatch({ type: "SET_REGISTRATION_COMPLETE", payload: true });

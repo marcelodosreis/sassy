@@ -23,8 +23,8 @@ export const useCheckout = () => {
     }
 
     setIsLoading(true);
-    const AuthServiceInstance = new AuthService(supabase);
-    const userId = await AuthServiceInstance.getUserId();
+    const authService = new AuthService(supabase);
+    const userId = await authService.getUserId();
 
     if (!userId) {
       window.location.href = "/signin";

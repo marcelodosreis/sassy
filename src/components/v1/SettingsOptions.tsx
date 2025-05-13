@@ -15,7 +15,7 @@ type SettingsOptionsProps = {
 
 function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
     const { translate } = useI18n("components.settings-options");
-    const AuthServiceInstance = new AuthService(supabase);
+    const authService = new AuthService(supabase);
     const { addToast } = useToast();
     const [isLoading, setIsLoading] = useState({
         forgotPassword: false,
@@ -23,7 +23,7 @@ function SettingsOptions({ userEmail, currentPlan }: SettingsOptionsProps) {
 
     const handleForgotPassword = async (userEmail: string) => {
         setIsLoading((data) => ({ ...data, forgotPassword: true }));
-        const response = await AuthServiceInstance.forgotPassword(userEmail);
+        const response = await authService.forgotPassword(userEmail);
 
         if (response) {
             await addToast({
