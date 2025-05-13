@@ -48,17 +48,11 @@ export const useCheckout = () => {
       const jsonResponse = await response.json();
       const sessionId = jsonResponse.id;
 
-      if (sessionId) {
-        await PaymentService.redirectToCheckout(sessionId);
-      } else {
-        addToast({
-          id: Date.now().toString(),
-          message: "Error during Checkout",
-          description:
-            "An error occurred while processing your request. Please try again later.",
-          type: "error",
-        });
+      if (!sessionId) {
+        throw new Error("Error during payment checkout");
       }
+
+      await PaymentService.redirectToCheckout(sessionId);
     } catch (error) {
       console.error("Error during payment checkout:", error);
       addToast({
