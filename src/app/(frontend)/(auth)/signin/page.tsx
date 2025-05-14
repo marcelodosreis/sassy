@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useReducer } from "react";
 
+import AuthBridge from "@/bridges/auth";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import FooterAuthScreenComponent from "@/components/v1/FooterAuthScreen";
@@ -11,11 +12,7 @@ import InputComponent from "@/components/v1/Input";
 import OAuth from "@/components/v1/OAuth";
 import { ROUTES } from "@/constants/routes-constants";
 import { useI18n } from "@/hooks/useI18n";
-import { useSignIn } from "@/hooks/useSignIn";
-import { supabase } from "@/libs/supabase/client";
-import AuthService from "@/services/auth";
 import { isValidEmail } from "@/utils/isValidEmail";
-import AuthBridge from "@/bridges/auth";
 
 const initialState = {
   isLoading: false,
@@ -58,7 +55,6 @@ function reducer(state: SignInStateType, action: SignInAction) {
 
 export default function SignIn() {
   const router = useRouter();
-  const { handleLogin } = useSignIn();
   const { translate } = useI18n("pages.signin");
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -84,22 +80,17 @@ export default function SignIn() {
         throw new Error("Validation Error");
       }
 
-
       const authBridge = new AuthBridge();
-      await authBridge.signIn({
+      const response = await authBridge.signIn({
         email: state.inputValue.email,
         password: state.inputValue.password,
       });
 
-      const authService = new AuthService(supabase);
-      const response = await authService.getSession();
-
-      console.log(response);
-      // if (response?.id) {
-      //     router.push(ROUTES.dashboard);
-      // } else {
-      //     dispatch({ type: "SET_ERRORS", payload: { general: translate("errors.credentials") } });
-      // }
+      if (response?.id) {
+          router.push(ROUTES.dashboard);
+      } else {
+          dispatch({ type: "SET_ERRORS", payload: { general: translate("errors.credentials") } });
+      }
     } catch (err) {
       console.error("Error", err);
       if (err instanceof Error && err.message !== "Validation Error") {

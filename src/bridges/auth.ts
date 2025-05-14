@@ -11,8 +11,8 @@ export default class AuthBridge {
       }),
     });
 
-    const jsonResponse = await response.json();
-
-    console.log("[DEBUG]", jsonResponse);
+    const { response: jsonResponse } = await response.json();
+  
+    return jsonResponse;
   }
 }
