@@ -1,7 +1,7 @@
 import { Plan } from "@/components/v1/Pricing/PlanCard";
 import { FIXED_CURRENCY } from "@/constants/fixed-currency";
 import { HAS_FREE_TRIAL } from "@/constants/has-free-trial";
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/contexts/ToastContext";
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";
 import PaymentService from "@/services/payment";
