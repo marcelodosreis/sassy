@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import ButtonComponent from "@/components/v1/Button";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/contexts/i18nContext";
 import { useToast } from "@/hooks/useToast";
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";

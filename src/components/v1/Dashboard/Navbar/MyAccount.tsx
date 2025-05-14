@@ -3,7 +3,7 @@
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useState, useEffect, useRef } from "react";
 
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/contexts/i18nContext";
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";
 

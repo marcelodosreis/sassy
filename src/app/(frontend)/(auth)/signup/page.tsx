@@ -8,7 +8,7 @@ import FooterAuthScreenComponent from "@/components/v1/FooterAuthScreen";
 import InputComponent from "@/components/v1/Input";
 import OAuth from "@/components/v1/OAuth";
 import PasswordStrengthIndicator from "@/components/v1/PasswordStrength";
-import { useI18n } from '@/hooks/useI18n';
+import { useI18n } from "@/contexts/i18nContext";
 import { supabase } from "@/libs/supabase/client";
 import AuthService from "@/services/auth";
 import { isValidEmail } from "@/utils/isValidEmail";
