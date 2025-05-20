@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useReducer } from "react";
 
-import AuthBridge from "@/bridges/auth";
+import { SignInBridge } from "@/bridges/signin";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import FooterAuthScreenComponent from "@/components/v1/FooterAuthScreen";
@@ -80,8 +80,8 @@ export default function SignIn() {
         throw new Error("Validation Error");
       }
 
-      const authBridge = new AuthBridge();
-      const response = await authBridge.signIn({
+      const signinBridge = new SignInBridge();
+      const response = await signinBridge.execute({
         email: state.inputValue.email,
         password: state.inputValue.password,
       });
