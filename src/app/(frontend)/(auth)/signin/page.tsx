@@ -47,7 +47,7 @@ function reducer(state: SignInStateType, action: SignInAction) {
         inputValue: { ...state.inputValue, ...action.payload },
       };
     case "SET_ERRORS":
-      return { ...state, errors: { ...state.errors, ...action.payload } };
+      return { ...state, isLoading: false, errors: { ...state.errors, ...action.payload } };
     default:
       return state;
   }

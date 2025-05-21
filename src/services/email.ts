@@ -1,5 +1,4 @@
 import FormData from "form-data";
-// eslint-disable-next-line import/no-unresolved
 import Mailgun from "mailgun.js";
 
 type EmailParams = {

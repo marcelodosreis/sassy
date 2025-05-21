@@ -16,7 +16,6 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   tokenValue: "",
-  tokenError: "",
   inputValue: {
     password: "",
     confirmPassword: "",
@@ -25,6 +24,7 @@ const initialState = {
     password: "",
     confirmPassword: "",
     general: "",
+    token: "",
   },
 };
 
@@ -42,11 +42,11 @@ export type NewPasswordAction =
         password?: string;
         confirmPassword?: string;
         general?: string;
+        token?: string;
       };
     }
   | { type: "SET_PASSWORD_CHANGED"; payload: boolean }
-  | { type: "SET_TOKEN_VALUE"; payload: string }
-  | { type: "SET_TOKEN_ERROR"; payload: string };
+  | { type: "SET_TOKEN_VALUE"; payload: string };
 
 function reducer(state: NewPasswordStateType, action: NewPasswordAction) {
   switch (action.type) {
@@ -63,8 +63,6 @@ function reducer(state: NewPasswordStateType, action: NewPasswordAction) {
       return { ...state, isSuccess: action.payload };
     case "SET_TOKEN_VALUE":
       return { ...state, tokenValue: action.payload };
-    case "SET_TOKEN_ERROR":
-      return { ...state, tokenError: action.payload };
     default:
       return state;
   }
@@ -77,11 +75,10 @@ export default function NewPassword() {
 
   useEffect(() => {
     const token = searchParams?.get("code");
-    console.log(token);
     if (!token) {
       dispatch({
-        type: "SET_TOKEN_ERROR",
-        payload: translate("errors.token-missing"),
+        type: "SET_ERRORS",
+        payload: { token: translate("errors.missing-token") },
       });
     } else {
       dispatch({ type: "SET_TOKEN_VALUE", payload: token });
@@ -114,7 +111,6 @@ export default function NewPassword() {
       }
 
       const authService = new AuthService(supabase);
-
       const response = await authService.updatePassword(
         state.inputValue.password
       );
@@ -128,7 +124,6 @@ export default function NewPassword() {
         });
       }
     } catch (err) {
-      console.error("Error", err);
       if (err instanceof Error && err.message !== "Validation Error") {
         dispatch({
           type: "SET_ERRORS",
@@ -142,10 +137,16 @@ export default function NewPassword() {
 
   return (
     <>
-      {state.tokenError ? (
-        <div className="text-center text-red-500">
-          <p>{state.tokenError}</p>
-        </div>
+      {state.errors.token ? (
+        <>
+          <BackLinkComponent
+            href="/signin"
+            label={translate("actions.signin")}
+          />
+          <div className="text-center text-red-500">
+            <p>{state.errors.token}</p>
+          </div>
+        </>
       ) : state.isSuccess ? (
         <>
           <BackLinkComponent

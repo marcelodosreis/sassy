@@ -1,6 +1,4 @@
 export class SignInBridge {
-  constructor() {}
-
   async execute({ email, password }: { email: string; password: string }) {
     const response = await fetch("/api/v1/auth/signin", {
       method: "POST",

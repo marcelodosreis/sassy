@@ -1,6 +1,4 @@
 export class SignUpBridge {
-  constructor() {}
-
   async execute({ email, password }: { email: string; password: string }) {
     const response = await fetch("/api/v1/auth/signup", {
       method: "POST",
