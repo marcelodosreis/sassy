@@ -4,9 +4,8 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 
+import { GetMeBridge } from "@/bridges/getMe";
 import { useI18n } from "@/contexts/i18nContext";
-import { supabase } from "@/libs/supabase/client";
-import AuthService from "@/services/auth";
 
 import LanguageSelector from "./LanguageSelector";
 import Spinner from "./Spinner";
@@ -19,14 +18,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const getUserSession = async () => {
-      const authService = new AuthService(supabase);
-      const user = await authService.getUserId();
-      if (!!user) {
-        setIsLogged(true);
-      } else {
-        setIsLogged(false);
-      }
+      const getMeBridge = new GetMeBridge();
+      const response = await getMeBridge.execute();
       setIsLoading(false);
+      setIsLogged(!!response.id);
     };
     getUserSession();
   }, []);
