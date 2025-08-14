@@ -19,7 +19,7 @@ const Toast: React.FC = () => {
           } text-white`}
         >
           <div className="shrink-0">
-            {toast.type === "success" && (
+            {toast.type === 'success' && (
               <svg
                 className="h-6 w-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
