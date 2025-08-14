@@ -3,8 +3,8 @@
 import { LockClosedIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 
-import { useI18n } from "@/contexts/i18nContext";
-import { useModal } from "@/contexts/ModalContext";
+import { useI18n } from "@/hooks/useI18n";
+import { useModal } from "@/hooks/useModal";
 
 type Tab = {
     name: string;

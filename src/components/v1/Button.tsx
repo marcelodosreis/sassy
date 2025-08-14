@@ -21,7 +21,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
     size = 'medium',
     disabled = false,
 }) => {
-    const baseStyles = 'py-2 px-4 border rounded-md shadow-xs focus:outline-hidden focus:ring-2 focus:ring-offset-2';
+    const baseStyles = 'py-2 px-4 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2';
     
     const variantStyles = {
         filled: `bg-${color}-600 text-white hover:bg-${color}-700 border-transparent`,

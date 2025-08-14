@@ -1,17 +1,18 @@
 import { headers } from "next/headers";
 
-import { GET as getSessionHandler } from "@/app/(backend)/api/v1/session/route";
 import ManageBilling from "@/components/v1/ManageBilling";
 import PricingSection from "@/components/v1/Pricing";
+import { createClient } from "@/libs/supabase/server";
+import AuthService from "@/services/auth";
 import { capitalize } from "@/utils/capitalize";
 import { loadTranslationsSSR } from "@/utils/loadTranslationsSSR";
 
 export default async function Subscription() {
   const { translate } = await loadTranslationsSSR();
   const sharedData = JSON.parse((await headers()).get("x-shared-data") || "{}");
-
-  const getSessionResponse = await getSessionHandler();
-  const session = await getSessionResponse.json();
+  const supabase = await createClient();
+  const AuthServiceInstance = new AuthService(supabase);
+  const session = await AuthServiceInstance.getSession();
 
   const currentPlanText = translate("pages.subscription.plan.description");
   const currentPlan = capitalize(sharedData?.plan);

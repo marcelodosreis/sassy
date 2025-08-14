@@ -1,6 +1,6 @@
 "use client";
 
-import { useI18n } from "@/contexts/i18nContext";
+import { useI18n } from '@/hooks/useI18n';
 
 const FaqSection = () => {
   const { translate } = useI18n();

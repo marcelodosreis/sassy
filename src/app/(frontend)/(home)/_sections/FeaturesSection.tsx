@@ -2,8 +2,7 @@
 
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
-import { useI18n } from "@/contexts/i18nContext";
-
+import { useI18n } from '@/hooks/useI18n';
 
 export default function FeaturesSection() {
   const { translate } = useI18n();
