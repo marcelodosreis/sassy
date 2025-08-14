@@ -1,5 +1,5 @@
 import { ROUTES } from "@/constants/routes-constants";
-import { useI18n } from '@/hooks/useI18n'; 
+import { useI18n } from "@/contexts/i18nContext";
 
 type FooterAuthScreenProps = {
     screen: 'signin' | 'signup';

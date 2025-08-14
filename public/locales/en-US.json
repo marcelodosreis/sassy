@@ -218,11 +218,12 @@
       },
       "actions": {
         "submit": "Change Password",
-        "dashboard": "Back To dashboard",
+        "dashboard": "Back To Dashboard",
+        "signin": "Back To SignIn",
         "success": "Your password has been changed successfully!"
       },
       "errors": {
-        "token-missing": "Invalid or missing token.",
+        "missing-token": "Invalid or missing token.",
         "password-valid": "Password must be at least 6 characters long.",
         "password-match": "Passwords do not match.",
         "general": "Failed to change the password. Please try again.",
@@ -359,16 +360,6 @@
             "subscription": "Subscription",
             "terms-privacy": "Terms and Privacy",
             "sign-out": "Sign Out"
-          }
-        },
-        "notification": {
-          "title": "Notification",
-          "title-plural": "Notifications",
-          "options": {
-            "empty": {
-              "title": "No notifications",
-              "description": "You will be notified when there is news."
-            }
           }
         }
       },
