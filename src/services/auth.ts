@@ -66,7 +66,6 @@ export default class AuthService {
     }
 
     async updatePassword(password: string): Promise<boolean> {
-        console.log('[DEBUG]', await this.getUser())
         const { error } = await this.supabase.auth.updateUser({ password });
         this.handleError(error);
         return true;

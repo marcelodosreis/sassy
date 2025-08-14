@@ -4,13 +4,12 @@ import { useSearchParams } from "next/navigation";
 
 import { useReducer, useEffect } from "react";
 
+import { NewPasswordBridge } from "@/bridges/new-password";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import InputComponent from "@/components/v1/Input";
 import PasswordStrengthIndicator from "@/components/v1/PasswordStrength";
 import { useI18n } from "@/contexts/i18nContext";
-import { supabase } from "@/libs/supabase/client";
-import AuthService from "@/services/auth";
 
 const initialState = {
   isLoading: false,
@@ -110,10 +109,10 @@ export default function NewPassword() {
         throw new Error("Validation Error");
       }
 
-      const authService = new AuthService(supabase);
-      const response = await authService.updatePassword(
-        state.inputValue.password
-      );
+      const forgotPasswordBridge = new NewPasswordBridge();
+      const response = await forgotPasswordBridge.execute({
+        password: state.inputValue.password,
+      });
 
       if (response) {
         dispatch({ type: "SET_PASSWORD_CHANGED", payload: true });
