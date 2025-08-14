@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_PROJECT_URL}/auth/callback?provider=${provider}`,
+        redirectTo: `${process.env.NEXT_PUBLIC_PROJECT_URL}/confirm-signup?oauth=${provider}`,
       },
     });
 
