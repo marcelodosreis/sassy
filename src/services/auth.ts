@@ -1,4 +1,4 @@
-import { EmailOtpType, Provider, User, Session, SupabaseClient } from '@supabase/supabase-js';
+import { EmailOtpType, User, Session, SupabaseClient } from '@supabase/supabase-js';
 
 export default class AuthService {
     constructor(private supabase: SupabaseClient) { }
@@ -38,19 +38,6 @@ export default class AuthService {
         return data.user;
     }
 
-    async signInWithProvider(provider: Provider): Promise<void> {
-        const { error } = await this.supabase.auth.signInWithOAuth({
-            provider,
-            options: { redirectTo: `${process.env.NEXT_PUBLIC_PROJECT_URL}/confirm-signup?oauth=${provider}` }
-        });
-        this.handleError(error);
-    }
-
-    async signOut(): Promise<void> {
-        const { error } = await this.supabase.auth.signOut();
-        this.handleError(error);
-    }
-
     async confirmEmail(token: string, type: EmailOtpType): Promise<User | null> {
         const { data, error } = await this.supabase.auth.verifyOtp({ token_hash: token, type });
         this.handleError(error);
@@ -73,11 +60,6 @@ export default class AuthService {
 
     async resendEmail(email: string): Promise<void> {
         const { error } = await this.supabase.auth.resend({ email, type: 'signup' });
-        this.handleError(error);
-    }
-
-    async validateCode(code: string): Promise<void> {
-        const { error } = await this.supabase.auth.getUser(code);
         this.handleError(error);
     }
 
