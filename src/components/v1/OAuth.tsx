@@ -4,21 +4,32 @@ import { PROVIDERS_IMAGE_URL } from "@/constants/providers-image-url";
 export default function OAuth() {
   const oauthBridge = new OAuthBridge();
 
+  const handleLogin = async (provider: "google" | "facebook" | "twitter") => {
+    try {
+      const { response } = await oauthBridge.execute(provider);
+      if (response?.url) {
+        window.location.href = response.url;
+      }
+    } catch (error) {
+      console.error("OAuth ERROR:", error);
+    }
+  };
+
   const PROVIDERS_MAP = [
     {
       provider: "Google",
       logo: PROVIDERS_IMAGE_URL.Google,
-      onClick: () => oauthBridge.execute("google"),
+      onClick: () => handleLogin("google"),
     },
     {
       provider: "Facebook",
       logo: PROVIDERS_IMAGE_URL.Facebook,
-      onClick: () => oauthBridge.execute("facebook"),
+      onClick: () => handleLogin("facebook"),
     },
     {
       provider: "Twitter",
       logo: PROVIDERS_IMAGE_URL.Twitter,
-      onClick: () => oauthBridge.execute("twitter"),
+      onClick: () => handleLogin("twitter"),
     },
   ];
 
