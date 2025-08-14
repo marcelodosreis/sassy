@@ -1,9 +1,9 @@
 'use client';
 
-import { useI18n } from "@/hooks/useI18n";
+
+import { useI18n } from "@/contexts/i18nContext";
 
 import MyAccount from "./MyAccount";
-import Notification from "./Notification";
 import LanguageSelector from "../../LanguageSelector";
 
 export function Navbar() {
@@ -20,7 +20,6 @@ export function Navbar() {
                     </div>
                     <div className="flex items-center space-x-4">
                         <MyAccount />
-                        <Notification />
                         <LanguageSelector />
                     </div>
                 </div>

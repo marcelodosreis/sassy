@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/contexts/ToastContext";
 
 const Toast: React.FC = () => {
   const { toasts, removeToast } = useToast();
@@ -11,11 +11,11 @@ const Toast: React.FC = () => {
         <div
           key={toast.id}
           className={`max-w-xs w-full p-4 rounded-lg shadow-lg flex items-start space-x-3 ${
-            toast.type === 'success'
-              ? 'bg-green-500'
-              : toast.type === 'error'
-              ? 'bg-red-500'
-              : 'bg-blue-500'
+            toast.type === "success"
+              ? "bg-green-500"
+              : toast.type === "error"
+              ? "bg-red-500"
+              : "bg-blue-500"
           } text-white`}
         >
           <div className="shrink-0">
@@ -35,7 +35,7 @@ const Toast: React.FC = () => {
                 />
               </svg>
             )}
-            {toast.type === 'error' && (
+            {toast.type === "error" && (
               <svg
                 className="h-6 w-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ const Toast: React.FC = () => {
                 />
               </svg>
             )}
-            {toast.type === 'info' && (
+            {toast.type === "info" && (
               <svg
                 className="h-6 w-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"

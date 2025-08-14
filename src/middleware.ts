@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { GET as getMeHandler } from "@/app/(backend)/api/v1/me/route";
 import { updateSession } from "@/libs/supabase/middleware";
-import { createClient } from "@/libs/supabase/server";
-import AuthService from "@/services/auth";
 
 async function getUserPlan(
   userId: string
@@ -34,17 +33,16 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname.startsWith("/dashboard")) {
-    const supabase = await createClient();
-    const authService = new AuthService(supabase);
+    const getMeResponse = await getMeHandler();
+    const data = await getMeResponse.json();
 
-    const userId = await authService.getUserId();
 
-    if (!userId) {
+    if (!data?.id) {
       const redirectUrl = new URL("/signin", request.url);
       return NextResponse.redirect(redirectUrl);
     }
 
-    const plan = await getUserPlan(userId);
+    const plan = await getUserPlan(data?.id);
 
     const response = NextResponse.next();
     response.headers.set("x-shared-data", JSON.stringify({ plan }));
