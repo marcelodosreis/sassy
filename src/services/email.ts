@@ -58,7 +58,7 @@ export default class EmailService {
     text,
     html,
   }: EmailParams): void {
-    if (!from || !to || !subject || !text || !html) {
+    if (!from || to! || !subject || text! || !html) {
       throw new Error("Missing required email parameters.");
     }
   }
