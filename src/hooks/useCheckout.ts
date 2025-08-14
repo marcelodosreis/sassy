@@ -1,9 +1,8 @@
+import { GetMeBridge } from "@/bridges/getMe";
 import { Plan } from "@/components/v1/Pricing/PlanCard";
 import { FIXED_CURRENCY } from "@/constants/fixed-currency";
 import { HAS_FREE_TRIAL } from "@/constants/has-free-trial";
-import { useToast } from "@/hooks/useToast";
-import { supabase } from "@/libs/supabase/client";
-import AuthService from "@/services/auth";
+import { useToast } from "@/contexts/ToastContext";
 import PaymentService from "@/services/payment";
 
 export const useCheckout = () => {
@@ -23,15 +22,16 @@ export const useCheckout = () => {
     }
 
     setIsLoading(true);
-    const AuthServiceInstance = new AuthService(supabase);
-    const userId = await AuthServiceInstance.getUserId();
-
-    if (!userId) {
-      window.location.href = "/signin";
-      return;
-    }
 
     try {
+      const getMeBridge = new GetMeBridge();
+      const auth = await getMeBridge.execute();
+
+      if (!auth?.id) {
+        window.location.href = "/signin";
+        return;
+      }
+
       const priceId = isAnnual ? plan.idAnnual : plan.idMonthly;
       const response = await fetch("/api/v1/payments/checkout", {
         method: "POST",
@@ -39,7 +39,7 @@ export const useCheckout = () => {
         body: JSON.stringify({
           priceId,
           plan: plan.id,
-          userId: userId,
+          userId: auth.id,
           hasFreeTrial: HAS_FREE_TRIAL,
           currency: FIXED_CURRENCY,
         }),
@@ -48,17 +48,11 @@ export const useCheckout = () => {
       const jsonResponse = await response.json();
       const sessionId = jsonResponse.id;
 
-      if (sessionId) {
-        await PaymentService.redirectToCheckout(sessionId);
-      } else {
-        addToast({
-          id: Date.now().toString(),
-          message: "Error during Checkout",
-          description:
-            "An error occurred while processing your request. Please try again later.",
-          type: "error",
-        });
+      if (!sessionId) {
+        throw new Error("Error during payment checkout");
       }
+
+      await PaymentService.redirectToCheckout(sessionId);
     } catch (error) {
       console.error("Error during payment checkout:", error);
       addToast({

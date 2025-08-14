@@ -360,16 +360,6 @@
             "terms-privacy": "Termos e Privacidade",
             "sign-out": "Sair"
           }
-        },
-        "notification": {
-          "title": "Notificação",
-          "title-plural": "Notificações",
-          "options": {
-            "empty": {
-              "title": "Nenhuma notificação",
-              "description": "Você será notificado quando houver novidades."
-            }
-          }
         }
       },
       "menu": {

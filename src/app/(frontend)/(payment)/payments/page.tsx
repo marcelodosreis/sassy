@@ -2,7 +2,7 @@
 import { useSearchParams } from "next/navigation";
 
 import BackLink from "@/components/v1/BackLink";
-import { useI18n } from "@/hooks/useI18n";
+import { useI18n } from "@/contexts/i18nContext";
 
 const PaymentStatus = () => {
   const { translate } = useI18n();
