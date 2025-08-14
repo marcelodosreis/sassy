@@ -191,12 +191,8 @@
     },
     "confirm-signup": {
       "messages": {
-        "email": {
-          "title": "E-mail Confirmado",
-          "description": "Seu e-mail foi confirmado com sucesso."
-        },
-        "oauth": {
-          "title": "OAuth com Sucesso",
+        "success": {
+          "title": "Login com Sucesso",
           "description": "Seu provedor foi registrado com sucesso."
         }
       },
