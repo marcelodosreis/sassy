@@ -1,25 +1,25 @@
 import { PROVIDERS_IMAGE_URL } from "@/constants/providers-image-url";
-import { supabase } from "@/libs/supabase/client";
-import AuthService from "@/services/auth";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function OAuth() {
-    const authService = new AuthService(supabase);
+    const { signInWithProvider } = useAuth();
+
 
     const PROVIDERS_MAP = [
         {
             provider: 'Google',
             logo: PROVIDERS_IMAGE_URL.Google,
-            onClick: () => authService.signInWithProvider('google')
+            onClick: () => signInWithProvider('google')
         },
         {
             provider: 'Facebook',
             logo: PROVIDERS_IMAGE_URL.Facebook,
-            onClick: () => authService.signInWithProvider('facebook')
+            onClick: () => signInWithProvider('facebook')
         },
         {
             provider: 'Twitter',
             logo: PROVIDERS_IMAGE_URL.Twitter,
-            onClick: () => authService.signInWithProvider('twitter')
+            onClick: () => signInWithProvider('twitter')
         }
     ]
     return (

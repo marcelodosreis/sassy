@@ -4,12 +4,11 @@ import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useState, useEffect, useRef } from "react";
 
 import { useI18n } from "@/contexts/i18nContext";
-import { supabase } from "@/libs/supabase/client";
-import AuthService from "@/services/auth";
-
-const authService = new AuthService(supabase);
+import { useAuth } from "@/hooks/useAuth";
 
 function MyAccount() {
+  const { signOut } = useAuth();
+
   const { translate } = useI18n("components.dashboard.navbar.my-account");
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -67,7 +66,7 @@ function MyAccount() {
           <a
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer flex items-center justify-between"
             onClick={async () => {
-              await authService.signOut();
+              await signOut();
               window.location.reload();
             }}
           >
