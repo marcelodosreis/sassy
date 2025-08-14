@@ -6,7 +6,6 @@ import { stripe } from "@/libs/stripe";
 import { supabaseServerClient as supabase } from "@/libs/supabase/server";
 import AuthService from "@/services/auth";
 import EmailService from "@/services/email";
-import NotificationService from "@/services/notification";
 import PaymentService from "@/services/payment";
 import SubscriptionService from "@/services/subscription";
 
@@ -27,7 +26,6 @@ export async function POST(req: NextRequest) {
   const emailService = new EmailService();
   const authService = new AuthService(supabase);
   const subscriptionService = new SubscriptionService(supabase);
-  const notificationService = new NotificationService(supabase);
   const paymentService = new PaymentService(stripe);
 
   const headersList = headers();
@@ -84,11 +82,6 @@ export async function POST(req: NextRequest) {
           html: FINISH_CHECKOUT_EMAIL.replace("{plan}", plan),
         });
 
-        await notificationService.createNotification({
-          title: "Welcome to Sassy!",
-          description: "Your subscription has been activated",
-          user_id: userId,
-        });
         break;
       }
 
