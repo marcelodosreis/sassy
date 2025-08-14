@@ -361,16 +361,6 @@
             "terms-privacy": "Terms and Privacy",
             "sign-out": "Sign Out"
           }
-        },
-        "notification": {
-          "title": "Notification",
-          "title-plural": "Notifications",
-          "options": {
-            "empty": {
-              "title": "No notifications",
-              "description": "You will be notified when there is news."
-            }
-          }
         }
       },
       "menu": {
