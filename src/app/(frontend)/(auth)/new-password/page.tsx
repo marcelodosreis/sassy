@@ -4,17 +4,19 @@ import { useSearchParams } from "next/navigation";
 
 import { useReducer, useEffect } from "react";
 
-import { NewPasswordBridge } from "@/bridges/new-password";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import InputComponent from "@/components/v1/Input";
 import PasswordStrengthIndicator from "@/components/v1/PasswordStrength";
-import { useI18n } from "@/contexts/i18nContext";
+import { useI18n } from "@/hooks/useI18n";
+import { supabase } from "@/libs/supabase/client";
+import AuthService from "@/services/auth";
 
 const initialState = {
   isLoading: false,
   isSuccess: false,
   tokenValue: "",
+  tokenError: "",
   inputValue: {
     password: "",
     confirmPassword: "",
@@ -23,7 +25,6 @@ const initialState = {
     password: "",
     confirmPassword: "",
     general: "",
-    token: "",
   },
 };
 
@@ -41,11 +42,11 @@ export type NewPasswordAction =
         password?: string;
         confirmPassword?: string;
         general?: string;
-        token?: string;
       };
     }
   | { type: "SET_PASSWORD_CHANGED"; payload: boolean }
-  | { type: "SET_TOKEN_VALUE"; payload: string };
+  | { type: "SET_TOKEN_VALUE"; payload: string }
+  | { type: "SET_TOKEN_ERROR"; payload: string };
 
 function reducer(state: NewPasswordStateType, action: NewPasswordAction) {
   switch (action.type) {
@@ -62,6 +63,8 @@ function reducer(state: NewPasswordStateType, action: NewPasswordAction) {
       return { ...state, isSuccess: action.payload };
     case "SET_TOKEN_VALUE":
       return { ...state, tokenValue: action.payload };
+    case "SET_TOKEN_ERROR":
+      return { ...state, tokenError: action.payload };
     default:
       return state;
   }
@@ -74,10 +77,11 @@ export default function NewPassword() {
 
   useEffect(() => {
     const token = searchParams?.get("code");
+    console.log(token);
     if (!token) {
       dispatch({
-        type: "SET_ERRORS",
-        payload: { token: translate("errors.missing-token") },
+        type: "SET_TOKEN_ERROR",
+        payload: translate("errors.token-missing"),
       });
     } else {
       dispatch({ type: "SET_TOKEN_VALUE", payload: token });
@@ -109,10 +113,11 @@ export default function NewPassword() {
         throw new Error("Validation Error");
       }
 
-      const forgotPasswordBridge = new NewPasswordBridge();
-      const response = await forgotPasswordBridge.execute({
-        password: state.inputValue.password,
-      });
+      const authService = new AuthService(supabase);
+
+      const response = await authService.updatePassword(
+        state.inputValue.password
+      );
 
       if (response) {
         dispatch({ type: "SET_PASSWORD_CHANGED", payload: true });
@@ -123,6 +128,7 @@ export default function NewPassword() {
         });
       }
     } catch (err) {
+      console.error("Error", err);
       if (err instanceof Error && err.message !== "Validation Error") {
         dispatch({
           type: "SET_ERRORS",
@@ -136,16 +142,10 @@ export default function NewPassword() {
 
   return (
     <>
-      {state.errors.token ? (
-        <>
-          <BackLinkComponent
-            href="/signin"
-            label={translate("actions.signin")}
-          />
-          <div className="text-center text-red-500">
-            <p>{state.errors.token}</p>
-          </div>
-        </>
+      {state.tokenError ? (
+        <div className="text-center text-red-500">
+          <p>{state.tokenError}</p>
+        </div>
       ) : state.isSuccess ? (
         <>
           <BackLinkComponent

@@ -19,7 +19,7 @@ Welcome to **Sassy**, a powerful template generator designed to accelerate the d
 | Webhooks for Stripe Events              | ✅         |
 | Subscriptions & Payments API Routes     | ✅         |
 | User Authentication (Supabase)          | ✅         |
-| E-Mail (Mailgun)  | ✅         |
+| E-Mail (Mailgun) + Custom Notification  | ✅         |
 | Personalized Dashboard                  | ✅         |
 | Responsive Design + Landing Page        | ✅         |
 | Logs & Monitoring (Datadog)             | ✅         |
@@ -67,6 +67,15 @@ CREATE TABLE subscriptions (
     status TEXT CHECK (status IN ('active', 'canceled', 'past_due', 'incomplete', 'trialing')) NOT NULL DEFAULT 'active',
     current_period_start TIMESTAMP WITH TIME ZONE,
     current_period_end TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE notifications (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 ```

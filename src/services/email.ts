@@ -1,4 +1,5 @@
 import FormData from "form-data";
+// eslint-disable-next-line import/no-unresolved
 import Mailgun from "mailgun.js";
 
 type EmailParams = {
@@ -57,7 +58,7 @@ export default class EmailService {
     text,
     html,
   }: EmailParams): void {
-    if (!from || to! || !subject || text! || !html) {
+    if (!from || !to || !subject || !text || !html) {
       throw new Error("Missing required email parameters.");
     }
   }

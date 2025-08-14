@@ -19,6 +19,7 @@
 | **Feature**                                        | **Status** |
 |----------------------------------------------------|------------|
 | Integration with Transactional Emails              | ✅         |
+| Notification Integration                           | ✅         |
 | Admin Dashboard                                    | ⬜         |
 
 

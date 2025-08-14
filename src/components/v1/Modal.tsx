@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-import { useModal } from "@/contexts/ModalContext";
+import { useModal } from "@/hooks/useModal";
 
 interface ModalProps {
   title: string;
