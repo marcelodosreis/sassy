@@ -5,11 +5,8 @@ import Stripe from "stripe";
 
 import { stripe } from "@/libs/stripe";
 import { PaymentService } from "@/services";
-import {
-  InputData,
-  loadTranslationsSSR,
-  transformPurchasePlansDTO,
-} from "@/utils";
+import { InputData, transformPurchasePlansDTO } from "@/utils";
+import { loadTranslationsSSR } from "@/utils/load-translations-in-ssr";
 
 export async function GET(request: NextRequest) {
   try {

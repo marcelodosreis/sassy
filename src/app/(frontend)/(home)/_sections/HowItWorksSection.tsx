@@ -1,4 +1,4 @@
-import { loadTranslationsSSR } from "@/utils";
+import { loadTranslationsSSR } from "@/utils/load-translations-in-ssr";
 
 export default async function HowItWorksSection() {
     const { translate } = await loadTranslationsSSR();

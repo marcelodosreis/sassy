@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { loadTranslationsSSR } from '@/utils';
+import { loadTranslationsSSR } from "@/utils/load-translations-in-ssr";
 
 export default async function HeroSection() {
     const { translate } = await loadTranslationsSSR();

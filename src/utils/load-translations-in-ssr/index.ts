@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 
-import { Translations } from '@/contexts';
+import { Translations } from '@/contexts/i18n';
 
 import enUSLocale from '../../../public/locales/en-US.json';
 import ptBRLocale from '../../../public/locales/pt-BR.json';

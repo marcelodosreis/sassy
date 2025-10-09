@@ -2,7 +2,8 @@ import { headers } from "next/headers";
 
 import { GET as getMeHandler } from "@/app/(backend)/api/v1/me/route";
 import SettingsOptions from "@/components/v1/SettingsOptions";
-import { capitalize, loadTranslationsSSR } from "@/utils";
+import { capitalize } from "@/utils";
+import { loadTranslationsSSR } from "@/utils/load-translations-in-ssr";
 
 export default async function Settings() {
   const { translate } = await loadTranslationsSSR();
