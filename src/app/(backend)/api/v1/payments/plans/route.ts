@@ -4,12 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
 import { stripe } from "@/libs/stripe";
-import PaymentService from "@/services/payment";
-import { loadTranslationsSSR } from "@/utils/loadTranslationsSSR";
-import {
-  InputData,
-  transformPurchasePlansDTO,
-} from "@/utils/transformPurchasePlansDTO";
+import { PaymentService } from "@/services";
+import { InputData, transformPurchasePlansDTO } from "@/utils";
+import { loadTranslationsSSR } from "@/utils/load-translations-in-ssr";
 
 export async function GET(request: NextRequest) {
   try {

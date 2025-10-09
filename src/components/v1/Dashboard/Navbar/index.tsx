@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useI18n } from "@/contexts/i18nContext";
+import { useI18n } from "@/hooks";
 
 import MyAccount from "./MyAccount";
 import LanguageSelector from "../../LanguageSelector";

@@ -1,1 +1,0 @@
-export const FIXED_CURRENCY = 'usd';

@@ -1,13 +1,15 @@
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-import { FINISH_CHECKOUT_EMAIL } from "@/constants/finish-checkout-email";
+import { FINISH_CHECKOUT_EMAIL } from "@/constants";
 import { stripe } from "@/libs/stripe";
 import { supabaseServerClient as supabase } from "@/libs/supabase/server";
-import AuthService from "@/services/auth";
-import EmailService from "@/services/email";
-import PaymentService from "@/services/payment";
-import SubscriptionService from "@/services/subscription";
+import {
+  AuthService,
+  EmailService,
+  PaymentService,
+  SubscriptionService,
+} from "@/services";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 

@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 import { stripe } from "@/libs/stripe";
-import PaymentService from "@/services/payment";
+import { PaymentService } from "@/services";
 
 interface CheckoutBody {
   priceId: string;

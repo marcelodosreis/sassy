@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { supabaseServerClient as supabase } from "@/libs/supabase/server";
-import SubscriptionService from "@/services/subscription";
+import { SubscriptionService } from "@/services";
 
 export async function GET(request: NextRequest) {
   try {

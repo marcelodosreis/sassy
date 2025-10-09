@@ -1,7 +1,7 @@
 "use client";
 
-import { ROUTES } from "@/constants/routes-constants";
-import { useI18n } from "@/contexts/i18nContext";
+import { ROUTES } from "@/constants";
+import { useI18n } from "@/hooks";
 
 type FooterProps = {
   isDashboard?: boolean;

@@ -1,10 +1,8 @@
 import { Poppins } from "next/font/google";
 
 import Toast from "@/components/v1/Toast";
-import { DatadogProvider } from "@/contexts/DatadogContext";
-import { I18nProvider } from "@/contexts/i18nContext";
-import { ToastProvider } from "@/contexts/ToastContext";
-import { loadTranslationsSSR } from "@/utils/loadTranslationsSSR";
+import { DatadogProvider, I18nProvider, ToastProvider } from "@/contexts";
+import { loadTranslationsSSR } from "@/utils/load-translations-in-ssr";
 
 import "@/styles/globals.css";
 
