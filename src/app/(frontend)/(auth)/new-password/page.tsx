@@ -4,12 +4,12 @@ import { useSearchParams } from "next/navigation";
 
 import { useReducer, useEffect } from "react";
 
-import { NewPasswordBridge } from "@/bridges/new-password";
+import { NewPasswordBridge } from "@/bridges";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import InputComponent from "@/components/v1/Input";
 import PasswordStrengthIndicator from "@/components/v1/PasswordStrength";
-import { useI18n } from "@/contexts/i18nContext";
+import { useI18n } from "@/hooks";
 
 const initialState = {
   isLoading: false,

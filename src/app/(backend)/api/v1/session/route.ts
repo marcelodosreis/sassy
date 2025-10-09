@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { createClient } from "@/libs/supabase/server";
-import AuthService from "@/services/auth";
+import { AuthService } from "@/services";
 
 export async function GET() {
   try {

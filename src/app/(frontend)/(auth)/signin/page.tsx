@@ -4,15 +4,15 @@ import { useRouter } from "next/navigation";
 
 import { useReducer } from "react";
 
-import { SignInBridge } from "@/bridges/signin";
+import { SignInBridge } from "@/bridges";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import FooterAuthScreenComponent from "@/components/v1/FooterAuthScreen";
 import InputComponent from "@/components/v1/Input";
 import OAuth from "@/components/v1/OAuth";
-import { ROUTES } from "@/constants/routes-constants";
-import { useI18n } from "@/contexts/i18nContext";
-import { isValidEmail } from "@/utils/isValidEmail";
+import { ROUTES } from "@/constants";
+import { useI18n } from "@/hooks";
+import { isValidEmail } from "@/utils/is-valid-email";
 
 const initialState = {
   isLoading: false,

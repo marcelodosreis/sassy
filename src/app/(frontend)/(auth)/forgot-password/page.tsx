@@ -2,12 +2,12 @@
 
 import { useReducer } from "react";
 
-import { ForgotPasswordBridge } from "@/bridges/forgot-password";
+import { ForgotPasswordBridge } from "@/bridges";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import InputComponent from "@/components/v1/Input";
-import { useI18n } from "@/contexts/i18nContext";
-import { isValidEmail } from "@/utils/isValidEmail";
+import { useI18n } from "@/hooks";
+import { isValidEmail } from "@/utils";
 
 const initialState = {
   isLoading: false,

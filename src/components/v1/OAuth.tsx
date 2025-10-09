@@ -1,5 +1,5 @@
-import { OAuthBridge } from "@/bridges/oauth";
-import { PROVIDERS_IMAGE_URL } from "@/constants/providers-image-url";
+import { OAuthBridge } from "@/bridges";
+import { PROVIDERS_IMAGE_URL } from "@/constants";
 
 export default function OAuth() {
   const oauthBridge = new OAuthBridge();

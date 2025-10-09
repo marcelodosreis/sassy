@@ -3,8 +3,7 @@
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useState, useEffect, useRef } from "react";
 
-import { useI18n } from "@/contexts/i18nContext";
-import { useAuth } from "@/hooks/useAuth";
+import { useI18n, useAuth } from "@/hooks";
 
 function MyAccount() {
   const { signOut } = useAuth();

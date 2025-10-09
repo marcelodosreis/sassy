@@ -3,9 +3,7 @@ import { NextResponse } from "next/server";
 
 import { stripe } from "@/libs/stripe";
 import { supabaseServerClient as supabase } from "@/libs/supabase/server";
-import AuthService from "@/services/auth";
-import PaymentService from "@/services/payment";
-import SubscriptionService from "@/services/subscription";
+import { AuthService, PaymentService, SubscriptionService } from "@/services";
 
 export async function POST() {
   try {

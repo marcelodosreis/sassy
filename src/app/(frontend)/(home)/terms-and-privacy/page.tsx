@@ -1,6 +1,6 @@
 import React from "react";
 
-import { loadTranslationsSSR } from "@/utils/loadTranslationsSSR";
+import { loadTranslationsSSR } from "@/utils";
 
 import Navbar from "../../../../components/v1/Navbar";
 import Footer from "../_sections/Footer";

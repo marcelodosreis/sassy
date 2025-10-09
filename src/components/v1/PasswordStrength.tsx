@@ -1,4 +1,4 @@
-import { PASSWORD_STRENGTH_OPTIONS } from "@/constants/password-strength-options";
+import { PASSWORD_STRENGTH_OPTIONS } from "@/constants";
 
 type PasswordStrengthProps = {
   password: string;

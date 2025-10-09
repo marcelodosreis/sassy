@@ -6,7 +6,7 @@ import { useEffect, useReducer } from "react";
 
 import BackLink from "@/components/v1/BackLink";
 import Spinner from "@/components/v1/Spinner";
-import { useI18n } from "@/contexts/i18nContext";
+import { useI18n } from "@/hooks";
 
 type State = {
   isLoading: boolean;

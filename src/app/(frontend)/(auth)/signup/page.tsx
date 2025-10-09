@@ -2,15 +2,15 @@
 
 import { useReducer } from "react";
 
-import { SignUpBridge } from "@/bridges/signup";
+import { SignUpBridge } from "@/bridges";
 import BackLinkComponent from "@/components/v1/BackLink";
 import ButtonComponent from "@/components/v1/Button";
 import FooterAuthScreenComponent from "@/components/v1/FooterAuthScreen";
 import InputComponent from "@/components/v1/Input";
 import OAuth from "@/components/v1/OAuth";
 import PasswordStrengthIndicator from "@/components/v1/PasswordStrength";
-import { useI18n } from "@/contexts/i18nContext";
-import { isValidEmail } from "@/utils/isValidEmail";
+import { useI18n } from "@/hooks";
+import { isValidEmail } from "@/utils";
 
 const initialState = {
   isLoading: false,

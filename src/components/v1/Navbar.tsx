@@ -4,8 +4,8 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 
-import { GetMeBridge } from "@/bridges/getMe";
-import { useI18n } from "@/contexts/i18nContext";
+import { GetMeBridge } from "@/bridges";
+import { useI18n } from "@/hooks";
 
 import LanguageSelector from "./LanguageSelector";
 import Spinner from "./Spinner";

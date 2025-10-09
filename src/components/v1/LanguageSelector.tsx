@@ -1,6 +1,6 @@
 'use client';
 
-import { useI18n } from "@/contexts/i18nContext";
+import { useI18n } from "@/hooks";
 
 const LanguageSelector = () => {
   const { locale } = useI18n();

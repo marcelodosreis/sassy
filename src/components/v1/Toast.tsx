@@ -1,6 +1,7 @@
 "use client";
 
-import { useToast } from "@/contexts/ToastContext";
+import { useToast } from "@/hooks";
+
 
 const Toast: React.FC = () => {
   const { toasts, removeToast } = useToast();

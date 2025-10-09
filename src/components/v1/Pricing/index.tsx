@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 
-import { HAS_FREE_TRIAL } from '@/constants/has-free-trial';
-import { useI18n } from '@/contexts/i18nContext';
-import { useCheckout } from '@/hooks/useCheckout';
-import { useFetchPlans } from '@/hooks/useFetchPlans';
+import { HAS_FREE_TRIAL } from '@/constants';
+import { useI18n, useCheckout, useFetchPlans } from '@/hooks';
 
 import Spinner from '../Spinner';
 import PlanCard from './PlanCard';

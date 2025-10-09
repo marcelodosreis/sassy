@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 
-import { ForgotPasswordBridge } from "@/bridges/forgot-password";
+import { ForgotPasswordBridge } from "@/bridges";
 import ButtonComponent from "@/components/v1/Button";
-import { useI18n } from "@/contexts/i18nContext";
-import { useToast } from "@/contexts/ToastContext";
+import { useI18n, useToast } from "@/hooks";
 
 type SettingsOptionsProps = {
   userEmail?: string;

@@ -3,8 +3,7 @@ import { headers } from "next/headers";
 import { GET as getSessionHandler } from "@/app/(backend)/api/v1/session/route";
 import ManageBilling from "@/components/v1/ManageBilling";
 import PricingSection from "@/components/v1/Pricing";
-import { capitalize } from "@/utils/capitalize";
-import { loadTranslationsSSR } from "@/utils/loadTranslationsSSR";
+import { capitalize, loadTranslationsSSR } from "@/utils";
 
 export default async function Subscription() {
   const { translate } = await loadTranslationsSSR();
