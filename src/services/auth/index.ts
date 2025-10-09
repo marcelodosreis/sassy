@@ -3,11 +3,6 @@ import { EmailOtpType, User, Session, SupabaseClient } from '@supabase/supabase-
 class AuthService {
     constructor(private supabase: SupabaseClient) { }
 
-    async getUserId(): Promise<string | null> {
-        const user = await this.getUser();
-        return user?.id || null;
-    }
-
     async getUser(accessToken?: string): Promise<User | null> {
         const { data } = await this.supabase.auth.getUser(accessToken);
         return data?.user || null;
