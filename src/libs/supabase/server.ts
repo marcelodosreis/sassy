@@ -4,7 +4,7 @@ import { createServerClient } from '@supabase/ssr'
 import { createClient as supabaseCreateClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!;
 const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY!;
 
 export const supabaseServerClient = supabaseCreateClient(supabaseUrl, supabaseSecretKey);
@@ -12,13 +12,15 @@ export const supabaseServerClient = supabaseCreateClient(supabaseUrl, supabaseSe
 export async function createClient() {
   const cookieStore = await cookies();
 
-  return createServerClient(supabaseUrl, supabaseAnonKey,
+  return createServerClient(
+    supabaseUrl,
+    supabasePublishableKey,
     {
       cookies: {
         getAll() {
           return cookieStore.getAll()
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet: { name: string; value: string; options: any }[]) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)

@@ -80,7 +80,7 @@ The environment variables are configured to integrate Sassy with Supabase and St
 ```env
 NEXT_PUBLIC_PROJECT_URL=
 
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 NEXT_PUBLIC_SUPABASE_URL=
 
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
@@ -145,7 +145,8 @@ With **OAuth**, users can authenticate with their preferred social media account
 Ensure that you have **pnpm** installed. If not, install it globally:
 
 ```bash
-npm install -g pnpm
+corepack enable
+corepack prepare pnpm@10 --activate
 ```
 
 Then, install the project dependencies:
@@ -167,6 +168,14 @@ pnpm dev
 ```
 
 The application will be available at `http://localhost:3000`.
+
+### Memory during build
+
+If `next build` uses too much memory, cap the Node heap:
+
+```bash
+NODE_OPTIONS=--max-old-space-size=4096 pnpm build
+```
 
 ### 4. Database Configuration
 

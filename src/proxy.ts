@@ -27,7 +27,7 @@ async function getUserPlan(
   return "free";
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   await updateSession(request);
 
   const { pathname } = request.nextUrl;

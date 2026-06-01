@@ -2,7 +2,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 import { FlatCompat } from '@eslint/eslintrc';
-import tseslint from '@typescript-eslint/eslint-plugin';
+import tseslint from 'typescript-eslint';
 import eslintPluginImport from 'eslint-plugin-import';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +17,7 @@ const eslintConfig = [
   {
     plugins: {
       import: eslintPluginImport,
-      "@typescript-eslint": tseslint,
+      "@typescript-eslint": tseslint.plugin,
     },
     rules: {
       "import/no-unresolved": "error",
