@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 import { FINISH_CHECKOUT_EMAIL } from "@/constants/finish-checkout-email";
@@ -11,12 +10,6 @@ import SubscriptionService from "@/services/subscription";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 async function getRawBody(req: NextRequest): Promise<string> {
   const text = await req.text();
   return text;
@@ -28,8 +21,7 @@ export async function POST(req: NextRequest) {
   const subscriptionService = new SubscriptionService(supabase);
   const paymentService = new PaymentService(stripe);
 
-  const headersList = headers();
-  const sig = (await headersList).get("stripe-signature");
+  const sig = req.headers.get("stripe-signature");
   const rawBody = await getRawBody(req);
 
   if (!sig || !endpointSecret) {
